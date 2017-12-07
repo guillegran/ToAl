@@ -52,6 +52,7 @@
   \def\grp{\mathbf{Grp}}
   \def\XX{\tilde{X}}
   \def\xx{\tilde{x}}
+  \def\im{\mathrm{Im}}
 
 \newcommand\cev[1]{\overset{\leftarrow}{#1}}
 
@@ -798,7 +799,7 @@ Sea $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $Y$ un espacio to
 \begin{proof}
 Antes de dar la demostración necesitamos probar un lema previo.
 \begin{lema}
-  Sea $(K,d)$ un espacio métrico compacto, y $F:K\rightarrow X$ una aplicación continua. Sea $X=\bigcup_{\alpha}U_{\alpha}$ un recubrimiento por abiertos. Entonces existe un $\mu >0$ tal que para todo $A\subset K$ con $\mathrm{diam}(A)=\sup\left\{ d(x,y)|x,y \in A \right\}<\mu$, se tiene que existe $\alpha$ tal que $A\subset F^{-1}(U_{\alpha})$. A cualquiera de estos $\mu$ se le llama \emph{número de Lebesgue}.
+  Sea $(K,d)$ un espacio métrico compacto, y $F:K\rightarrow X$ una aplicación continua. Sea $X=\bigcup_{\alpha}U_{\alpha}$ un recubrimiento por abiertos. Entonces existe un $\mu >0$ tal que para todo $A\subset K$ con $\mathrm{diam}(A)=\sup\left\{ d(x,y)|x,y \in A \right\}<\mu$, se tiene que existe $\alpha$ tal que $A\subset F^{-1}(U_{\alpha})$. A cualquiera de estos $\mu$ se le llama \emph{número de Lebesgue del recubrimiento $\{U_\alpha\}$ para la función $F$}.
 \end{lema}
 
 \textbf{Demostración del lema}. Supongamos que no. Entonces para cada $n\in \mathbb{N}$ existe $A_n=B(x_n,\tfrac{1}{n})\subset K$ tal que $F(A_n)$ no está contenido en ningún abierto del recubrimiento. Por la compacidad de $K$, existe una subsucesión convergente $x_{n_k}\rightarrow x_0 \in K$. Ahora, sea $\alpha_0$ tal que $F(x_0)\in U_{\alpha_0}$ y sea $\epsilon>0$ tal que $F(B(x_0,\epsilon))\subset U_{\alpha_0}$, que existe por ser $F$ continua. Para $n$ suficientemente grande, $d(x_n,x_0)<\epsilon/2$ y $1/n<\epsilon/2$. Por tanto $A_n\subset B(x_0,\epsilon)$ y $F(A_n) \subset U_{\alpha_0}$ y llegaríamos a una contradicción.
@@ -820,7 +821,26 @@ Antes de dar la demostración necesitamos probar un lema previo.
     Análogamente podemos construir una aplicación inyectiva $F_y\rightarrow F_x$. Por tanto $F_x$ es equipotente a $F_y$.
 \end{proof}
 
+\begin{corol}\label{elevhomot}
+  Sean $(\XX,p)$ una cubierta de un espacio topológico $X$, $Y$ otro espacio topológico, $f:Y\rightarrow \XX$ continua y $F:I\times Y\rightarrow X$ continua con $F_0=p\circ f$. Entonces existe una única $\tilde{F}:I\times Y \rightarrow \XX$ elevación de $F$ tal que $\tilde{F}_0=f$.
+\end{corol}
+\begin{proof}
+  Dado $y \in Y$, tomamos el camino $\gamma_y(t)=F_t(y)$ para $t\in I$. Por la proposición, existe un único levantamiento de $\gamma_y$, que llamaremos $\tilde{\gamma}_y$, que cumple $\tilde{\gamma}_y(0)=f(y)$. Podemos definir entonces $\tilde{F}_t(y)=\tilde{\gamma}_y(t)$. Claramente $\tilde{F}$ es elevación de $F$ y $\tilde{F}_0=f$. Basta ver que esta $\tilde{F}$ así construida es continua.
+
+  Sea $(t_0,y_0)\in I \times Y$. De forma análoga a la demostración de la proposición, tomo el conjunto de abiertos elementales $\mathcal{U}=\left\{ U_{\alpha} \right\}$ y la familia $\{\gamma_{y}^{-1}(U_{\alpha})\}$, que es un recubrimiento por abiertos de $I$. Tomamos el número de Lebesgue y particionamos $I$ igual que en la demostración de la proposición, de forma que existe un $\beta$ y existe un entorno $V$ de $t_0$ tal que $F(V\times\left\{ y_0 \right\})=\gamma_{y_0}(V)\subset U_{\beta}$. Por tanto, como $F$ es continua, existe un entorno $W$ de $(t_0,y_0)$ tal que $F(W)\subset U_{\beta}$. Sea $\tilde{U}^{\alpha}_\beta$ la hoja de $U_\beta$ que contiene a $f(y)$. Ahora $p|_{\tilde{U}^{\alpha}_{\beta}}:\tilde{U}^{\alpha}_{\beta}\rightarrow U_\beta$ es homeomorfismo y, si $(t,y)\in W\subset U_{\beta}$ entonces $\tilde{F}(t,y)=\tilde{\gamma}_y(t)=p|_{\tilde{U}^{\alpha}_{\beta}}^{-1}(\gamma_y(t))$. Por tanto, $\tilde{F}$ es continua en $W$ y en particular en $(t_0,y_0)$.
+\end{proof}
+
 \section{Cubiertas y grupo fundamental}
+\begin{prop}
+  Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y $x\in X$. Entonces, para cualquier $\xx \in F_x$, la aplicación inducida entre grupos fundamentales $p_*:\gf(\XX,\xx)\rightarrow \gf(X,x)$ es un monomorfismo.
+\end{prop}
+\begin{proof}
+  Sean dos lazos $\alpha, \beta$ en $\XX$ con punto base $\xx$. Tenemos que probar que si $p\circ \alpha \sim p\circ \beta$ entonces $\alpha \sim \beta$. En efecto, si $F$ es una homotopía entre $p\circ \alpha$ y $p\circ \beta$, podemos considerar su elevación $\tilde{F}$, única si imponemos $\tilde{F}_0=\alpha$, dada por el corolario \ref{elevhomot}, que claramente cumple $\tilde{F}_1=\beta$.
+\end{proof}
+\begin{prop}
+  Sea $Y$ un espacio topológico conexo y localmente conexo por caminos. Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $f:Y\rightarrow X$ una función continua. Fijamos $y\in Y$, $x=f(y)$ y $\xx \in F_x$. Entonces $f$ admite una elevación si y sólo si
+ $\im (f_*) \subset \im (p_*)$.   
+\end{prop}
 \end{document}
 
 
