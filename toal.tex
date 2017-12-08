@@ -53,6 +53,7 @@
   \def\XX{\tilde{X}}
   \def\xx{\tilde{x}}
   \def\im{\mathrm{Im}}
+  \def\aut{\mathrm{Aut}}
 
 \newcommand\cev[1]{\overset{\leftarrow}{#1}}
 
@@ -481,7 +482,7 @@ X \arrow{ru}{f} \arrow{rd}{f} & & Z \\
       & X \arrow{r}{f} & Y
     \end{tikzcd}
   \end{center}
-  conmuta. Se puede probar que este morfismo $g$ es, de hecho, único, se denota por $f^{-1}$ y se llama morfismo \emph{inverso} de $f$. En el caso en que $Y=X$, si $f:X\rightarrow X$ es un isomorfismo se dice que $f$ es un \emph{automorfismo} de $X$.
+  conmuta. Se puede probar que este morfismo $g$ es, de hecho, único, se denota por $f^{-1}$ y se llama morfismo \emph{inverso} de $f$. En el caso en que $Y=X$, si $f:X\rightarrow X$ es un isomorfismo se dice que $f$ es un \emph{automorfismo} de $X$. La clase de los automorfismos de $X$ se denota por $\aut(X)$.
   \end{itemize}
 \end{defn}
 
@@ -643,7 +644,9 @@ Una propiedad interesante de los funtores es que preservan los isomorfismos. Est
    conmuta, luego $Ff$ es un isomorfismo.
 \end{proof}
 
-Las limitaciones de tamaño que introdujimos sobre las categorías nos permiten considerar categorías de categorías, por ejemplo, la categoría $\mathbf{Cat}$, cuyos objetos son todas las categorías pequeñas y sus morfismos los funtores entre ellas o, análogamente $\mathbf{Cat}_*$ para las categorías localmente pequeñas. Estas construcciones evitan las paradojas de tipo Russell, ya que, por ejemplo $\mathbf{Cat}$ y $\mathbf{Cat}_*$ no son a su vez una categoría pequeña o localmente pequeña, respectivamente.
+Las limitaciones de tamaño que introdujimos sobre las categorías nos permiten considerar categorías de categorías, por ejemplo, la categoría $\mathbf{Cat}$, cuyos objetos son todas las categorías pequeñas y sus morfismos los funtores entre ellas o, análogamente $\mathbf{Cat}_*$ para las categorías localmente pequeñas. Estas consideraciones evitan las paradojas de tipo Russell, ya que, por ejemplo $\mathbf{Cat}$ y $\mathbf{Cat}_*$ no son a su vez una categoría pequeña o localmente pequeña, respectivamente.
+
+Otra forma de evitar estas paradojas es considerando una construcción inductiva, de forma que llamaríamos 0-categoría a un conjunto, 1-categoría a una categoría formada por conjuntos cuyos morfismos sean aplicaciones entre ellos, 2-categoría a una categoría de 1-categorías con funtores entre ellas, etc. De esta manera, uno puede considerar $n$-categorías, con $n\in \mathbb{N}$. Generalizando el procedimiento inductivo podríamos definir la noción de $\omega$-categoría o incluso entes de mayor rango. Estas construcciones dan lugar a lo que se conoce como teoría de categorías \emph{superior}, más conocida por su nombre en inglés «\emph{higher category theory}».
 
 \section{Funtorialidad del grupo fundamental}
 
@@ -726,7 +729,7 @@ En los siguientes capítulos continuaremos el formalismo de la homotopía y el g
   Un \emph{espacio recubridor} o \emph{cubierta} de un espacio topológico $X$ es un par $(\XX,p)$, donde $\XX$ es un espacio topológico y $p:\XX\rightarrow X$ es una aplicación continua, que llamamos \emph{proyección recubridora}, que cumple:
   \begin{enumerate}
     \item $p$ es sobreyectiva y
-    \item existe un recubrimiento abierto $\mathcal{U}$ de $X$ tal que, para cada $U\in \mathcal{U}$, $p^{-1}(U)=\bigsqcup_{\alpha}\tilde{U}^{\alpha}$ es unión disjunta de una familia de abiertos $\tilde{U}^{\alpha}$ que verifican que $p|_{\tilde{U}^{\alpha}}:\tilde{U}^{\alpha}\rightarrow U$ es un homeomorfismo.
+    \item existe un recubrimiento abierto $\mathcal{U}$ de $X$ tal que, para cada $U\in \mathcal{U}$, $p^{-1}(U)=\bigsqcup_{\alpha}\tilde{U}^{\alpha}$ es unión disjunta de una familia de abiertos $\{\tilde{U}^{\alpha}\}$ que verifican que $p|_{\tilde{U}^{\alpha}}:\tilde{U}^{\alpha}\rightarrow U$ es un homeomorfismo.
   \end{enumerate}
 
   Los abiertos $U\in \mathcal{U}$ se llaman \emph{abiertos elementales} y los $\tilde{U}^{\alpha}$ se llaman \emph{hojas de $U$}. Dado un punto $x\in X$, el conjunto $F_x=p^{-1}(x)$ se llama \emph{fibra de $x$} y los puntos $y\in F_x$ se dice que \emph{están sobre $x$}.
@@ -796,6 +799,10 @@ Sea $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $Y$ un espacio to
   Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y $\gamma:I\rightarrow X$ un camino con origen $\gamma(0)=x$. Si fijamos un punto $y\in F_{x}$, entonces existe una única elevación $\tilde{\gamma}_{y}$ de $\gamma$ tal que $\tilde{\gamma}_{y}(0)=y$. 
 \end{prop}
 
+\begin{obs}
+  El elevado de una concatenación de lazos $\sigma*\tau$ en un punto $y$ es $\tilde{\sigma}_y*\tilde{\tau}_{\tilde{\sigma}_y(1)}$. El elevado de un «camino inverso» $\cev{\sigma}$ es $\cev{\tilde{\sigma}}$
+\end{obs}
+
 \begin{proof}
 Antes de dar la demostración necesitamos probar un lema previo.
 \begin{lema}
@@ -832,15 +839,63 @@ Antes de dar la demostración necesitamos probar un lema previo.
 
 \section{Cubiertas y grupo fundamental}
 \begin{prop}
-  Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y $x\in X$. Entonces, para cualquier $\xx \in F_x$, la aplicación inducida entre grupos fundamentales $p_*:\gf(\XX,\xx)\rightarrow \gf(X,x)$ es un monomorfismo.
+  Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y $x\in X$. Entonces, para cualquier $\xx \in F_x$, la aplicación inducida entre grupos fundamentales $p_*:\gf(\XX,\xx)\rightarrow \gf(X,x)$ es un monomorfismo. Por tanto, $\gf(\XX,\xx)$ es isomorfo a un subgrupo $\im(p_*)<H$.
 \end{prop}
 \begin{proof}
   Sean dos lazos $\alpha, \beta$ en $\XX$ con punto base $\xx$. Tenemos que probar que si $p\circ \alpha \sim p\circ \beta$ entonces $\alpha \sim \beta$. En efecto, si $F$ es una homotopía entre $p\circ \alpha$ y $p\circ \beta$, podemos considerar su elevación $\tilde{F}$, única si imponemos $\tilde{F}_0=\alpha$, dada por el corolario \ref{elevhomot}, que claramente cumple $\tilde{F}_1=\beta$.
 \end{proof}
 \begin{prop}
-  Sea $Y$ un espacio topológico conexo y localmente conexo por caminos. Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $f:Y\rightarrow X$ una función continua. Fijamos $y\in Y$, $x=f(y)$ y $\xx \in F_x$. Entonces $f$ admite una elevación si y sólo si
- $\im (f_*) \subset \im (p_*)$.   
+  Sea $Y$ un espacio topológico conexo y localmente conexo por caminos. Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $f:Y\rightarrow X$ una función continua. Fijamos $y_0\in Y$, $x=f(y_0)$ y $\xx \in F_x$. Entonces $f$ admite una elevación si y sólo si
+ $\im (f_*) < \im (p_*)$.   
 \end{prop}
+
+\begin{obs}
+  Si $Y$ es simplemente conexo, $f$ siempre se puede elevar.
+\end{obs}
+
+\begin{proof}
+  Para ver que es condición necesaria basta ver que, si $\tilde{f}$ es una elevación de $f$,
+  \begin{equation*}
+    \im(f_*)=f_*(\gf(Y,y_0))=p_*(\tilde{f}_*(\gf(Y,y_0)))<p_*(\gf(\XX,\xx))=\im(p_*).
+  \end{equation*}
+
+  Veamos que también es condición suficiente. Sea $y\in Y$. Se trata de definir $\tilde{f}(y)$. Como en particular $Y$ es conexo por caminos, elegimos un camino $\sigma$ en $Y$ que une $y_0$ con $y$. Entonces, $f\circ \sigma$ es un camino en $X$ de origen $x$ y extremo $f\circ \sigma (1)=f(y)$. Elevamos $f\circ \sigma$ a un camino $\widetilde{f\circ\sigma}_{\xx}$ en $\XX$ con origen $\xx$ y definimos $\tilde{f}(y)=\widetilde{f\circ\sigma}_{\xx}(1)$. Tenemos que ver que esta $\tilde{f}$ está bien definida y es continua.
+
+  \textbf{Bien definida}. Sea otro camino $\tau$ entre $y_0$ e $y$. Si $\tau$ es homótopo a $\sigma$ entonces $f\circ \sigma\sim f\circ \tau$, luego $\widetilde{f\circ\sigma}_{\xx}\sim\widetilde{f\circ\tau}_{\xx}$. Por tanto $\widetilde{f\circ\sigma}_{\xx}(1)=\widetilde{f\circ\tau}_{\xx}(1)$ y la $\tilde{f}(y)$ obtenida es la misma. Si $\tau$ no es homótopo a $\sigma$, consideramos $\sigma*\cev{\tau}$ lazo con punto base $y_0$. Ahora, por la hipótesis $f\circ(\sigma*\cev{\tau})=f\circ\sigma * f\circ \cev{\tau}$ es un lazo en $X$ con punto base $x=f(y_0)$. Por tanto, $\widetilde{f\circ\tau}_{\xx}(1)=\widetilde{f\circ\cev{\tau}}_{\xx}(0)=\widetilde{f\circ\sigma}_{\xx}(1)=\tilde{f}(y)$.
+
+  \textbf{Continua}. Sean $U$ un abierto elemental que contenga a $f(y)$ y $\tilde{U}$ la hoja de $U$ que contiene a $\tilde{f}(y)$. Como $Y$ es localmente conexo por caminos y $f$ es continua, podemos tomar un entorno $V\subset Y$ de $y$ conexo por caminos tal que $f(V)\subset U$. Basta ver ahora que $\tilde{f}(V)\subset \tilde{U}$. Sea entonces un punto $y'\in V$. Tomamos un camino $\alpha$ en $V$ que une $y$ e $y'$. Entonces $\sigma * \alpha$ une $y_0$ e $y'$. Ahora, $$\tilde{f}(y')=\widetilde{f\circ(\sigma*\alpha)}_{\xx}(1)=\widetilde{f\circ\sigma}_{\xx}*\widetilde{f\circ\alpha}_{\tilde{\sigma}(x)}(1)\in \tilde{U}.$$ Ya que las elevaciones de los caminos $f\circ \sigma$ y $f\circ \alpha$ están totalmente contenidas en la hoja $\tilde{U}$ de $f(y)$.
+\end{proof}
+
+Cabría preguntarse ahora cómo se relacionan las imágenes por $p_*$ de los grupos fundamentales $\gf(\xx,\XX)$ para distintos puntos de la fibra, $\xx\in F_x$.
+
+\begin{prop}
+  Si $(\XX,p)$ es una cubierta de un espacio topológico $X$ con $\XX$ conexo por caminos, entonces, para dos puntos $y,z\in F_x$, $p_*(\gf(\XX,y))$ y $p_*(\gf(\XX,z))$ son subgrupos conjugados de $\gf(X,x)$. Además el conjunto $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conjugación de $\gf(X,x)$.
+\end{prop}
+\begin{proof}
+  Como $\XX$ es conexo por caminos, puedo tomar un camino $\delta$ en $\XX$ que una $y$ y $z$. Además, como $y,z\in F_x$, $\xi=p\circ \delta$ es un lazo en $X$ con punto base $x$. Tomamos un elemento de $p_*(\gf(\XX,z))$ de la forma $p_*[\beta]$. Como $\delta$ induce un isomorfismo $\delta_\#$ entre $\gf(\XX,y)$ y $\gf(\XX,z)$, $[\beta]$ puede escribirse en la forma $[\cev{\delta}*\alpha*\delta]$, con $\alpha \in \gf(\XX,y)$. Ahora
+  \begin{equation*}
+    p_*[\beta]=p_*[\cev{\delta}*\alpha*\delta]=[p\circ\cev{\delta}][p\circ\alpha][p\circ\delta]=[\xi]^{-1}[p\circ\alpha][\xi]=[\xi]^{-1}(p_*[\alpha])[\xi].
+  \end{equation*}
+Es decir, $p_*(\gf(\XX,z))=[\xi]^{-1}p_*(\gf(\XX,y))[\xi]$, luego $p_*(\gf(\XX,y))$ y $p_*(\gf(\XX,z))$ son conjugados.
+
+Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conjugación. Sean $\xx \in F_x$ y $p_*[\sigma]\in p_*(\gf(\XX,\xx))$. Dado un lazo $\xi$ en $X$ con punto base $x$, puedo elevarlo a un camino $\tilde{\xi}$ con $\tilde{\xi}(0)=\xx$. Llamando ahora $\xx'=\tilde{\xi}(1)$ resulta que $\tilde{\xi}_{\#}$ es un isomorfismo entre $\gf(\XX,\xx)$ y $\gf(\XX,\xx')$. Tenemos entonces
+\begin{equation*}
+  [\xi]^{-1}(p_*[\sigma])[\xi]=[p\circ \cev{\tilde{\xi}} * p\circ \sigma * p\circ \tilde{\xi}]=p_*[\cev{\tilde{\xi}}*\sigma*\tilde{\xi}]=p_*(\tilde{\xi}_{\#}[\sigma])\in p_*(\gf(\XX,\xx')).
+\end{equation*}
+\end{proof}
+
+\begin{prop}
+  Si $(\XX,p)$ es una cubierta de un espacio topológico $X$ y $x\in X$, entonces el grupo fundamental $\gf(X,x)$ actúa por la derecha sobre $F_x$. A cada lazo $\alpha$ en $X$ con punto base $x$ le asignamos la biyección $\xx.[\alpha]=\tilde{\alpha}_{\xx}(1)$, para $\xx \in F_x$. El estabilizador por esta acción de un punto $\xx\in F_x$ es $p_*(\gf(\XX,\xx))$.
+\end{prop}
+\begin{proof}
+  Para ver que la aplicación $[\alpha]\rightarrow \bullet.[\alpha]$ es una acción, debemos probar que es un homomorfismo de grupos. Es decir, que dado $\xx\in \XX$, $\xx.([\alpha][\beta])=(\xx.[\alpha]).[\beta]$ y que $\xx.[\cc_x]=\xx$. Ahora,
+  \begin{equation*}
+    \xx.([\alpha][\beta])=\xx([\alpha*\beta])=\widetilde{\alpha*\beta}_{\xx}(1)=\tilde{\beta}_{\tilde{\alpha}_{\xx}(1)}(1)=(\xx.[\alpha]).[\beta]
+  \end{equation*}
+  mientras que $\xx.[\cc_x]=\tilde{\cc_x}_{\xx}(1)=\xx$.
+
+  Por otra parte, $\xx.[\alpha]=\xx$ si y sólo si $\tilde{\alpha}_{\xx}(1)=\xx$, es decir, si $\tilde{\alpha}_{\xx}$ es un lazo en $\XX$. Ahora $[\alpha]=[p\circ \tilde{\alpha}_{\xx}]=p_*[\tilde{\alpha}_{\xx}]\in p_*(\gf(\XX,\xx))$, luego el estabilizador de $\xx$ es $p_*(\gf(\XX,\xx))$.
+\end{proof}
 \end{document}
 
 
