@@ -266,13 +266,13 @@ Consideramos también la aplicación
 \begin{proof}
   Tenemos que demostrar las siguientes propiedades:
   \begin{enumerate}[label=(\alph*)]
-    \item\label{biendef} \textbf{Bien definida}: Si $\sigma\sim\sigma'$ y $\tau \sim \tau'$ entonces $\sigma'*\tau'\sim \sigma * \tau$. 
-    \item\label{asoc} \textbf{Asociativa}: Para cualesquiera $[\sigma],[\tau],[\gamma] \in \gf(X,x)$, $([\sigma][\tau])[\gamma]=[\sigma]([\tau][\gamma])$.
-    \item\label{neutro} \textbf{Elemento neutro}: Existe un $e \in \gf(X,x)$ tal que $e[\sigma]=[\sigma]e=[\sigma]$.
-    \item\label{inverso} \textbf{Elemento inverso}: Para todo $[\sigma]\in \gf(X,x)$ existe un $[\sigma]^{-1} \in \gf(X,x)$ tal que $[\sigma]^{-1}[\sigma]=[\sigma][\sigma]^{-1}=e$.
+    \item\label{biendef} \textit{Bien definida}: Si $\sigma\sim\sigma'$ y $\tau \sim \tau'$ entonces $\sigma'*\tau'\sim \sigma * \tau$. 
+    \item\label{asoc} \textit{Asociativa}: Para cualesquiera $[\sigma],[\tau],[\gamma] \in \gf(X,x)$, $([\sigma][\tau])[\gamma]=[\sigma]([\tau][\gamma])$.
+    \item\label{neutro} \textit{Elemento neutro}: Existe un $e \in \gf(X,x)$ tal que $e[\sigma]=[\sigma]e=[\sigma]$.
+    \item\label{inverso} \textit{Elemento inverso}: Para todo $[\sigma]\in \gf(X,x)$ existe un $[\sigma]^{-1} \in \gf(X,x)$ tal que $[\sigma]^{-1}[\sigma]=[\sigma][\sigma]^{-1}=e$.
   \end{enumerate}
 
-  \ref{biendef} \textbf{Bien definida}. Sea $F$ una homotopía entre $\sigma$ y $\sigma'$ y sea $G$ una homotopía entre $\tau$ y $\tau'$. Para $t \in I$ definimos
+  \ref{biendef} \textit{Bien definida}. Sea $F$ una homotopía entre $\sigma$ y $\sigma'$ y sea $G$ una homotopía entre $\tau$ y $\tau'$. Para $t \in I$ definimos
   \begin{equation*}
     H_t(s)=
     \begin{cases}
@@ -302,11 +302,11 @@ Consideramos también la aplicación
   \end{equation*}
   luego $H_1=\sigma'*\tau'$. Por tanto, $\sigma'*\tau' \sim_H \sigma*\tau$.
 
-  \ref{asoc} \textbf{Asociativa}.
+  \ref{asoc} \textit{Asociativa}.
   
-  \ref{neutro} \textbf{Elemento neutro}. Vamos a comprobar que el elemento neutro es $e=[\cc_x]$.
+  \ref{neutro} \textit{Elemento neutro}. Vamos a comprobar que el elemento neutro es $e=[\cc_x]$.
 
-  \ref{inverso} \textbf{Elemento inverso}. Vamos a comprobar que, dado $[\sigma]\in \gf(X,x)$, el elemento inverso de $[\sigma]$ es $[\sigma]^{-1}=[\cev{\sigma}]$, con $\cev{\sigma}$ definido\footnote{ Claramente, esta definición de $\cev{\gamma}$ como el camino $\gamma$ «recorrido en sentido contrario» es válida para cualquier camino $\gamma$, no solo para lazos.} como
+  \ref{inverso} \textit{Elemento inverso}. Vamos a comprobar que, dado $[\sigma]\in \gf(X,x)$, el elemento inverso de $[\sigma]$ es $[\sigma]^{-1}=[\cev{\sigma}]$, con $\cev{\sigma}$ definido\footnote{ Claramente, esta definición de $\cev{\gamma}$ como el camino $\gamma$ «recorrido en sentido contrario» es válida para cualquier camino $\gamma$, no solo para lazos.} como
   \begin{equation*}
     \cev{\sigma}(s)=\sigma(1-s),
   \end{equation*}
@@ -323,9 +323,9 @@ Consideramos también la aplicación
     \end{align*}
     basta ver que $f_*$ está bien definida y es un homomorfismo de grupos.
 
-    \textbf{Bien definida}. Sean dos lazos $\sigma$ y $\sigma'$ homotópicos por una función $F$. Consideramos la función $H=f\circ F$, $H_0=f\circ \sigma$, $H_1=f \circ \sigma'$ y $H_t(0)=f\circ\sigma(0)=f\circ\sigma'(0)$. Luego $f\circ \sigma \sim f \circ \sigma'$.
+    \textit{Bien definida}. Sean dos lazos $\sigma$ y $\sigma'$ homotópicos por una función $F$. Consideramos la función $H=f\circ F$, $H_0=f\circ \sigma$, $H_1=f \circ \sigma'$ y $H_t(0)=f\circ\sigma(0)=f\circ\sigma'(0)$. Luego $f\circ \sigma \sim f \circ \sigma'$.
 
-    \textbf{Homomorfismo}. Basta ver que 
+    \textit{Homomorfismo}. Basta ver que 
     \begin{equation*}
       f\circ(\sigma*\tau (s))=
       \begin{cases}
@@ -380,7 +380,7 @@ Consideramos también la aplicación
     \end{align*}
     Tenemos que ver que $\gamma_{\#}$ está bien definida, es homomorfismo y es isomorfismo.
 
-    \textbf{Bien definida}. Supongamos que $\sigma$ y $\sigma'$ son dos caminos homotópicos $\sigma \sim_F \sigma'$. Construimos la homotopía
+    \textit{Bien definida}. Supongamos que $\sigma$ y $\sigma'$ son dos caminos homotópicos $\sigma \sim_F \sigma'$. Construimos la homotopía
     \begin{equation*}
       G_t(s)=
       \begin{cases}
@@ -392,12 +392,12 @@ Consideramos también la aplicación
 
 Claramente $G_t$ «pega bien» ya que $F_t(0)=x_0=\gamma(0)=\cev{\gamma}(1)$ y $F_t(1)=x_1=\gamma(1)$. Además, $G_0=\cev{\gamma}*\sigma*\gamma$, $G_1=\cev{\gamma}*\sigma'*\gamma$ y $G_t(0)=G_t(1)=x_1$. Por tanto, $\cev{\gamma}*\sigma*\gamma \sim_G \cev{\gamma}*\sigma'*\gamma$.
 
-\textbf{Homomorfismo}. 
+\textit{Homomorfismo}. 
 \begin{equation*}
   \gamma_{\#}([\sigma][\tau])= \gamma_{\#}[\sigma*\tau]=[\cev{\gamma}*(\sigma*\tau)*\gamma]=[(\cev{\gamma}*\sigma*\gamma)*(\cev{\gamma}*\tau*\gamma)]=\gamma_{\#}[\sigma]\gamma_{\#}[\tau].
 \end{equation*}
 
-\textbf{Isomorfismo}. Para ver que $\gamma_{\#}$ es de hecho un isomorfismo, basta hallar su inversa, que afirmamos que es $\cev{\gamma}_{\#}$.
+\textit{Isomorfismo}. Para ver que $\gamma_{\#}$ es de hecho un isomorfismo, basta hallar su inversa, que afirmamos que es $\cev{\gamma}_{\#}$.
 \end{proof}
 
 \begin{corol}
@@ -429,11 +429,11 @@ X    \arrow{rr}{f}\arrow{rrdd}[anchor=north,rotate=-30]{g\circ f} && Y\arrow{dd}
  \end{center}
  tal que cumple:
  \begin{enumerate}
-   \item \textbf{Propiedad asociativa}: Dados morfismos $f:X\rightarrow Y$, $g:Y\rightarrow Z$ y $h:Z\rightarrow W$,
+   \item \textit{Propiedad asociativa}: Dados morfismos $f:X\rightarrow Y$, $g:Y\rightarrow Z$ y $h:Z\rightarrow W$,
      \begin{equation*}
        (h\circ g)\circ f = h\circ(g\circ f).
      \end{equation*}
-   \item \textbf{Elemento identidad}: Para todo objeto $X$ existe un morfismo $\id_X:X\rightarrow X$ tal que, si $Y$ es otro objeto, $f:X\rightarrow Y$, $g:Y\rightarrow X$, entonces
+   \item \textit{Elemento identidad}: Para todo objeto $X$ existe un morfismo $\id_X:X\rightarrow X$ tal que, si $Y$ es otro objeto, $f:X\rightarrow Y$, $g:Y\rightarrow X$, entonces
      \begin{equation*}
        \begin{cases}
 	 f\circ \id_X=f, \text{ y} \\
@@ -809,11 +809,11 @@ Antes de dar la demostración necesitamos probar un lema previo.
   Sea $(K,d)$ un espacio métrico compacto, y $F:K\rightarrow X$ una aplicación continua. Sea $X=\bigcup_{\alpha}U_{\alpha}$ un recubrimiento por abiertos. Entonces existe un $\mu >0$ tal que para todo $A\subset K$ con $\mathrm{diam}(A)=\sup\left\{ d(x,y)|x,y \in A \right\}<\mu$, se tiene que existe $\alpha$ tal que $A\subset F^{-1}(U_{\alpha})$. A cualquiera de estos $\mu$ se le llama \emph{número de Lebesgue del recubrimiento $\{U_\alpha\}$ para la función $F$}.
 \end{lema}
 
-\textbf{Demostración del lema}. Supongamos que no. Entonces para cada $n\in \mathbb{N}$ existe $A_n=B(x_n,\tfrac{1}{n})\subset K$ tal que $F(A_n)$ no está contenido en ningún abierto del recubrimiento. Por la compacidad de $K$, existe una subsucesión convergente $x_{n_k}\rightarrow x_0 \in K$. Ahora, sea $\alpha_0$ tal que $F(x_0)\in U_{\alpha_0}$ y sea $\epsilon>0$ tal que $F(B(x_0,\epsilon))\subset U_{\alpha_0}$, que existe por ser $F$ continua. Para $n$ suficientemente grande, $d(x_n,x_0)<\epsilon/2$ y $1/n<\epsilon/2$. Por tanto $A_n\subset B(x_0,\epsilon)$ y $F(A_n) \subset U_{\alpha_0}$ y llegaríamos a una contradicción.
+\textit{Demostración del lema}. Supongamos que no. Entonces para cada $n\in \mathbb{N}$ existe $A_n=B(x_n,\tfrac{1}{n})\subset K$ tal que $F(A_n)$ no está contenido en ningún abierto del recubrimiento. Por la compacidad de $K$, existe una subsucesión convergente $x_{n_k}\rightarrow x_0 \in K$. Ahora, sea $\alpha_0$ tal que $F(x_0)\in U_{\alpha_0}$ y sea $\epsilon>0$ tal que $F(B(x_0,\epsilon))\subset U_{\alpha_0}$, que existe por ser $F$ continua. Para $n$ suficientemente grande, $d(x_n,x_0)<\epsilon/2$ y $1/n<\epsilon/2$. Por tanto $A_n\subset B(x_0,\epsilon)$ y $F(A_n) \subset U_{\alpha_0}$ y llegaríamos a una contradicción.
 
-  \textbf{Existencia}. Tomamos el conjunto de abiertos elementales $\mathcal{U}=\left\{ U_{\alpha} \right\}$ y consideramos la familia $\left\{ \gamma^{-1}(U_{\alpha}) \right\}$, que es un recubrimiento por abiertos de $I$. Si tomamos $\mu$ el número de Lebesgue del recubrimiento, entonces, dados $t,s \in I$ tales que $|t-s|<\mu$, $[s,t]\subset \gamma^{-1}(U_{\beta})$ para algún $\beta$. Sea ahora una partición de $I$, $0=t_0<t_1<\cdots<t_n=1$ tal que $|t_i-t_{i+1}|<\mu$. Entonces existe un $\beta$ tal que $\gamma([0,t_1])\subset U_{\beta}$. Fijado ahora un punto $y\in F_{x}$, tomamos $\tilde{U}_{\beta}^{\alpha}$ la hoja de $U_{\beta}$ que contiene a $y$. Como $p|_{\tilde{U}_{\beta}^{\alpha}}:\tilde{U}_{\beta}^{\alpha}\rightarrow U_{\beta}$ es homeomorfismo, construyo $\tilde{\gamma}_{y}^1(t)=p|_{\tilde{U}_{\beta}^{\alpha}}^{-1}(\gamma(t))$ para $t\in[0,t_1]$. Análogamente construyo $\tilde{\gamma}_{y}^k(t)$ para $t\in[t_{k-1},t_k]$ y, finalmente $\tilde{\gamma}_{y}=\tilde{\gamma}_{y}^1*\cdots*\tilde{\gamma}_{y}^n$.
+  \textit{Existencia}. Tomamos el conjunto de abiertos elementales $\mathcal{U}=\left\{ U_{\alpha} \right\}$ y consideramos la familia $\left\{ \gamma^{-1}(U_{\alpha}) \right\}$, que es un recubrimiento por abiertos de $I$. Si tomamos $\mu$ el número de Lebesgue del recubrimiento, entonces, dados $t,s \in I$ tales que $|t-s|<\mu$, $[s,t]\subset \gamma^{-1}(U_{\beta})$ para algún $\beta$. Sea ahora una partición de $I$, $0=t_0<t_1<\cdots<t_n=1$ tal que $|t_i-t_{i+1}|<\mu$. Entonces existe un $\beta$ tal que $\gamma([0,t_1])\subset U_{\beta}$. Fijado ahora un punto $y\in F_{x}$, tomamos $\tilde{U}_{\beta}^{\alpha}$ la hoja de $U_{\beta}$ que contiene a $y$. Como $p|_{\tilde{U}_{\beta}^{\alpha}}:\tilde{U}_{\beta}^{\alpha}\rightarrow U_{\beta}$ es homeomorfismo, construyo $\tilde{\gamma}_{y}^1(t)=p|_{\tilde{U}_{\beta}^{\alpha}}^{-1}(\gamma(t))$ para $t\in[0,t_1]$. Análogamente construyo $\tilde{\gamma}_{y}^k(t)$ para $t\in[t_{k-1},t_k]$ y, finalmente $\tilde{\gamma}_{y}=\tilde{\gamma}_{y}^1*\cdots*\tilde{\gamma}_{y}^n$.
 
-  \textbf{Unicidad}. Sea otra elevación $\bar{\gamma}_y$ de $\gamma$ con $\bar{\gamma}_y(0)=y$. Por la proposición \ref{coinciden}, como $I$ es conexo y Hausdorff y $\bar{\gamma}_y$ y $\tilde{\gamma}_y$ coinciden en un punto, tienen que ser iguales.
+  \textit{Unicidad}. Sea otra elevación $\bar{\gamma}_y$ de $\gamma$ con $\bar{\gamma}_y(0)=y$. Por la proposición \ref{coinciden}, como $I$ es conexo y Hausdorff y $\bar{\gamma}_y$ y $\tilde{\gamma}_y$ coinciden en un punto, tienen que ser iguales.
 \end{proof}
 
 \begin{corol}
@@ -861,9 +861,9 @@ Antes de dar la demostración necesitamos probar un lema previo.
 
   Veamos que también es condición suficiente. Sea $y\in Y$. Se trata de definir $\tilde{f}(y)$. Como en particular $Y$ es conexo por caminos, elegimos un camino $\sigma$ en $Y$ que une $y_0$ con $y$. Entonces, $f\circ \sigma$ es un camino en $X$ de origen $x$ y extremo $f\circ \sigma (1)=f(y)$. Elevamos $f\circ \sigma$ a un camino $\widetilde{f\circ\sigma}_{\xx}$ en $\XX$ con origen $\xx$ y definimos $\tilde{f}(y)=\widetilde{f\circ\sigma}_{\xx}(1)$. Tenemos que ver que esta $\tilde{f}$ está bien definida y es continua.
 
-  \textbf{Bien definida}. Sea otro camino $\tau$ entre $y_0$ e $y$. Si $\tau$ es homótopo a $\sigma$ entonces $f\circ \sigma\sim f\circ \tau$, luego $\widetilde{f\circ\sigma}_{\xx}\sim\widetilde{f\circ\tau}_{\xx}$. Por tanto $\widetilde{f\circ\sigma}_{\xx}(1)=\widetilde{f\circ\tau}_{\xx}(1)$ y la $\tilde{f}(y)$ obtenida es la misma. Si $\tau$ no es homótopo a $\sigma$, consideramos $\sigma*\cev{\tau}$ lazo con punto base $y_0$. Ahora, por la hipótesis $f\circ(\sigma*\cev{\tau})=f\circ\sigma * f\circ \cev{\tau}$ es un lazo en $X$ con punto base $x=f(y_0)$. Por tanto, $\widetilde{f\circ\tau}_{\xx}(1)=\widetilde{f\circ\cev{\tau}}_{\xx}(0)=\widetilde{f\circ\sigma}_{\xx}(1)=\tilde{f}(y)$.
+  \textit{Bien definida}. Sea otro camino $\tau$ entre $y_0$ e $y$. Si $\tau$ es homótopo a $\sigma$ entonces $f\circ \sigma\sim f\circ \tau$, luego $\widetilde{f\circ\sigma}_{\xx}\sim\widetilde{f\circ\tau}_{\xx}$. Por tanto $\widetilde{f\circ\sigma}_{\xx}(1)=\widetilde{f\circ\tau}_{\xx}(1)$ y la $\tilde{f}(y)$ obtenida es la misma. Si $\tau$ no es homótopo a $\sigma$, consideramos $\sigma*\cev{\tau}$ lazo con punto base $y_0$. Ahora, por la hipótesis $f\circ(\sigma*\cev{\tau})=f\circ\sigma * f\circ \cev{\tau}$ es un lazo en $X$ con punto base $x=f(y_0)$. Por tanto, $\widetilde{f\circ\tau}_{\xx}(1)=\widetilde{f\circ\cev{\tau}}_{\xx}(0)=\widetilde{f\circ\sigma}_{\xx}(1)=\tilde{f}(y)$.
 
-  \textbf{Continua}. Sean $U$ un abierto elemental que contenga a $f(y)$ y $\tilde{U}$ la hoja de $U$ que contiene a $\tilde{f}(y)$. Como $Y$ es localmente conexo por caminos y $f$ es continua, podemos tomar un entorno $V\subset Y$ de $y$ conexo por caminos tal que $f(V)\subset U$. Basta ver ahora que $\tilde{f}(V)\subset \tilde{U}$. Sea entonces un punto $y'\in V$. Tomamos un camino $\alpha$ en $V$ que une $y$ e $y'$. Entonces $\sigma * \alpha$ une $y_0$ e $y'$. Ahora, $$\tilde{f}(y')=\widetilde{f\circ(\sigma*\alpha)}_{\xx}(1)=\widetilde{f\circ\sigma}_{\xx}*\widetilde{f\circ\alpha}_{\tilde{\sigma}(x)}(1)\in \tilde{U}.$$ Ya que las elevaciones de los caminos $f\circ \sigma$ y $f\circ \alpha$ están totalmente contenidas en la hoja $\tilde{U}$ de $f(y)$.
+  \textit{Continua}. Sean $U$ un abierto elemental que contenga a $f(y)$ y $\tilde{U}$ la hoja de $U$ que contiene a $\tilde{f}(y)$. Como $Y$ es localmente conexo por caminos y $f$ es continua, podemos tomar un entorno $V\subset Y$ de $y$ conexo por caminos tal que $f(V)\subset U$. Basta ver ahora que $\tilde{f}(V)\subset \tilde{U}$. Sea entonces un punto $y'\in V$. Tomamos un camino $\alpha$ en $V$ que une $y$ e $y'$. Entonces $\sigma * \alpha$ une $y_0$ e $y'$. Ahora, $$\tilde{f}(y')=\widetilde{f\circ(\sigma*\alpha)}_{\xx}(1)=\widetilde{f\circ\sigma}_{\xx}*\widetilde{f\circ\alpha}_{\tilde{\sigma}(x)}(1)\in \tilde{U}.$$ Ya que las elevaciones de los caminos $f\circ \sigma$ y $f\circ \alpha$ están totalmente contenidas en la hoja $\tilde{U}$ de $f(y)$.
 \end{proof}
 
 Cabría preguntarse ahora cómo se relacionan las imágenes por $p_*$ de los grupos fundamentales $\gf(\xx,\XX)$ para distintos puntos de la fibra, $\xx\in F_x$.
@@ -884,11 +884,11 @@ Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conju
 \end{equation*}
 \end{proof}
 
-\begin{prop}
-  Si $(\XX,p)$ es una cubierta de un espacio topológico $X$ y $x\in X$, entonces el grupo fundamental $\gf(X,x)$ actúa por la derecha sobre $F_x$. A cada lazo $\alpha$ en $X$ con punto base $x$ le asignamos la biyección $\xx.[\alpha]=\tilde{\alpha}_{\xx}(1)$, para $\xx \in F_x$. El estabilizador por esta acción de un punto $\xx\in F_x$ es $p_*(\gf(\XX,\xx))$.
+\begin{prop}\label{actuafibra}
+  Si $(\XX,p)$ es una cubierta de un espacio topológico $X$ y $x\in X$, entonces el grupo fundamental $\gf(X,x)$ actúa por la derecha sobre $F_x$. A cada lazo $\alpha$ en $X$ con punto base $x$ le asignamos la biyección $\xx.[\alpha]=\tilde{\alpha}_{\xx}(1)$, para $\xx \in F_x$. El estabilizador de un punto $\xx\in F_x$ por esta acción es $p_*(\gf(\XX,\xx))$.
 \end{prop}
 \begin{proof}
-  Para ver que la aplicación $[\alpha]\rightarrow \bullet.[\alpha]$ es una acción, debemos probar que es un homomorfismo de grupos. Es decir, que dado $\xx\in \XX$, $\xx.([\alpha][\beta])=(\xx.[\alpha]).[\beta]$ y que $\xx.[\cc_x]=\xx$. Ahora,
+  Para ver que la aplicación $[\alpha]\rightarrow \bullet.[\alpha]$ es una acción, debemos probar que es un homomorfismo de grupos. Es decir, que dado $\xx\in F_x$, $\xx.([\alpha][\beta])=(\xx.[\alpha]).[\beta]$ y que $\xx.[\cc_x]=\xx$. Ahora,
   \begin{equation*}
     \xx.([\alpha][\beta])=\xx([\alpha*\beta])=\widetilde{\alpha*\beta}_{\xx}(1)=\tilde{\beta}_{\tilde{\alpha}_{\xx}(1)}(1)=(\xx.[\alpha]).[\beta]
   \end{equation*}
@@ -896,6 +896,98 @@ Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conju
 
   Por otra parte, $\xx.[\alpha]=\xx$ si y sólo si $\tilde{\alpha}_{\xx}(1)=\xx$, es decir, si $\tilde{\alpha}_{\xx}$ es un lazo en $\XX$. Ahora $[\alpha]=[p\circ \tilde{\alpha}_{\xx}]=p_*[\tilde{\alpha}_{\xx}]\in p_*(\gf(\XX,\xx))$, luego el estabilizador de $\xx$ es $p_*(\gf(\XX,\xx))$.
 \end{proof}
+
+\section{G-espacios}
+\begin{defn}
+  Sea $X$ un espacio topológico y $G$ un grupo que actúa sobre $X$.
+  \begin{enumerate}
+    \item Si la acción 
+      \begin{align*}
+	\theta :G&\longrightarrow \mathrm{Biy}(X)\\ 
+	  g &\longmapsto \theta_g=g.\bullet 
+	\end{align*}
+  es tal que, para cada $g\in G$, la biyección $\theta_g$ es continua, diremos que $X$ es un \emph{$G$-espacio}.
+\item Si $X$ es un $G$-espacio, obtenemos de forma natural un \emph{espacio cociente por la acción de $G$}, $X/G$ formado por las órbitas $G.x=\left\{ g.x|g\in G \right\}$ y dotado de la topología imagen directa de la proyección canónica $\pi:X\rightarrow X/G$. Es decir, $U\subset X/G$ es abierto si $q^{-1}(U)$ es abierto de $X$.
+  \end{enumerate}
+\end{defn}
+\begin{obs}
+  Sea $g\in G$. Si consideramos el elemento inverso $g^{-1}\in G$, entonces la biyección continua asociada $\theta_{g^{-1}}$ cumple que $\theta_{g^{-1}}\circ\theta_{g}(x)=(g^{-1}g).x=x$, luego $\theta_{g^{-1}}=\theta_g^{-1}$ y $\theta_g$ es un homeomorfismo. Además, si $U\subset X$ abierto, tenemos que $q^{-1}(q(U))=\bigcup_{g\in G}g.U$. Por tanto, como $g.U=\theta_g(U)$ y $\theta_g$ es un homeomorfismo entonces $g.U$ es abierto y $q^{-1}(q(U))$ es abierto. Por definición del cociente, $q(U)$ es abierto, luego $q$ es una aplicación abierta.
+\end{obs}
+\begin{ejemplo}\leavevmode\label{circulo}
+  \begin{enumerate}
+\item Podemos considerar $X=\RR$, $G=(\ZZ,+)$ y la acción 
+  \begin{align*}
+     \ZZ\times \RR &\longrightarrow \RR\\ 
+      (n,x) &\longmapsto n.x=x+n. 
+    \end{align*}
+    Claramente es continua, luego $X$ es un $G$-espacio. Ahora, como representantes de las órbitas puedo tomar los puntos del intervalo $[0,1]$, teniendo en cuenta que $0$ y $1$ pertenecen a la misma clase, de modo que $\RR/\ZZ\cong S^1$. 
+
+  \item Tomemos ahora $X=S^2$, $G=\ZZ_2=\{-1,1\}$ y la acción
+    \begin{align*}
+       \ZZ_2\times S^2&\longrightarrow S^2\\ 
+        (1,x) &\longmapsto x \\
+        (-1,x) &\longmapsto -x.
+      \end{align*}
+      De nuevo la acción es claramente continua, luego $X$ es un $G$-espacio. Ahora el espacio de las órbitas consiste simplemente en identificar los puntos antipodales en la esfera $S^2$, de modo que $S^2/\ZZ_2\cong \RR P^2$.
+  \end{enumerate} 
+\end{ejemplo}
+\begin{defn}
+  Una acción de un grupo $G$ sobre un espacio topológico $X$ se dice 
+  \begin{enumerate}
+    \item \emph{propiamente discontinua} si para cada $x\in X$ existe un entorno $U\subset X$ de $x$ tal que $g.U\cap g'.U=\varnothing$ siempre que $g\neq g'$, y
+    \item \emph{libre} si para cada $x \in X$, dados $g,g'\in G$, $g\neq g'$, entonces $g.x\neq g'.x$.
+  \end{enumerate}
+\end{defn}
+
+\begin{obs}
+  Inmediatamente, toda acción propiamente discontinua es libre. Por otra parte, es fácil ver que si $G$ es un grupo finito y $X$ es Hausdorff entonces toda acción libre de $G$ sobre $X$ es propiamente discontinua.
+\end{obs}
+\begin{prop}
+  Si un grupo $G$ actúa de forma propiamente discontinua sobre un espacio topológico $X$, entonces la proyección canónica $q:X\rightarrow X/G$ es una proyección recubridora. Es decir, $(X,q)$ es una cubierta del espacio topológico $X/G$. 
+\end{prop}
+\begin{proof}
+  Como la acción es propiamente discontinua, para cada $x\in X$ existe un entorno $U^x\subset X$ de $x$ tal que si $g\neq g'$, entonces $g.U^x\cap g'.U^x =\varnothing$. Tomamos entonces el conjunto $\mathcal{U}=\left\{q(U^x)|x\in X \right\}$ como familia de abiertos elementales de $X/G$. Claramente $\mathcal{U}$ es un recubrimiento por abiertos de $X/G$ y, dado $x\in X$, $q^{-1}(q(U^x))=\bigsqcup_{g\in G}g.U$. Falta ver que $q|_{g.U^x}:g.U^x\rightarrow q(U^x)$ es homeomorfismo. Como $q|_{g.U^x}$ es sobreyectiva y abierta, basta probar que es inyectiva. Ahora, supongamos que existen $t,s\in g.U^x$ tales que $q(t)=q(s)$. Entonces existe $g'\in G$ tal que $t= g'.s$ y, como $t,s\in g.U^x$, existen $u,v\in U^x$ tales que $t=g.u$ y $s=g.v$. Ahora,
+  \begin{equation*}
+    g.u=t=g'.s=g'g.v\in g'g.U.
+  \end{equation*}
+  Por tanto, $g'g.U\cap g.U\neq \varnothing$, luego $g'g=g$, $g'=e$ y $t=s$, como queríamos probar.
+\end{proof}
+
+\begin{prop}
+  Sean $G$ un grupo que actúa de forma propiamente discontinua sobre un espacio topológico $X$ conexo por caminos y $x\in X$. La aplicación 
+  \begin{align*}
+    \psi :\gf(X/G,q(x))&\longrightarrow G\\ 
+    [\sigma] &\longmapsto \psi[\sigma], 
+    \end{align*}
+    con $\psi[\sigma].x=\tilde{\sigma}_x(1)$, es un homomorfismo de grupos, entendiendo $\tilde{\sigma}_x$ como la elevación del lazo $\sigma$ a la cubierta $(X,q)$ con $\tilde{\sigma}_x(0)=x$.
+\end{prop}
+\begin{proof}
+  Que $\psi[\sigma]$ está unívocamente determinado se deduce inmediatamente de que la acción es libre. Para ver que es homomorfismo de grupos podemos dar la misma prueba que para la proposición \ref{actuafibra}.
+\end{proof}
+\begin{corol}
+  En las condiciones de la proposición anterior, se tiene además que
+  \begin{enumerate}
+    \item $q_*(\gf(X,x))\lhd\gf(X/G,q(x))$,
+    \item $G\cong \frac{\gf(X/G,q(x))}{q_*(\gf(X,x))}$ y,
+    \item si $X$ es simplemente conexo, entonces $G\cong \gf(X/G,q(x))$.
+  \end{enumerate}
+\end{corol}
+\begin{proof}
+  Sea $\sigma$ un lazo en $X/G$ con punto base $q(x)$. Entonces, $\tilde{\sigma}_{x}(1)=e.x=x$ si y sólo si $\tilde{\sigma}_{x}$ es un lazo en $X$, luego $[\sigma]=[q\circ\tilde\sigma_x]=q_*[\tilde{\sigma}_x]\in q_*(\gf(X,x))$. Por tanto, $q_*(\gf(X,x))=\ker \psi$. Una vez visto esto, inmediatamente tenemos el primer resultado y también el segundo, a partir del primer teorema de isomorfía. El tercer resultado es consecuencia inmediata del segundo.
+\end{proof}
+\begin{ejemplo}
+  Volviendo al caso 1 del ejemplo \ref{circulo}. La acción 
+  \begin{align*}
+     \ZZ \times \RR &\longrightarrow \RR\\ 
+      (n,x) &\longmapsto n.x=x+n 
+    \end{align*}
+    es propiamente discontinua ya que, si $U^x=(x-\tfrac{1}{2},x+\tfrac{1}{2})$, entonces $(U^x+n)\cap (U^x+m)=\varnothing$ si $n\neq m$. Por tanto, como $\RR$ es simplemente conexo y $\RR/\ZZ\cong S^1$, $\gf(S^1,y)\cong \ZZ$ para cualquier $y\in S^1$. Como generador de $\gf(S^1,y)$ podemos tomar $[\sigma]$, con $\sigma(t)=ye^{2\pi it}$, para $t\in I$. Tenemos entonces la correspondencia 
+    \begin{align*}
+       \ZZ &\longrightarrow \gf(S^1,y)\\ 
+       n &\longmapsto [\sigma]^n= [\sigma*\overset{(n)}{\cdots}*\sigma]
+      \end{align*}
+ con $\sigma*\overset{(n)}{\cdots}*\sigma(t)=ye^{2\pi in t}$, para $t\in I$.
+\end{ejemplo}
 \end{document}
 
 
