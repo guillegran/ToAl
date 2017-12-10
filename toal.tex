@@ -54,6 +54,8 @@
   \def\xx{\tilde{x}}
   \def\im{\mathrm{Im}}
   \def\aut{\mathrm{Aut}}
+  \def\DD{\mathrm{Deck}}
+  \def\NN{\mathrm{N}}
 
 \newcommand\cev[1]{\overset{\leftarrow}{#1}}
 
@@ -228,7 +230,7 @@ Es un ejercicio sencillo comprobar que la homotopía relativa induce también un
   Equivalentemente, un lazo es una aplicación $\tilde\sigma:S^1\rightarrow X$ con $\tilde\sigma(1)=x$. Podemos pasar fácilmente de una definición a otra por el diagrama
       \begin{center}
 	\begin{tikzcd}
-	  I \arrow{r}{\exp} \arrow[bend left]{rr}{\sigma} & S^1 \arrow{r}{\tilde\sigma} & X,	  
+	  I \arrow{r}[anchor=north]{\exp} \arrow[bend left]{rr}{\sigma} & S^1 \arrow{r}[anchor=north]{\tilde\sigma} & X,	  
 	\end{tikzcd}
 	con $\exp(t)=e^{i2\pi t}$.
       \end{center}
@@ -782,7 +784,7 @@ Sea $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $Y$ un espacio to
 \end{defn}
 
 \begin{prop}\label{coinciden}
-  En la definición anterior, si $Y$ es conexo y Hausdorff y $\tilde{f}_1,\tilde{f}_2$ son dos elevaciones que coinciden en un punto, entonces son la misma.
+  En la definición anterior, si $Y$ es conexo y $\tilde{f}_1,\tilde{f}_2$ son dos elevaciones que coinciden en un punto, entonces son la misma.
 \end{prop}
 \begin{proof}
   Consideremos el conjunto donde ambas elevaciones coinciden
@@ -792,7 +794,7 @@ Sea $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $Y$ un espacio to
   que por hipótesis es no vacío. Veamos que $H$ es abierto y cerrado en $Y$, de forma que $H=Y$ por ser $Y$ conexo.
 
   En efecto, tomamos $y\in H$ y llamamos $z=\tilde{f}_1(y)=\tilde{f}_2(y)$ y $x=p(z)=f(y)$. Sea $U$ un abierto elemental que contiene a $x$ y $\tilde{U}^{\alpha}$ la hoja de $U$ que contiene a $z$. Sea $W=\tilde{f}_1^{-1}(\tilde{U}^{\alpha}) \cap \tilde{f}_2^{-1}(\tilde{U}^{\alpha})\subset H$. Entonces $W$ es entorno de $y$. Si tomamos ahora otro $y'\in W$, $\tilde{f}_1(y'),\tilde{f}_2(y') \in \tilde{U}^{\alpha}$. Como $p|_{\tilde{U}^{\alpha}}$ es homeomorfismo, $\tilde{f}_1(y')=\tilde{f}_2(y')$. Por tanto, $W\subset H$, luego $H$ es abierto.
-  Por otra parte, $H$ es cerrado por ser el conjunto donde coinciden dos aplicaciones continuas y ser $Y$ Hausdorff.
+  Por otra parte, podemos probar que $H$ es cerrado aplicando el mismo procedimiento a $X-H$.
 \end{proof}
 
 \begin{prop}
@@ -844,7 +846,7 @@ Antes de dar la demostración necesitamos probar un lema previo.
 \begin{proof}
   Sean dos lazos $\alpha, \beta$ en $\XX$ con punto base $\xx$. Tenemos que probar que si $p\circ \alpha \sim p\circ \beta$ entonces $\alpha \sim \beta$. En efecto, si $F$ es una homotopía entre $p\circ \alpha$ y $p\circ \beta$, podemos considerar su elevación $\tilde{F}$, única si imponemos $\tilde{F}_0=\alpha$, dada por el corolario \ref{elevhomot}, que claramente cumple $\tilde{F}_1=\beta$.
 \end{proof}
-\begin{prop}
+\begin{prop}\label{festrella}
   Sea $Y$ un espacio topológico conexo y localmente conexo por caminos. Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $f:Y\rightarrow X$ una función continua. Fijamos $y_0\in Y$, $x=f(y_0)$ y $\xx \in F_x$. Entonces $f$ admite una elevación si y sólo si
  $\im (f_*) < \im (p_*)$.   
 \end{prop}
@@ -988,6 +990,82 @@ Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conju
       \end{align*}
  con $\sigma*\overset{(n)}{\cdots}*\sigma(t)=ye^{2\pi in t}$, para $t\in I$.
 \end{ejemplo}
+
+\section{Morfismos de cubiertas}
+\begin{defn}
+  Sean $(\XX_1,p_1)$, $(\XX_2,p_2)$ cubiertas de un espacio topológico $X$ y $f:\XX_1\rightarrow \XX_2$ una aplicación continua. Decimos que $f$ es un \emph{morfismo de cubiertas} si el siguiente diagrama conmuta
+  \begin{center}
+    \begin{tikzcd}
+      \XX_1 \arrow{rr}{f} \arrow{rd}[anchor=east]{p_1} && \XX_2\arrow{ld}[anchor=west]{p_2}      \\ 
+      & X. &
+    \end{tikzcd}
+  \end{center}
+  Si $f$ es un homeomorfismo, entonces $f^{-1}$ es también un morfismo de cubiertas y entonces decimos que $f$ es un \emph{isomorfismo de cubiertas}. En consecuencia, decimos que las dos cubiertas $(\XX_1,p_1)$, $(\XX_2,p_2)$ son \emph{isomorfas} o \emph{equivalentes} si existe una aplicación continua $f:\XX_1\rightarrow \XX_2$ homeomorfismo y morfismo de cubiertas. 
+\end{defn}
+\begin{obs}
+  Nótese que $f$ es una elevación de $p_1$ a la cubierta $(\XX_2,p_2)$.
+\end{obs}
+De esta observación y de la proposición \ref{festrella} deducimos lo siguiente:
+\begin{prop}\label{morfcub}
+ Sean $(\XX_1,p_1)$, $(\XX_2,p_2)$ cubiertas de un espacio topológico $X$ conexas y localmente conexas por caminos y sean $x_1\in \XX_1$ y $x_2\in \XX_2$. Entonces
+ \begin{enumerate}
+   \item la condición necesaria y suficiente para que exista $f:\XX_1\rightarrow \XX_2$ morfismo de cubiertas con $f(x_1)=x_2$ es que
+     $  p_{1,*}(\gf(\XX_1,x_1))<p_{2,*}(\gf(\XX_2,x_2))$
+     y
+   \item la condición necesaria y suficiente para que exista $f:\XX_1\rightarrow \XX_2$ equivalencia de cubiertas con $f(x_1)=x_2$ es que
+       $p_{1,*}(\gf(\XX_1,x_1))=p_{2,*}(\gf(\XX_2,x_2))$.
+ \end{enumerate}
+\end{prop}
+\begin{defn}
+  Sea $(\XX,p)$ cubierta de un espacio topológico $X$. Las equivalencias de cubiertas $\XX\rightarrow \XX$ se llaman \emph{automorfismos} o \emph{transformaciones deck}\footnote{Del alemán \textit{deckbewegungen}.} de la cubierta $(\XX,p)$. El conjunto de los automorfismos de una cubierta $(\XX,p)$ se denota por $\DD(p)$.
+\end{defn}
+\begin{obs}\leavevmode
+  \begin{enumerate}
+    \item Inmediatamente, de la proposición \ref{morfcub} tenemos que, si $\XX$ es conexo y localmente conexo por caminos, dados dos puntos $x,y\in \XX$, existe $f\in \DD(p)$ tal que $f(x)=y$ si y sólo si $p_{*}(\gf(\XX,x))=p_{*}(\gf(\XX,y))$.
+   \item De la proposición \ref{coinciden} deducimos que, si $\XX$ es conexo y $f,g\in \DD(p)$ son tales que $f(x)=g(x)$ para algún $x\in\XX$, entonces $f=g$. 
+   \item La identidad $\id_{\XX}\in \DD(p)$ y, dadas $f,g\in \DD(p)$, $g^{-1}\in \DD(p)$ y el diagrama
+     \begin{center}
+       \begin{tikzcd}
+	 \XX \arrow{r}{g^{-1}} \arrow{rd}{p} & \XX \arrow{r}{f} \arrow{d}{p} & \XX \arrow{ld}{p}	 \\ 
+&	 X &
+       \end{tikzcd}
+     \end{center}
+     conmuta, luego $f\circ g^{-1} \in \DD(p)$. Con todo esto, tenemos que $\DD(p)$ es un grupo respecto de la composición.
+ \end{enumerate}
+\end{obs}
+
+\begin{prop}
+  Sea $(\XX,p)$ cubierta conexa de un espacio topológico $X$. El grupo $\DD(p)$ actúa sobre $\XX$ de forma propiamente discontinua mediante
+  \begin{align*}
+     \DD(p) \times \XX&\longrightarrow \XX\\ 
+      (f,\xx) &\longmapsto f(\xx). 
+    \end{align*}
+\end{prop}
+\begin{proof}
+  Fijo $\xx \in \XX$, llamo $x=f(\xx)$ y tomo $U$ un abierto elemental que contenga a $x$. Sea $V$ la hoja de $U$ que contiene a $\xx$. Supongamos que existen $f,g\in\DD(p)$ tales que $f(V)\cap g(V)\neq \varnothing$. Entonces existen $y,z\in V$ tales que $f(y)=g(z)$. Ahora, como $f,g$ son automorfismos de $(\XX,p)$, entonces $p\circ f=p\circ g=p$, por tanto $p(y)=p(f(y))=p(g(z))=p(z)$. Pero, como $p|_{V}$ es un homeomorfismo, entonces $y=z$ y $f(z)=g(z)$, luego $f=g$. 
+\end{proof}
+
+\begin{prop}
+  Sea un grupo $G$ que actúa de forma propiamente discontinua sobre un espacio topológico $X$ y sea $q:X\rightarrow X/G$ la proyección canónica. Entonces, como ya vimos $(X,q)$ es cubierta de $X/G$ y, además, $G\cong \DD(q)$.
+\end{prop}
+\begin{proof}
+  Dado $g\in G$, la aplicación $\theta_g=g.\bullet$ es un automorfismo de $(X,q)$ ya que un punto $x\in X$ y $g.x$ están en la misma órbita $G.x$. Respectivamente, sean $f\in \DD(q)$ y un punto $x\in X$. Como $q(f(x))=q(x)$, $f(x)\in G.x$, luego existe $g\in G$ tal que $f(x)=g.x$, que además es único por ser la acción propiamente discontinua. De la regla de composición se deduce inmediatamente que esta correspondencia es de hecho un homorfismo de grupos.
+\end{proof}
+
+\begin{prop}
+  Sea $(\XX,p)$ una cubierta conexa y localmente conexa por caminos de un espacio topológico $X$. Dado un punto $x\in \XX$, entonces
+  \begin{equation*}
+    \DD(p)\cong \frac{\NN(p_*(\gf(\XX,x))}{p_*(\gf(\XX,x))},
+  \end{equation*}
+  donde $\NN(p_*(\gf(\XX,x))$ es el normalizador de $p_*(\gf(\XX,x))$.
+\end{prop}
+\begin{obs}
+  Recordemos que, dado un grupo $G$, el normalizador de un subgrupo $H<G$ es 
+  \begin{equation*}
+    \NN(H)=\left\{ g\in G| g^{-1}Hg=H \right\},
+  \end{equation*}
+  o, equivalentemente el mayor subgrupo $K<G$ tal que $H\lhd K$.
+\end{obs}
 \end{document}
 
 
