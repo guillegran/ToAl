@@ -52,7 +52,7 @@
   \def\grp{\mathbf{Grp}}
   \def\XX{\tilde{X}}
   \def\xx{\tilde{x}}
-  \def\im{\mathrm{Im}}
+  \def\im{\mathrm{im}}
   \def\aut{\mathrm{Aut}}
   \def\DD{\mathrm{Deck}}
   \def\NN{\mathrm{N}}
@@ -580,6 +580,7 @@ Podemos considerar ahora algunos ejemplos de categorías:
       correspondiente al elemento inverso $g^{-1}$.
     \item La ley de composición viene dada por la operación del grupo, que, por ser $G$ un grupo, tiene la propiedad asociativa y elemento identidad $\id_{\bullet}$ que no es otra cosa que el elemento neutro $e$ del grupo.
   \end{enumerate}
+  De forma más general, podemos considerar una categoría en la que todos los morfismos son isomorfismos. Estas construcciones se denominan \emph{grupoides}.
 \end{ejemplo}
 
 La teoría de categorías nos permite hablar de un modo general de lo que significa un \emph{problema de clasificación}.
@@ -648,7 +649,7 @@ Una propiedad interesante de los funtores es que preservan los isomorfismos. Est
 
 Las limitaciones de tamaño que introdujimos sobre las categorías nos permiten considerar categorías de categorías, por ejemplo, la categoría $\mathbf{Cat}$, cuyos objetos son todas las categorías pequeñas y sus morfismos los funtores entre ellas o, análogamente $\mathbf{Cat}_*$ para las categorías localmente pequeñas. Estas consideraciones evitan las paradojas de tipo Russell, ya que, por ejemplo $\mathbf{Cat}$ y $\mathbf{Cat}_*$ no son a su vez una categoría pequeña o localmente pequeña, respectivamente.
 
-Otra forma de evitar estas paradojas es considerando una construcción inductiva, de forma que llamaríamos 0-categoría a un conjunto, 1-categoría a una categoría formada por conjuntos cuyos morfismos sean aplicaciones entre ellos, 2-categoría a una categoría de 1-categorías con funtores entre ellas, etc. De esta manera, uno puede considerar $n$-categorías, con $n\in \mathbb{N}$. Generalizando el procedimiento inductivo podríamos definir la noción de $\omega$-categoría o incluso entes de mayor rango. Estas construcciones dan lugar a lo que se conoce como teoría de categorías \emph{superior}, más conocida por su nombre en inglés «\emph{higher category theory}».
+Otra forma de evitar estas paradojas es considerando una construcción inductiva, de forma que llamaríamos 0-categoría a un conjunto (entendido como una colección de objetos sin ninguna estructura), 1-categoría a una categoría formada por conjuntos cuyos morfismos sean aplicaciones entre ellos, 2-categoría a una categoría de 1-categorías con funtores entre ellas, etc. De esta manera, uno puede considerar $n$-categorías, con $n\in \mathbb{N}$. Generalizando el procedimiento inductivo podríamos definir la noción de $\omega$-categoría o incluso entes de mayor rango. Estas construcciones dan lugar a lo que se conoce como teoría de categorías \emph{superior}, más conocida por su nombre en inglés «\emph{higher category theory}».
 
 \section{Funtorialidad del grupo fundamental}
 
@@ -847,7 +848,7 @@ Antes de dar la demostración necesitamos probar un lema previo.
   Sean dos lazos $\alpha, \beta$ en $\XX$ con punto base $\xx$. Tenemos que probar que si $p\circ \alpha \sim p\circ \beta$ entonces $\alpha \sim \beta$. En efecto, si $F$ es una homotopía entre $p\circ \alpha$ y $p\circ \beta$, podemos considerar su elevación $\tilde{F}$, única si imponemos $\tilde{F}_0=\alpha$, dada por el corolario \ref{elevhomot}, que claramente cumple $\tilde{F}_1=\beta$.
 \end{proof}
 \begin{prop}\label{festrella}
-  Sea $Y$ un espacio topológico conexo y localmente conexo por caminos. Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $f:Y\rightarrow X$ una función continua. Fijamos $y_0\in Y$, $x=f(y_0)$ y $\xx \in F_x$. Entonces $f$ admite una elevación si y sólo si
+  Sea $Y$ un espacio topológico conexo por caminos y localmente conexo por caminos. Sean $(\XX,p)$ una cubierta de un espacio topológico $X$ y sea $f:Y\rightarrow X$ una función continua. Fijamos $y_0\in Y$, $x=f(y_0)$ y $\xx \in F_x$. Entonces $f$ admite una elevación si y sólo si
  $\im (f_*) < \im (p_*)$.   
 \end{prop}
 
@@ -861,7 +862,7 @@ Antes de dar la demostración necesitamos probar un lema previo.
     \im(f_*)=f_*(\gf(Y,y_0))=p_*(\tilde{f}_*(\gf(Y,y_0)))<p_*(\gf(\XX,\xx))=\im(p_*).
   \end{equation*}
 
-  Veamos que también es condición suficiente. Sea $y\in Y$. Se trata de definir $\tilde{f}(y)$. Como en particular $Y$ es conexo por caminos, elegimos un camino $\sigma$ en $Y$ que une $y_0$ con $y$. Entonces, $f\circ \sigma$ es un camino en $X$ de origen $x$ y extremo $f\circ \sigma (1)=f(y)$. Elevamos $f\circ \sigma$ a un camino $\widetilde{f\circ\sigma}_{\xx}$ en $\XX$ con origen $\xx$ y definimos $\tilde{f}(y)=\widetilde{f\circ\sigma}_{\xx}(1)$. Tenemos que ver que esta $\tilde{f}$ está bien definida y es continua.
+  Veamos que también es condición suficiente. Sea $y\in Y$. Se trata de definir $\tilde{f}(y)$. Como $Y$ es conexo por caminos, elegimos un camino $\sigma$ en $Y$ que une $y_0$ con $y$. Entonces, $f\circ \sigma$ es un camino en $X$ de origen $x$ y extremo $f\circ \sigma (1)=f(y)$. Elevamos $f\circ \sigma$ a un camino $\widetilde{f\circ\sigma}_{\xx}$ en $\XX$ con origen $\xx$ y definimos $\tilde{f}(y)=\widetilde{f\circ\sigma}_{\xx}(1)$. Tenemos que ver que esta $\tilde{f}$ está bien definida y es continua.
 
   \textit{Bien definida}. Sea otro camino $\tau$ entre $y_0$ e $y$. Si $\tau$ es homótopo a $\sigma$ entonces $f\circ \sigma\sim f\circ \tau$, luego $\widetilde{f\circ\sigma}_{\xx}\sim\widetilde{f\circ\tau}_{\xx}$. Por tanto $\widetilde{f\circ\sigma}_{\xx}(1)=\widetilde{f\circ\tau}_{\xx}(1)$ y la $\tilde{f}(y)$ obtenida es la misma. Si $\tau$ no es homótopo a $\sigma$, consideramos $\sigma*\cev{\tau}$ lazo con punto base $y_0$. Ahora, por la hipótesis $f\circ(\sigma*\cev{\tau})=f\circ\sigma * f\circ \cev{\tau}$ es un lazo en $X$ con punto base $x=f(y_0)$. Por tanto, $\widetilde{f\circ\tau}_{\xx}(1)=\widetilde{f\circ\cev{\tau}}_{\xx}(0)=\widetilde{f\circ\sigma}_{\xx}(1)=\tilde{f}(y)$.
 
@@ -1053,11 +1054,11 @@ De esta observación y de la proposición \ref{festrella} deducimos lo siguiente
 \end{proof}
 
 \begin{prop}
-  Sea $(\XX,p)$ una cubierta conexa y localmente conexa por caminos de un espacio topológico $X$. Dado un punto $x\in \XX$, entonces
+  Sea $(\XX,p)$ una cubierta conexa y localmente conexa por caminos de un espacio topológico $X$. Dado un punto $\xx\in \XX$, entonces
   \begin{equation*}
-    \DD(p)\cong \frac{\NN(p_*(\gf(\XX,x))}{p_*(\gf(\XX,x))},
+    \DD(p)\cong \frac{\NN(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)},
   \end{equation*}
-  donde $\NN(p_*(\gf(\XX,x))$ es el normalizador de $p_*(\gf(\XX,x))$.
+  donde $\NN(p_*\gf(\XX,\xx))$ es el normalizador de $p_*\gf(\XX,\xx)$.
 \end{prop}
 \begin{obs}
   Recordemos que, dado un grupo $G$, el normalizador de un subgrupo $H<G$ es 
@@ -1066,7 +1067,114 @@ De esta observación y de la proposición \ref{festrella} deducimos lo siguiente
   \end{equation*}
   o, equivalentemente el mayor subgrupo $K<G$ tal que $H\lhd K$.
 \end{obs}
+\begin{proof}
+  Fijado $\xx\in \XX$, $p_*\gf(\XX,\xx)<\gf(X,x)$, con $x=p(\xx)$. Vamos a construir ahora un homomorfismo
+  \begin{equation*}
+    \theta:\NN(p_{*}\gf(\XX,\xx))\rightarrow \DD(p).
+  \end{equation*}
+  Sea $[\alpha]\in \NN(p_*\gf(\XX,\xx))<\gf(X,x)$. Levantamos $\alpha$ con origen en $\xx$ a un camino $\tilde{\alpha}_{\xx}$ y llamamos $\xx'=\tilde{\alpha}_{\xx}(1)$. Sabemos que $\xx',\xx \in F_x$, luego podemos considerar el automorfismo $\theta([\alpha])=\theta_{[\alpha]}$ que transforma $\xx$ en $\xx'$.
+
+  Esta aplicación $\theta_{[\alpha]}$ existe por la proposición \ref{morfcub}, puesto que $(\tilde{\alpha}_{\xx})_{\#}(\gf(\XX,\xx))=\gf(\XX,\xx')$ y 
+  \begin{equation*}
+    p_*\gf(\XX,\xx')=[\alpha]^{-1}(p_*\gf(\XX,\xx))[\alpha]=p_*\gf(\XX,\xx)
+  \end{equation*}
+  ya que $[\alpha]\in \NN(p_*\gf(\XX,\xx))$. Recordemos que, si $\gamma$ es un camino, $\gamma_\#$ es el isomorfismo visto en el teorema \ref{isocamino}.
+
+  Claramente, como $\theta$ se comporta adecuadamente con la concatenación de caminos, es un homomorfismo de grupos. Además, $\theta$ es sobreyectiva ya que, dado $f\in \DD(p)$ con $\xx'=f(\xx)\in F_x$, podemos tomar el camino $\beta$ que une $\xx$ y $\xx'$. Basta ver que el lazo $\alpha=p\circ \beta$ cumple que $[\alpha]\in \NN(p_*\gf(\XX,\xx))$. En efecto,
+  \begin{equation*}
+    [\alpha]^{-1}(p_*\gf(\XX,\xx))[\alpha]=p_*[\beta_{\#}(\gf(\XX,\xx))]=p_*\gf(\XX,\xx')=p_*\gf(\XX,\xx)
+  \end{equation*}
+  por ser $f\in \DD(p)$ con $\xx'=f(\xx)$.
+
+  Por último, si $[\alpha]\in \NN(p_*\gf(\XX,\xx))$ entonces $\theta_{[\alpha]}=\id_{\XX}$, es decir, $\tilde{\alpha}_{\xx}(1)=\xx$, o, lo que es lo mismo, $\tilde{\alpha}_{\xx}$ es un lazo en $\XX$ (con punto base $\xx$). Por tanto, $[\tilde{\alpha}_{\xx}]\in \gf(\XX,\xx)$, luego $[\alpha]\in p_*\gf(\XX,\xx)$. En resumen $\ker\theta=p_*\gf(\XX,\xx)$. 
+
+  Por el teorema de isomorfía,
+  \begin{equation*}
+    \DD(p)=\im(\theta)\cong \frac{\NN(p_*\gf(\XX,\xx))}{\ker\theta}=\frac{\NN(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)}.
+  \end{equation*}
+\end{proof}
+
+\begin{defn}
+  Una cubierta $(\XX,p)$ de un espacio topológico $X$ se dice \emph{regular} si $p_*\gf(\XX,\xx)\lhd \gf(X,x)$ y se dice \emph{universal} si $\XX$ es simplemente conexo.  
+\end{defn}
+
+\begin{prop}
+  Sea $X$ un espacio topológico. Si $(\XX,p)$ es una cubierta regular de $X$, entonces $\DD(p)\cong \gf(X,x)/p_*\gf(X,x)$. Si $(\XX,p)$ es una cubierta universal de $X$, $\DD(p)\cong \gf(X,x)$.
+\end{prop}
+
+\section{Cubierta universal}
+\begin{defn}
+  Una cubierta $(\XX,p)$ de un espacio topológico $X$ se dice \emph{universal} si $\XX$ es simplemente conexo, es decir, si $\XX$ es conexo por caminos y $\gf(\XX)\cong\{e\}$.
+\end{defn}
+
+\begin{obs}
+  La cubierta universal es única salvo isomorfismo. En efecto, si $(\XX_1,p_1)$ y $(\XX_2,p_2)$ son cubiertas universales, dados $x_1\in \XX_1$ y $x_2 \in \XX_2$, como $\XX_1$ y $\XX_2$ son simplemente conexos, $\{e\}=p_{1,*}(\gf(\XX_1,x_1))=p_{2,*}(\gf(\XX_2,x_2))$, luego por la proposición \ref{morfcub} existe una equivalencia de cubiertas entre $p_1$ y $p_2$.
+\end{obs}
+
+Cabe preguntarse ahora bajo qué condiciones existirá una cubierta universal de un espacio topológico $X$. Supongamos que $(\XX,p)$ es cubierta universal de $X$ con $\mathcal{U}$ familia de abiertos elementales. Sea $U\in \mathcal{U}$ y $\tilde{U}$ una hoja de $U$.Dado un lazo $\alpha:I\rightarrow U$, podemos elevarlo a un lazo $\tilde{\alpha}$ en $U$. Como $\XX$ es simplemente conexo, el lazo $\tilde{\alpha}$ es homotópico al lazo $\cc_{\xx}$, para algún $\xx\in \XX$. Ahora, aplicando la proyección a la homotopía, el lazo $\alpha=p\circ \tilde{\alpha}$ debe ser homotópico a $\cc_{x}$, con $x=p(\xx)$.
+
+Por tanto, una condición necesaria para que exista una cubierta universal de $X$ es que para todo $x\in X$ exista un abierto elemental $U$ tal que todo lazo en $U$ es homotópico a un lazo constante (\emph{nulhomótopo}) en $X$. Claramente, si existe un abierto que cumpla esa propiedad, entonces hay una base de entornos que la cumple. Esto motiva entonces la siguiente definición:
+
+\begin{defn}
+  Un espacio topológico $X$ se dice \emph{localmente semisimplemente conexo} si en cada $x\in X$ existe una base de entornos de conexos por caminos y tales que todo lazo en uno de ellos es nulhomótopo en $X$.
+\end{defn}
+
+\begin{obs}
+  Todo espacio localmente simplemente conexo (que en cada punto haya una base de entornos simplemente conexos) es localmente semisimplemente conexo. En particular, toda variedad es localmente semisimplemente conexa.
+\end{obs}
+
+\begin{ejemplo}
+  El \emph{pendiente hawaiano}, dado por $X=\bigcup_{n\in \NN}C_n$, con $C_n=\left\{ (x,y)\in \RR^2 | (x-1/n)^2+y^2=1/n^2 \right\}$ no es localmente semisimplemente conexo. En efecto, todos los entornos del origen contienen circunferencias con lazos que no son nulhomótopos.
+
+  Si consideramos ahora el \emph{cono de $X$}, $CX=(X\times I)/(X\times\left\{ 0 \right\})$, es localmente semisimplemente conexo pero no es localmente simplemente conexo.
+\end{ejemplo}
+
+Veamos que además de ser condición necesaria es suficiente, es decir, que si un espacio localmente semisimplemente conexo, la existencia de cubierta universal está garantizada.
+
+\begin{thm}
+  Un espacio topológico $X$ admite una cubierta universal si y sólo si $X$ es conexo por caminos y localmente semisimplemente conexo.
+\end{thm}
+
+\begin{proof}
+  Se trata de construir la cubierta $(X,p)$ y ver que es cubierta universal. 
+
+  \textbf{Construir la cubierta}. Fijado $x\in X$, definimos $\XX$ como las clases de caminos en $X$ con origen $x$ por la relación de homotopía con extremos fijos y la proyección
+  \begin{align*}
+    p :\XX&\longrightarrow X\\ 
+    [\alpha] &\longmapsto \alpha(1) .
+    \end{align*}
+
+    \textbf{Dar la topología}. Si $\mathcal{U}$ es una familia de abiertos de $X$ conexos por caminos y tales que todo lazo en uno de ellos es nulhomótopo en $X$. Dado $U\in \mathcal{U}$, llamamos
+    \begin{equation*}
+      U_{[\gamma]}=\left\{ [\gamma*\tau] \in X |\gamma \text{ es un camino en } X \text{ con } \gamma(1)\in U, \tau(I) \subset U \right\}.
+    \end{equation*}
+    Podemos considerar entonces la familia $\left\{ U_{[\gamma]}|U\subset \mathcal{U}, [\gamma] \in \XX \right\}$ y comprobar que genera una topología en $\XX$. En efecto, tenemos que ver que se verifica que
+\begin{enumerate}
+  \item $\bigcup_{[\gamma], U}U_{[\gamma]}=\XX$ y 
+  \item si $[\gamma'']\in U_{[\gamma]}\cap V_{[\gamma']}$ existe $W\in \mathcal{U}$ tal que $W_{[\gamma'']}\subset U_{[\gamma]}\cap V_{[\gamma']}$.
+\end{enumerate}
+
+    Que se cumple la primera propiedad es inmediato. Para la segunda, dado $[\gamma'']\in U_{[\gamma]}$, basta probar que $U_{[\gamma'']}=U_{[\gamma]}$, ya que en tal caso basta tomar $W_{[\gamma'']}$ para algún $W\in \mathcal{U}$ tal que $W\subset U\cap V$. En efecto, si $\gamma''$ es homotópico a $\gamma*\tau$ con $\tau$ camino contenido en $U$, entonces, como $X$ es localmente semisimplemente conexo, $\gamma''*\cev{\tau}$ es homotópico a $\gamma$. Ahora, dado $\beta\in U_{[\gamma]}$, $\beta\sim \gamma*\tau'$ con $\tau'$ camino contenido en $U$. Pero entonces $\beta \sim \gamma''*\cev{\tau}*\tau'$, luego $\beta \in U_{[\gamma'']}$.
+    
+    Adicionalmente, hemos probado que, si $[\alpha]\neq[\alpha']$, entonces $U_{[\alpha]}\cap U_{[\alpha']}=\varnothing$. En efecto, en caso contrario, si $[\gamma]\in U_{[\alpha]}\cap U_{[\alpha']}$, $U_{[\alpha]}=U_{[\alpha']}=U_{[\gamma]}$.
+
+    \textbf{Continuidad}. Ahora tenemos que ver que $p$ es continua en un punto $[\gamma]\in\XX$ cualquiera. Sea $U\in \mathcal{U}$ tal que $\gamma(1)\in U$. Entonces
+    \begin{equation*}
+      p^{-1}(U)=\bigcup_{\alpha, V:\alpha(1)\in V} V_{[\alpha]}.
+    \end{equation*}
+    Por tanto, $p$ es continua.
+
+    \textbf{Homeomorfismo en las hojas}. Probemos ahora que $p|_{U_{[\alpha]}}:U_{[\alpha}x\rightarrow U$ es un homeomorfismo. Inmediatamente es sobreyectiva y es inyectiva porque si $p[\gamma]=p[\beta]$ entonces $\gamma(1)=\beta(1)$ y, como $X$ es localmente semisimplemente conexo $\gamma\sim \beta$. Ahora, si $V_{[\alpha]}\subset U_{[\alpha]}$ es abierto de $U_{[\alpha]}$, entonces $p|_{U_{[\alpha]}}(V_{[\alpha]})=V$ es abierto de $U$, luego $p$ es abierta.
+    
+    Con todo esto, hemos probado que $p$ es un homeomorfismo en las hojas y, junto con lo anterior, que $(\XX,p)$ es cubierta de $X$. Falta ver que es cubierta universal.
+    
+    \textbf{Conexo por caminos}. Dado $[\gamma]\in \XX$ basta considerar la función
+    \begin{align*}
+      I&\longrightarrow \XX\\ 
+      t &\longmapsto [\gamma_t], 
+      \end{align*}
+    con $\gamma_t(s)=\gamma(st)$ para $s\in I$. Claramente, $[\gamma_0]=[\cc_x]$ y $[\gamma_1]=[\gamma]$. De esta forma podemos conectar por un camino cualquier punto de $\XX$ con la clase del camino constante $[\cc_x]$.
+
+    \textbf{Simplemente conexo}. Sea un lazo $\gamma$ en $X$. La aplicación $[\gamma_t]$ es una elevación de $\gamma$ con $[\gamma_1]=[\gamma]$, ya que $p([\gamma_t])=\gamma_t(1)=\gamma(t)$. Ahora, si $f$ es un lazo en $\XX$ con punto base $[\cc_x]$, $f=[\gamma_t]$ con $\gamma=p\circ f$, por la unicidad de elevación del lazo con punto base. Entonces $[\gamma_1]=f(1)=[\cc_x]$, de modo que $\gamma$ es nulhomótopo. Por tanto, $\gf(\XX,\xx)\cong p_*\gf(\XX,\xx)=\left\{ e \right\}$, luego $\XX$ es simplemente conexo.  
+\end{proof}
 \end{document}
-
-
-
