@@ -887,6 +887,194 @@ Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conju
 \end{equation*}
 \end{proof}
 
+
+\section{Morfismos de cubiertas}
+\begin{defn}
+  Sean $(\XX_1,p_1)$, $(\XX_2,p_2)$ cubiertas de un espacio topológico $X$ y $f:\XX_1\rightarrow \XX_2$ una aplicación continua. Decimos que $f$ es un \emph{morfismo de cubiertas} si el siguiente diagrama conmuta
+  \begin{center}
+    \begin{tikzcd}
+      \XX_1 \arrow{rr}{f} \arrow{rd}[anchor=east]{p_1} && \XX_2\arrow{ld}[anchor=west]{p_2}      \\ 
+      & X. &
+    \end{tikzcd}
+  \end{center}
+  Si $f$ es un homeomorfismo, entonces $f^{-1}$ es también un morfismo de cubiertas y entonces decimos que $f$ es un \emph{isomorfismo de cubiertas}. En consecuencia, decimos que las dos cubiertas $(\XX_1,p_1)$, $(\XX_2,p_2)$ son \emph{isomorfas} o \emph{equivalentes} si existe una aplicación continua $f:\XX_1\rightarrow \XX_2$ homeomorfismo y morfismo de cubiertas. 
+\end{defn}
+\begin{obs}
+  Nótese que $f$ es una elevación de $p_1$ a la cubierta $(\XX_2,p_2)$.
+\end{obs}
+De esta observación y de la proposición \ref{festrella} deducimos lo siguiente:
+\begin{prop}\label{morfcub}
+ Sean $(\XX_1,p_1)$, $(\XX_2,p_2)$ cubiertas de un espacio topológico $X$ conexas y localmente conexas por caminos y sean $x_1\in \XX_1$ y $x_2\in \XX_2$. Entonces
+ \begin{enumerate}
+   \item la condición necesaria y suficiente para que exista $f:\XX_1\rightarrow \XX_2$ morfismo de cubiertas con $f(x_1)=x_2$ es que
+     $  p_{1,*}(\gf(\XX_1,x_1))<p_{2,*}(\gf(\XX_2,x_2))$
+     y
+   \item la condición necesaria y suficiente para que exista $f:\XX_1\rightarrow \XX_2$ equivalencia de cubiertas con $f(x_1)=x_2$ es que
+       $p_{1,*}(\gf(\XX_1,x_1))=p_{2,*}(\gf(\XX_2,x_2))$.
+ \end{enumerate}
+\end{prop}
+\begin{defn}
+  Sea $(\XX,p)$ cubierta de un espacio topológico $X$. Las equivalencias de cubiertas $\XX\rightarrow \XX$ se llaman \emph{automorfismos} o \emph{transformaciones deck}\footnote{Del alemán \textit{deckbewegungen}.} de la cubierta $(\XX,p)$. El conjunto de los automorfismos de una cubierta $(\XX,p)$ se denota por $\DD(p)$.
+\end{defn}
+\begin{obs}\leavevmode
+  \begin{enumerate}
+    \item Inmediatamente, de la proposición \ref{morfcub} tenemos que, si $\XX$ es conexo y localmente conexo por caminos, dados dos puntos $x,y\in \XX$, existe $f\in \DD(p)$ tal que $f(x)=y$ si y sólo si $p_{*}(\gf(\XX,x))=p_{*}(\gf(\XX,y))$.
+   \item De la proposición \ref{coinciden} deducimos que, si $\XX$ es conexo y $f,g\in \DD(p)$ son tales que $f(x)=g(x)$ para algún $x\in\XX$, entonces $f=g$. 
+   \item La identidad $\id_{\XX}\in \DD(p)$ y, dadas $f,g\in \DD(p)$, $g^{-1}\in \DD(p)$ y el diagrama
+     \begin{center}
+       \begin{tikzcd}
+	 \XX \arrow{r}{g^{-1}} \arrow{rd}{p} & \XX \arrow{r}{f} \arrow{d}{p} & \XX \arrow{ld}{p}	 \\ 
+&	 X &
+       \end{tikzcd}
+     \end{center}
+     conmuta, luego $f\circ g^{-1} \in \DD(p)$. Con todo esto, tenemos que $\DD(p)$ es un grupo respecto de la composición.
+ \end{enumerate}
+\end{obs}
+
+\section{Cubierta universal}
+\begin{defn}
+  Una cubierta $(\XX,p)$ de un espacio topológico $X$ se dice \emph{universal} si $\XX$ es simplemente conexo, es decir, si $\XX$ es conexo por caminos y $\gf(\XX)\cong\{e\}$.
+\end{defn}
+
+\begin{obs}
+  La cubierta universal es única salvo isomorfismo. En efecto, si $(\XX_1,p_1)$ y $(\XX_2,p_2)$ son cubiertas universales, dados $x_1\in \XX_1$ y $x_2 \in \XX_2$, como $\XX_1$ y $\XX_2$ son simplemente conexos, $\{e\}=p_{1,*}(\gf(\XX_1,x_1))=p_{2,*}(\gf(\XX_2,x_2))$, luego por la proposición \ref{morfcub} existe una equivalencia de cubiertas entre $p_1$ y $p_2$.
+\end{obs}
+
+Cabe preguntarse ahora bajo qué condiciones existirá una cubierta universal de un espacio topológico $X$. Supongamos que $(\XX,p)$ es cubierta universal de $X$ con $\mathcal{U}$ familia de abiertos elementales. Sea $U\in \mathcal{U}$ y $\tilde{U}$ una hoja de $U$.Dado un lazo $\alpha:I\rightarrow U$, podemos elevarlo a un lazo $\tilde{\alpha}$ en $U$. Como $\XX$ es simplemente conexo, el lazo $\tilde{\alpha}$ es homotópico al lazo $\cc_{\xx}$, para algún $\xx\in \XX$. Ahora, aplicando la proyección a la homotopía, el lazo $\alpha=p\circ \tilde{\alpha}$ debe ser homotópico a $\cc_{x}$, con $x=p(\xx)$.
+
+Por tanto, una condición necesaria para que exista una cubierta universal de $X$ es que para todo $x\in X$ exista un abierto elemental $U$ tal que todo lazo en $U$ es homotópico a un lazo constante (\emph{nulhomótopo}) en $X$. Claramente, si existe un abierto que cumpla esa propiedad, entonces hay una base de entornos que la cumple. Esto motiva entonces la siguiente definición:
+
+\begin{defn}
+  Un espacio topológico $X$ se dice \emph{localmente semisimplemente conexo} si en cada $x\in X$ existe una base de entornos de conexos por caminos y tales que todo lazo en uno de ellos es nulhomótopo en $X$.
+\end{defn}
+
+\begin{obs}
+  Todo espacio localmente simplemente conexo (que en cada punto haya una base de entornos simplemente conexos) es localmente semisimplemente conexo. En particular, toda variedad es localmente semisimplemente conexa.
+\end{obs}
+
+\begin{ejemplo}
+  El \emph{pendiente hawaiano}, dado por $X=\bigcup_{n\in \NN}C_n$, con $C_n=\left\{ (x,y)\in \RR^2 | (x-1/n)^2+y^2=1/n^2 \right\}$ no es localmente semisimplemente conexo. En efecto, todos los entornos del origen contienen circunferencias con lazos que no son nulhomótopos.
+
+  Si consideramos ahora el \emph{cono de $X$}, $CX=(X\times I)/(X\times\left\{ 0 \right\})$, es localmente semisimplemente conexo pero no es localmente simplemente conexo.
+\end{ejemplo}
+
+Veamos que además de ser condición necesaria es suficiente, es decir, que si un espacio localmente semisimplemente conexo, la existencia de cubierta universal está garantizada.
+
+\begin{thm}\label{cubuni}
+  Un espacio topológico $X$ admite una cubierta universal si y sólo si $X$ es conexo por caminos, localmente conexo por caminos y localmente semisimplemente conexo.
+\end{thm}
+
+\begin{proof}
+  Se trata de construir la cubierta $(X,p)$ y ver que es cubierta universal. 
+
+  \textit{Construir la cubierta}. Fijado $x\in X$, definimos $\XX$ como las clases de caminos en $X$ con origen $x$ por la relación de homotopía con extremos fijos y la proyección
+  \begin{align*}
+    p :\XX&\longrightarrow X\\ 
+    [\alpha] &\longmapsto \alpha(1) .
+    \end{align*}
+
+    \textit{Dar la topología}. Si $\mathcal{U}$ es una familia de abiertos de $X$ conexos por caminos y tales que todo lazo en uno de ellos es nulhomótopo en $X$. Dado $U\in \mathcal{U}$, llamamos
+    \begin{equation*}
+      U_{[\gamma]}=\left\{ [\gamma*\tau] \in X |\gamma \text{ es un camino en } X \text{ con } \gamma(1)\in U, \tau(I) \subset U \right\}.
+    \end{equation*}
+    Podemos considerar entonces la familia $\left\{ U_{[\gamma]}|U\subset \mathcal{U}, [\gamma] \in \XX \right\}$ y comprobar que genera una topología en $\XX$. En efecto, tenemos que ver que se verifica que
+\begin{enumerate}
+  \item $\bigcup_{[\gamma], U}U_{[\gamma]}=\XX$ y 
+  \item si $[\gamma'']\in U_{[\gamma]}\cap V_{[\gamma']}$ existe $W\in \mathcal{U}$ tal que $W_{[\gamma'']}\subset U_{[\gamma]}\cap V_{[\gamma']}$.
+\end{enumerate}
+
+    Que se cumple la primera propiedad es inmediato. Para la segunda, dado $[\gamma'']\in U_{[\gamma]}$, basta probar que $U_{[\gamma'']}=U_{[\gamma]}$, ya que en tal caso basta tomar $W_{[\gamma'']}$ para algún $W\in \mathcal{U}$ tal que $W\subset U\cap V$. En efecto, si $\gamma''$ es homotópico a $\gamma*\tau$ con $\tau$ camino contenido en $U$, entonces resulta que $\gamma''*\cev{\tau}$ es homotópico a $\gamma$. Ahora, dado $\beta\in U_{[\gamma]}$, $\beta\sim \gamma*\tau'$ con $\tau'$ camino contenido en $U$. Pero entonces $\beta \sim \gamma''*\cev{\tau}*\tau'$, luego $\beta \in U_{[\gamma'']}$.
+    
+    Adicionalmente, hemos probado que, si $[\alpha]\neq[\alpha']$, entonces $U_{[\alpha]}\cap U_{[\alpha']}=\varnothing$. En efecto, en caso contrario, si $[\gamma]\in U_{[\alpha]}\cap U_{[\alpha']}$, $U_{[\alpha]}=U_{[\alpha']}=U_{[\gamma]}$.
+
+    \textit{Continuidad}. Ahora tenemos que ver que $p$ es continua en un punto $[\gamma]\in\XX$ cualquiera. Sea $U\in \mathcal{U}$ tal que $\gamma(1)\in U$. Entonces
+    \begin{equation*}
+      p^{-1}(U)=\bigcup_{\alpha, V:\alpha(1)\in V} V_{[\alpha]}.
+    \end{equation*}
+    Por tanto, $p$ es continua.
+
+    \textit{Homeomorfismo en las hojas}. Probemos ahora que $p|_{U_{[\alpha]}}:U_{[\alpha}x\rightarrow U$ es un homeomorfismo. Inmediatamente es sobreyectiva y es inyectiva porque si $p[\gamma]=p[\beta]$ entonces $\gamma(1)=\beta(1)$ y, como $X$ es localmente semisimplemente conexo $\gamma\sim \beta$. Ahora, si $V_{[\alpha]}\subset U_{[\alpha]}$ es abierto de $U_{[\alpha]}$, entonces $p|_{U_{[\alpha]}}(V_{[\alpha]})=V$ es abierto de $U$, luego $p$ es abierta.
+    
+    Con todo esto, hemos probado que $p$ es un homeomorfismo en las hojas y, junto con lo anterior, que $(\XX,p)$ es cubierta de $X$. Falta ver que es cubierta universal.
+    
+    \textit{Conexo por caminos}. Dado $[\gamma]\in \XX$ basta considerar la función
+    \begin{align*}
+      I&\longrightarrow \XX\\ 
+      t &\longmapsto [\gamma_t], 
+      \end{align*}
+    con $\gamma_t(s)=\gamma(st)$ para $s\in I$. Claramente, $[\gamma_0]=[\cc_x]$ y $[\gamma_1]=[\gamma]$. De esta forma podemos conectar por un camino cualquier punto de $\XX$ con la clase del camino constante $[\cc_x]$.
+
+    \textit{Simplemente conexo}. Sea un lazo $\gamma$ en $X$. La aplicación $[\gamma_t]$ es una elevación de $\gamma$ con $[\gamma_1]=[\gamma]$, ya que $p([\gamma_t])=\gamma_t(1)=\gamma(t)$. Ahora, si $f$ es un lazo en $\XX$ con punto base $[\cc_x]$, $f=[\gamma_t]$ con $\gamma=p\circ f$, por la unicidad de elevación del lazo con punto base. Entonces $[\gamma_1]=f(1)=[\cc_x]$, de modo que $\gamma$ es nulhomótopo. Por tanto, $\gf(\XX,\xx)\cong p_*\gf(\XX,\xx)=\left\{ e \right\}$, luego $\XX$ es simplemente conexo.  
+\end{proof}
+
+\section{Clasificación de cubiertas}
+\begin{prop}\label{cubsubg}
+  Si $X$ es un espacio topológico conexo por caminos, localmente conexo por caminos y localmente semisimplemente conexo. Entonces, dado un punto $x\in X$, para cada subgrupo $H<\gf(X,x)$ existe una cubierta $(X_H,p)$ de $X$ tal que $p_*(\gf(X_H,\xx))=H$, para un cierto  $\xx \in X_H$.
+\end{prop}
+\begin{proof}
+  Consideremos la cubierta universal $\XX$ tal y como la construimos en la demostración del teorema \ref{cubuni}. Dados puntos $[\gamma],[\gamma']\in \XX$, definimos la relación de equivalencia
+  \begin{equation*}
+    [\gamma]\sim[\gamma'] \Leftrightarrow \gamma(1)=\gamma'(1) \text{ y } [\gamma*\cev{\gamma'}]\in H.
+  \end{equation*}
+  Es inmediato comprobar que es una relación de equivalencia, ya que $H$ es un subgrupo. Sea $X_H=\XX/\sim$. Nótese que, si $[\gamma]\sim [\gamma']$, entonces $[\gamma*\tau]\sim [\gamma'*\tau]$, ya que $\gamma(1)=\gamma'(1)$. Esto significa que si dos puntos en dos entornos $U_{[\gamma]}$, $U_{[\gamma']}$ se identifican en $X_H$, entonces los entornos se identifican al completo. Por tanto, la proyección natural 
+  \begin{align*}
+    p :X_H&\longrightarrow X\\ 
+    [\gamma] &\longmapsto \gamma(1) 
+    \end{align*}
+    es una proyección recubridora.
+
+    Si tomamos como punto base $\xx\in X_H$ la clase de equivalencia del camino constante $\cc_{x}$, entonces un lazo $\gamma$ de punto base $x$ se eleva con punto base $\xx$ al camino $\tilde{\gamma}_{\xx}=[\gamma_t]$ con $\tilde{\gamma}_{\xx}(1)=[\gamma_1]=[\gamma]$, que será un lazo si y sólo si $[\gamma]\sim[\cc_x]$, equivalentemente, si $[\gamma]\in H$. Por tanto, $p_*(\gf(X_H,\xx))=H$.
+\end{proof}
+\begin{prop}
+  Sea $(\XX,p)$ una cubierta conexa y localmente conexa por caminos de un espacio topológico $X$. Dado un punto $\xx\in \XX$, entonces
+  \begin{equation*}
+    \DD(p)\cong \frac{\NN(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)},
+  \end{equation*}
+  donde $\NN(p_*\gf(\XX,\xx))$ es el normalizador de $p_*\gf(\XX,\xx)$.
+\end{prop}
+\begin{obs}
+  Recordemos que, dado un grupo $G$, el normalizador de un subgrupo $H<G$ es 
+  \begin{equation*}
+    \NN(H)=\left\{ g\in G| g^{-1}Hg=H \right\},
+  \end{equation*}
+  o, equivalentemente el mayor subgrupo $K<G$ tal que $H\lhd K$.
+\end{obs}
+\begin{proof}
+  Fijado $\xx\in \XX$, $p_*\gf(\XX,\xx)<\gf(X,x)$, con $x=p(\xx)$. Vamos a construir ahora un homomorfismo
+  \begin{equation*}
+    \theta:\NN(p_{*}\gf(\XX,\xx))\rightarrow \DD(p).
+  \end{equation*}
+  Sea $[\alpha]\in \NN(p_*\gf(\XX,\xx))<\gf(X,x)$. Levantamos $\alpha$ con origen en $\xx$ a un camino $\tilde{\alpha}_{\xx}$ y llamamos $\xx'=\tilde{\alpha}_{\xx}(1)$. Sabemos que $\xx',\xx \in F_x$, luego podemos considerar el automorfismo $\theta([\alpha])=\theta_{[\alpha]}$ que transforma $\xx$ en $\xx'$.
+
+  Esta aplicación $\theta_{[\alpha]}$ existe por la proposición \ref{morfcub}, puesto que $(\tilde{\alpha}_{\xx})_{\#}(\gf(\XX,\xx))=\gf(\XX,\xx')$ y 
+  \begin{equation*}
+    p_*\gf(\XX,\xx')=[\alpha]^{-1}(p_*\gf(\XX,\xx))[\alpha]=p_*\gf(\XX,\xx)
+  \end{equation*}
+  ya que $[\alpha]\in \NN(p_*\gf(\XX,\xx))$. Recordemos que, si $\gamma$ es un camino, $\gamma_\#$ es el isomorfismo visto en el teorema \ref{isocamino}.
+
+  Claramente, como $\theta$ se comporta adecuadamente con la concatenación de caminos, es un homomorfismo de grupos. Además, $\theta$ es sobreyectiva ya que, dado $f\in \DD(p)$ con $\xx'=f(\xx)\in F_x$, podemos tomar el camino $\beta$ que une $\xx$ y $\xx'$. Basta ver que el lazo $\alpha=p\circ \beta$ cumple que $[\alpha]\in \NN(p_*\gf(\XX,\xx))$. En efecto,
+  \begin{equation*}
+    [\alpha]^{-1}(p_*\gf(\XX,\xx))[\alpha]=p_*[\beta_{\#}(\gf(\XX,\xx))]=p_*\gf(\XX,\xx')=p_*\gf(\XX,\xx)
+  \end{equation*}
+  por ser $f\in \DD(p)$ con $\xx'=f(\xx)$.
+
+  Por último, si $[\alpha]\in \NN(p_*\gf(\XX,\xx))$ entonces $\theta_{[\alpha]}=\id_{\XX}$, es decir, $\tilde{\alpha}_{\xx}(1)=\xx$, o, lo que es lo mismo, $\tilde{\alpha}_{\xx}$ es un lazo en $\XX$ (con punto base $\xx$). Por tanto, $[\tilde{\alpha}_{\xx}]\in \gf(\XX,\xx)$, luego $[\alpha]\in p_*\gf(\XX,\xx)$. En resumen $\ker\theta=p_*\gf(\XX,\xx)$. 
+
+  Por el teorema de isomorfía,
+  \begin{equation*}
+    \DD(p)=\im(\theta)\cong \frac{\NN(p_*\gf(\XX,\xx))}{\ker\theta}=\frac{\NN(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)}.
+  \end{equation*}
+\end{proof}
+
+\begin{defn}
+  Una cubierta $(\XX,p)$ de un espacio topológico $X$ se dice \emph{regular} si $p_*\gf(\XX,\xx)\lhd \gf(X,x)$.  
+\end{defn}
+
+\begin{prop}\label{reguni}
+  Sea $X$ un espacio topológico. Si $(\XX,p)$ es una cubierta regular de $X$, entonces $\DD(p)\cong \gf(X,x)/p_*\gf(X,x)$. Si $(\XX,p)$ es la cubierta universal de $X$, $\DD(p)\cong \gf(X,x)$.
+\end{prop}
+
+\section{G-espacios}
 \begin{prop}\label{actuafibra}
   Si $(\XX,p)$ es una cubierta de un espacio topológico $X$ y $x\in X$, entonces el grupo fundamental $\gf(X,x)$ actúa por la derecha sobre $F_x$. A cada lazo $\alpha$ en $X$ con punto base $x$ le asignamos la biyección $\xx.[\alpha]=\tilde{\alpha}_{\xx}(1)$, para $\xx \in F_x$. El estabilizador de un punto $\xx\in F_x$ por esta acción es $p_*(\gf(\XX,\xx))$.
 \end{prop}
@@ -900,7 +1088,6 @@ Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conju
   Por otra parte, $\xx.[\alpha]=\xx$ si y sólo si $\tilde{\alpha}_{\xx}(1)=\xx$, es decir, si $\tilde{\alpha}_{\xx}$ es un lazo en $\XX$. Ahora $[\alpha]=[p\circ \tilde{\alpha}_{\xx}]=p_*[\tilde{\alpha}_{\xx}]\in p_*(\gf(\XX,\xx))$, luego el estabilizador de $\xx$ es $p_*(\gf(\XX,\xx))$.
 \end{proof}
 
-\section{G-espacios}
 \begin{defn}
   Sea $X$ un espacio topológico y $G$ un grupo que actúa sobre $X$.
   \begin{enumerate}
@@ -946,7 +1133,7 @@ Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conju
   Inmediatamente, toda acción propiamente discontinua es libre. Por otra parte, es fácil ver que si $G$ es un grupo finito y $X$ es Hausdorff entonces toda acción libre de $G$ sobre $X$ es propiamente discontinua.
 \end{obs}
 \begin{prop}
-  Si un grupo $G$ actúa de forma propiamente discontinua sobre un espacio topológico $X$, entonces la proyección canónica $q:X\rightarrow X/G$ es una proyección recubridora. Es decir, $(X,q)$ es una cubierta del espacio topológico $X/G$. 
+  Si un grupo $G$ actúa de forma propiamente discontinua sobre un espacio topológico $X$, entonces la proyección canónica $q:X\rightarrow X/G$ es una proyección recubridora. Es decir, $(X,q)$ es una cubierta del espacio topológico $X/G$. Las cubiertas que surgen de esta forma se llaman \emph{$G$-cubiertas}.
 \end{prop}
 \begin{proof}
   Como la acción es propiamente discontinua, para cada $x\in X$ existe un entorno $U^x\subset X$ de $x$ tal que si $g\neq g'$, entonces $g.U^x\cap g'.U^x =\varnothing$. Tomamos entonces el conjunto $\mathcal{U}=\left\{q(U^x)|x\in X \right\}$ como familia de abiertos elementales de $X/G$. Claramente $\mathcal{U}$ es un recubrimiento por abiertos de $X/G$ y, dado $x\in X$, $q^{-1}(q(U^x))=\bigsqcup_{g\in G}g.U$. Falta ver que $q|_{g.U^x}:g.U^x\rightarrow q(U^x)$ es homeomorfismo. Como $q|_{g.U^x}$ es sobreyectiva y abierta, basta probar que es inyectiva. Ahora, supongamos que existen $t,s\in g.U^x$ tales que $q(t)=q(s)$. Entonces existe $g'\in G$ tal que $t= g'.s$ y, como $t,s\in g.U^x$, existen $u,v\in U^x$ tales que $t=g.u$ y $s=g.v$. Ahora,
@@ -956,7 +1143,7 @@ Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conju
   Por tanto, $g'g.U\cap g.U\neq \varnothing$, luego $g'g=g$, $g'=e$ y $t=s$, como queríamos probar.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{cubhom}
   Sean $G$ un grupo que actúa de forma propiamente discontinua sobre un espacio topológico $X$ conexo por caminos y $x\in X$. La aplicación 
   \begin{align*}
     \psi :\gf(X/G,q(x))&\longrightarrow G\\ 
@@ -991,50 +1178,6 @@ Veamos ahora que $\bigcup_{\xx \in F_x} p_*(\gf(\XX,\xx))$ es una clase de conju
       \end{align*}
  con $\sigma*\overset{(n)}{\cdots}*\sigma(t)=ye^{2\pi in t}$, para $t\in I$.
 \end{ejemplo}
-
-\section{Morfismos de cubiertas}
-\begin{defn}
-  Sean $(\XX_1,p_1)$, $(\XX_2,p_2)$ cubiertas de un espacio topológico $X$ y $f:\XX_1\rightarrow \XX_2$ una aplicación continua. Decimos que $f$ es un \emph{morfismo de cubiertas} si el siguiente diagrama conmuta
-  \begin{center}
-    \begin{tikzcd}
-      \XX_1 \arrow{rr}{f} \arrow{rd}[anchor=east]{p_1} && \XX_2\arrow{ld}[anchor=west]{p_2}      \\ 
-      & X. &
-    \end{tikzcd}
-  \end{center}
-  Si $f$ es un homeomorfismo, entonces $f^{-1}$ es también un morfismo de cubiertas y entonces decimos que $f$ es un \emph{isomorfismo de cubiertas}. En consecuencia, decimos que las dos cubiertas $(\XX_1,p_1)$, $(\XX_2,p_2)$ son \emph{isomorfas} o \emph{equivalentes} si existe una aplicación continua $f:\XX_1\rightarrow \XX_2$ homeomorfismo y morfismo de cubiertas. 
-\end{defn}
-\begin{obs}
-  Nótese que $f$ es una elevación de $p_1$ a la cubierta $(\XX_2,p_2)$.
-\end{obs}
-De esta observación y de la proposición \ref{festrella} deducimos lo siguiente:
-\begin{prop}\label{morfcub}
- Sean $(\XX_1,p_1)$, $(\XX_2,p_2)$ cubiertas de un espacio topológico $X$ conexas y localmente conexas por caminos y sean $x_1\in \XX_1$ y $x_2\in \XX_2$. Entonces
- \begin{enumerate}
-   \item la condición necesaria y suficiente para que exista $f:\XX_1\rightarrow \XX_2$ morfismo de cubiertas con $f(x_1)=x_2$ es que
-     $  p_{1,*}(\gf(\XX_1,x_1))<p_{2,*}(\gf(\XX_2,x_2))$
-     y
-   \item la condición necesaria y suficiente para que exista $f:\XX_1\rightarrow \XX_2$ equivalencia de cubiertas con $f(x_1)=x_2$ es que
-       $p_{1,*}(\gf(\XX_1,x_1))=p_{2,*}(\gf(\XX_2,x_2))$.
- \end{enumerate}
-\end{prop}
-\begin{defn}
-  Sea $(\XX,p)$ cubierta de un espacio topológico $X$. Las equivalencias de cubiertas $\XX\rightarrow \XX$ se llaman \emph{automorfismos} o \emph{transformaciones deck}\footnote{Del alemán \textit{deckbewegungen}.} de la cubierta $(\XX,p)$. El conjunto de los automorfismos de una cubierta $(\XX,p)$ se denota por $\DD(p)$.
-\end{defn}
-\begin{obs}\leavevmode
-  \begin{enumerate}
-    \item Inmediatamente, de la proposición \ref{morfcub} tenemos que, si $\XX$ es conexo y localmente conexo por caminos, dados dos puntos $x,y\in \XX$, existe $f\in \DD(p)$ tal que $f(x)=y$ si y sólo si $p_{*}(\gf(\XX,x))=p_{*}(\gf(\XX,y))$.
-   \item De la proposición \ref{coinciden} deducimos que, si $\XX$ es conexo y $f,g\in \DD(p)$ son tales que $f(x)=g(x)$ para algún $x\in\XX$, entonces $f=g$. 
-   \item La identidad $\id_{\XX}\in \DD(p)$ y, dadas $f,g\in \DD(p)$, $g^{-1}\in \DD(p)$ y el diagrama
-     \begin{center}
-       \begin{tikzcd}
-	 \XX \arrow{r}{g^{-1}} \arrow{rd}{p} & \XX \arrow{r}{f} \arrow{d}{p} & \XX \arrow{ld}{p}	 \\ 
-&	 X &
-       \end{tikzcd}
-     \end{center}
-     conmuta, luego $f\circ g^{-1} \in \DD(p)$. Con todo esto, tenemos que $\DD(p)$ es un grupo respecto de la composición.
- \end{enumerate}
-\end{obs}
-
 \begin{prop}
   Sea $(\XX,p)$ cubierta conexa de un espacio topológico $X$. El grupo $\DD(p)$ actúa sobre $\XX$ de forma propiamente discontinua mediante
   \begin{align*}
@@ -1046,135 +1189,107 @@ De esta observación y de la proposición \ref{festrella} deducimos lo siguiente
   Fijo $\xx \in \XX$, llamo $x=f(\xx)$ y tomo $U$ un abierto elemental que contenga a $x$. Sea $V$ la hoja de $U$ que contiene a $\xx$. Supongamos que existen $f,g\in\DD(p)$ tales que $f(V)\cap g(V)\neq \varnothing$. Entonces existen $y,z\in V$ tales que $f(y)=g(z)$. Ahora, como $f,g$ son automorfismos de $(\XX,p)$, entonces $p\circ f=p\circ g=p$, por tanto $p(y)=p(f(y))=p(g(z))=p(z)$. Pero, como $p|_{V}$ es un homeomorfismo, entonces $y=z$ y $f(z)=g(z)$, luego $f=g$. 
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{deckg}
   Sea un grupo $G$ que actúa de forma propiamente discontinua sobre un espacio topológico $X$ y sea $q:X\rightarrow X/G$ la proyección canónica. Entonces, como ya vimos $(X,q)$ es cubierta de $X/G$ y, además, $G\cong \DD(q)$.
 \end{prop}
 \begin{proof}
   Dado $g\in G$, la aplicación $\theta_g=g.\bullet$ es un automorfismo de $(X,q)$ ya que un punto $x\in X$ y $g.x$ están en la misma órbita $G.x$. Respectivamente, sean $f\in \DD(q)$ y un punto $x\in X$. Como $q(f(x))=q(x)$, $f(x)\in G.x$, luego existe $g\in G$ tal que $f(x)=g.x$, que además es único por ser la acción propiamente discontinua. De la regla de composición se deduce inmediatamente que esta correspondencia es de hecho un homorfismo de grupos.
 \end{proof}
 
-\begin{prop}
-  Sea $(\XX,p)$ una cubierta conexa y localmente conexa por caminos de un espacio topológico $X$. Dado un punto $\xx\in \XX$, entonces
+\begin{prop}\label{homgcub}
+  Sea $X$ un espacio topológico conexo por caminos, localmente conexo por caminos y localmente semisimplemente conexo y $x\in X$. Existe una correspondencia unívoca
   \begin{equation*}
-    \DD(p)\cong \frac{\NN(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)},
+    \grp(\gf(X,x),G) \leftrightarrow \left\{G \text{-cubiertas de } X \right\}/\text{isomorfismo}.
   \end{equation*}
-  donde $\NN(p_*\gf(\XX,\xx))$ es el normalizador de $p_*\gf(\XX,\xx)$.
 \end{prop}
-\begin{obs}
-  Recordemos que, dado un grupo $G$, el normalizador de un subgrupo $H<G$ es 
-  \begin{equation*}
-    \NN(H)=\left\{ g\in G| g^{-1}Hg=H \right\},
-  \end{equation*}
-  o, equivalentemente el mayor subgrupo $K<G$ tal que $H\lhd K$.
-\end{obs}
+
 \begin{proof}
-  Fijado $\xx\in \XX$, $p_*\gf(\XX,\xx)<\gf(X,x)$, con $x=p(\xx)$. Vamos a construir ahora un homomorfismo
+  Como ya vimos en la proposición \ref{cubhom}, la existencia de una $G$-cubierta $p:\XX\rightarrow X$ induce un homomorfismo 
   \begin{equation*}
-    \theta:\NN(p_{*}\gf(\XX,\xx))\rightarrow \DD(p).
+    \psi:\gf(X=\XX/G,x=p(\xx))\rightarrow G.
   \end{equation*}
-  Sea $[\alpha]\in \NN(p_*\gf(\XX,\xx))<\gf(X,x)$. Levantamos $\alpha$ con origen en $\xx$ a un camino $\tilde{\alpha}_{\xx}$ y llamamos $\xx'=\tilde{\alpha}_{\xx}(1)$. Sabemos que $\xx',\xx \in F_x$, luego podemos considerar el automorfismo $\theta([\alpha])=\theta_{[\alpha]}$ que transforma $\xx$ en $\xx'$.
-
-  Esta aplicación $\theta_{[\alpha]}$ existe por la proposición \ref{morfcub}, puesto que $(\tilde{\alpha}_{\xx})_{\#}(\gf(\XX,\xx))=\gf(\XX,\xx')$ y 
+  Veamos ahora que un homomorfismo $\psi:\gf(X,x)\rightarrow G$ induce una $G$-cubierta de $X$. Basta tomar $H=\ker\psi \lhd \gf(X,x)$. Por la proposición \ref{cubsubg}, existe una cubierta $(X_H,p)$ de $X$ tal que $p_*(\gf(X_H,\xx))=H$ para un cierto $\xx \in X_H$. Además, como $H\lhd \gf(X,x)$, $X_H$ es una cubierta regular de $X$, luego
   \begin{equation*}
-    p_*\gf(\XX,\xx')=[\alpha]^{-1}(p_*\gf(\XX,\xx))[\alpha]=p_*\gf(\XX,\xx)
+    \frac{\gf(X,x)}{p_*\gf(X,x)}\cong \DD(p) \cong G,
   \end{equation*}
-  ya que $[\alpha]\in \NN(p_*\gf(\XX,\xx))$. Recordemos que, si $\gamma$ es un camino, $\gamma_\#$ es el isomorfismo visto en el teorema \ref{isocamino}.
+  donde hemos usado las proposiciones \ref{reguni} y \ref{deckg}. Por tanto, $(X_H,p)$ es $G$-cubierta de $X$.
 
-  Claramente, como $\theta$ se comporta adecuadamente con la concatenación de caminos, es un homomorfismo de grupos. Además, $\theta$ es sobreyectiva ya que, dado $f\in \DD(p)$ con $\xx'=f(\xx)\in F_x$, podemos tomar el camino $\beta$ que une $\xx$ y $\xx'$. Basta ver que el lazo $\alpha=p\circ \beta$ cumple que $[\alpha]\in \NN(p_*\gf(\XX,\xx))$. En efecto,
-  \begin{equation*}
-    [\alpha]^{-1}(p_*\gf(\XX,\xx))[\alpha]=p_*[\beta_{\#}(\gf(\XX,\xx))]=p_*\gf(\XX,\xx')=p_*\gf(\XX,\xx)
-  \end{equation*}
-  por ser $f\in \DD(p)$ con $\xx'=f(\xx)$.
-
-  Por último, si $[\alpha]\in \NN(p_*\gf(\XX,\xx))$ entonces $\theta_{[\alpha]}=\id_{\XX}$, es decir, $\tilde{\alpha}_{\xx}(1)=\xx$, o, lo que es lo mismo, $\tilde{\alpha}_{\xx}$ es un lazo en $\XX$ (con punto base $\xx$). Por tanto, $[\tilde{\alpha}_{\xx}]\in \gf(\XX,\xx)$, luego $[\alpha]\in p_*\gf(\XX,\xx)$. En resumen $\ker\theta=p_*\gf(\XX,\xx)$. 
-
-  Por el teorema de isomorfía,
-  \begin{equation*}
-    \DD(p)=\im(\theta)\cong \frac{\NN(p_*\gf(\XX,\xx))}{\ker\theta}=\frac{\NN(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)}.
-  \end{equation*}
+  Además, para el homomorfismo de la proposición \ref{cubhom} ya vimos que $q_*(\gf(X,x))=\ker \psi$, de forma que cualquier otra cubierta que pudiera ser inducida por este homomorfismo sería isomorfa a la ya dada, luego la correspondencia es unívoca.
 \end{proof}
 
-\begin{defn}
-  Una cubierta $(\XX,p)$ de un espacio topológico $X$ se dice \emph{regular} si $p_*\gf(\XX,\xx)\lhd \gf(X,x)$ y se dice \emph{universal} si $\XX$ es simplemente conexo.  
-\end{defn}
-
-\begin{prop}
-  Sea $X$ un espacio topológico. Si $(\XX,p)$ es una cubierta regular de $X$, entonces $\DD(p)\cong \gf(X,x)/p_*\gf(X,x)$. Si $(\XX,p)$ es una cubierta universal de $X$, $\DD(p)\cong \gf(X,x)$.
-\end{prop}
-
-\section{Cubierta universal}
-\begin{defn}
-  Una cubierta $(\XX,p)$ de un espacio topológico $X$ se dice \emph{universal} si $\XX$ es simplemente conexo, es decir, si $\XX$ es conexo por caminos y $\gf(\XX)\cong\{e\}$.
-\end{defn}
-
-\begin{obs}
-  La cubierta universal es única salvo isomorfismo. En efecto, si $(\XX_1,p_1)$ y $(\XX_2,p_2)$ son cubiertas universales, dados $x_1\in \XX_1$ y $x_2 \in \XX_2$, como $\XX_1$ y $\XX_2$ son simplemente conexos, $\{e\}=p_{1,*}(\gf(\XX_1,x_1))=p_{2,*}(\gf(\XX_2,x_2))$, luego por la proposición \ref{morfcub} existe una equivalencia de cubiertas entre $p_1$ y $p_2$.
-\end{obs}
-
-Cabe preguntarse ahora bajo qué condiciones existirá una cubierta universal de un espacio topológico $X$. Supongamos que $(\XX,p)$ es cubierta universal de $X$ con $\mathcal{U}$ familia de abiertos elementales. Sea $U\in \mathcal{U}$ y $\tilde{U}$ una hoja de $U$.Dado un lazo $\alpha:I\rightarrow U$, podemos elevarlo a un lazo $\tilde{\alpha}$ en $U$. Como $\XX$ es simplemente conexo, el lazo $\tilde{\alpha}$ es homotópico al lazo $\cc_{\xx}$, para algún $\xx\in \XX$. Ahora, aplicando la proyección a la homotopía, el lazo $\alpha=p\circ \tilde{\alpha}$ debe ser homotópico a $\cc_{x}$, con $x=p(\xx)$.
-
-Por tanto, una condición necesaria para que exista una cubierta universal de $X$ es que para todo $x\in X$ exista un abierto elemental $U$ tal que todo lazo en $U$ es homotópico a un lazo constante (\emph{nulhomótopo}) en $X$. Claramente, si existe un abierto que cumpla esa propiedad, entonces hay una base de entornos que la cumple. Esto motiva entonces la siguiente definición:
-
-\begin{defn}
-  Un espacio topológico $X$ se dice \emph{localmente semisimplemente conexo} si en cada $x\in X$ existe una base de entornos de conexos por caminos y tales que todo lazo en uno de ellos es nulhomótopo en $X$.
-\end{defn}
-
-\begin{obs}
-  Todo espacio localmente simplemente conexo (que en cada punto haya una base de entornos simplemente conexos) es localmente semisimplemente conexo. En particular, toda variedad es localmente semisimplemente conexa.
-\end{obs}
-
-\begin{ejemplo}
-  El \emph{pendiente hawaiano}, dado por $X=\bigcup_{n\in \NN}C_n$, con $C_n=\left\{ (x,y)\in \RR^2 | (x-1/n)^2+y^2=1/n^2 \right\}$ no es localmente semisimplemente conexo. En efecto, todos los entornos del origen contienen circunferencias con lazos que no son nulhomótopos.
-
-  Si consideramos ahora el \emph{cono de $X$}, $CX=(X\times I)/(X\times\left\{ 0 \right\})$, es localmente semisimplemente conexo pero no es localmente simplemente conexo.
-\end{ejemplo}
-
-Veamos que además de ser condición necesaria es suficiente, es decir, que si un espacio localmente semisimplemente conexo, la existencia de cubierta universal está garantizada.
-
-\begin{thm}
-  Un espacio topológico $X$ admite una cubierta universal si y sólo si $X$ es conexo por caminos y localmente semisimplemente conexo.
+\chapter{Teorema de Seifert-Van Kampen}
+\section{Teorema de Seifert-Van Kampen}
+\begin{thm}[Teorema de Seifert-Van Kampen]
+ Sea $X$ un espacio topológico conexo por caminos, localmente conexo por caminos y localmente semisimplemente conexo. Sean $U,V\subset X$ abiertos con $X=U\cup V$ tales que $U$, $V$ y $U\cup V$ son conexos por caminos, localmente conexos por caminos y localmente semisimplemente conexos. Sea $x\in U\cap V$. Consideremos entonces el siguiente diagrama de inclusiones
+ \begin{center}
+   \begin{tikzcd}
+     & U \arrow[hook]{dr}{j_1} &     \\ 
+     U\cap V \arrow[hook]{ur}{i_1} \arrow[hook]{dr}{i_2} & & X. \\
+     & V \arrow[hook]{ur}{j_2}& 
+   \end{tikzcd}
+ \end{center}
+ Entonces el diagrama inducido
+ \begin{center}
+   \begin{tikzcd}
+     & \gf(U,x) \arrow{dr}{j_{1,*}} &     \\ 
+     \gf(U\cap V,x) \arrow{ur}{i_{1,*}} \arrow{dr}{i_{2,*}} & & \gf(X,x) \\
+     & \gf(V,x) \arrow{ur}{j_{2,*}}& 
+   \end{tikzcd}
+ \end{center}
+ es un pushout. En particular, $$\gf(X,x)\cong \gf(U,x)*_{\gf(U\cap V,x)}\gf(V,x)=\frac{\gf(U,x)*\gf(V,x)}{\langle \langle i_1(a)(i_2(a))^{-1}|a\in \gf(U\cap V,x)\rangle \rangle}.$$
 \end{thm}
-
 \begin{proof}
-  Se trata de construir la cubierta $(X,p)$ y ver que es cubierta universal. 
+  Por la funtorialidad del grupo fundamental el diagrama conmuta. Para ver que es un pushout entonces tenemos que probar que, si existe otro grupo $G$ y dos homomorfismos $h_1:\gf(U,x)\rightarrow G$, $h_2:\gf(V,x)\rightarrow G$ tales que el diagrama
+ \begin{center}
+   \begin{tikzcd}
+     & \gf(U,x) \arrow{dr}{h_1} &     \\ 
+     \gf(U\cap V,x) \arrow{ur}{i_{1,*}} \arrow{dr}{i_{2,*}} & & G \\
+     & \gf(V,x) \arrow{ur}{h_2}& 
+   \end{tikzcd}
+ \end{center}
+ conmuta, entonces existe un único homomorfismo $h:\gf(X,x)\rightarrow G$ tal que el diagrama
+ \begin{center}
+   \begin{tikzcd}
+     & \gf(U,x) \arrow{dr}{j_{1,*}}\arrow[bend left]{drr}{h_1} &     \\ 
+     \gf(U\cap V,x) \arrow{ur}{i_{1,*}} \arrow{dr}{i_{2,*}} & & \gf(X,x)\arrow[dashed]{r}{\exists ! h} & G \\
+     & \gf(V,x) \arrow{ur}{j_{2,*}}\arrow[bend right]{urr}{h_2}& 
+   \end{tikzcd}
+ \end{center}
+ conmuta.
 
-  \textbf{Construir la cubierta}. Fijado $x\in X$, definimos $\XX$ como las clases de caminos en $X$ con origen $x$ por la relación de homotopía con extremos fijos y la proyección
-  \begin{align*}
-    p :\XX&\longrightarrow X\\ 
-    [\alpha] &\longmapsto \alpha(1) .
-    \end{align*}
+ Ahora, si consideramos los homomorfismos $h_1$ y $h_2$, podemos asociarles las $G$-cubiertas $p_1:Y_1\rightarrow U$ y $p_2:Y_2\rightarrow V$, de acuerdo con la proposición \ref{homgcub}. Obtenemos ahora dos cubiertas de $U\cap V$, $p_1|=p_1|_{p_1^{-1}(U\cap V)}$ y $p_2|=p_2|_{p_2^{-1}(U\cap V)}$. Ahora, estas cubiertas van asociadas a los homomorfismos $h_1\circ i_{1,*}$ y $h_2\circ i_{2,*}$, respectivamente, pero, como estos homomorfismos son iguales, las cubiertas son isomorfas. Como $U\cap V$ es conexo, si $y_1, y_2$ son tales que $p_1(y_1)=p_2(y_2)=x$, existe un único homeomorfismo $\theta$, con $\theta(y_1)=y_2$ y tal que el diagrama
+ \begin{center}
+   \begin{tikzcd}
+     p_1^{-1}(U\cap V) \arrow{dr}[anchor=north]{p_1|} \arrow{rr}{\theta} & & p_2^{-1}(U\cap V) \arrow{dl}{p_2|}   \\ 
+    & U\cap V &  
+   \end{tikzcd}
+ \end{center}
+ conmuta.
 
-    \textbf{Dar la topología}. Si $\mathcal{U}$ es una familia de abiertos de $X$ conexos por caminos y tales que todo lazo en uno de ellos es nulhomótopo en $X$. Dado $U\in \mathcal{U}$, llamamos
-    \begin{equation*}
-      U_{[\gamma]}=\left\{ [\gamma*\tau] \in X |\gamma \text{ es un camino en } X \text{ con } \gamma(1)\in U, \tau(I) \subset U \right\}.
-    \end{equation*}
-    Podemos considerar entonces la familia $\left\{ U_{[\gamma]}|U\subset \mathcal{U}, [\gamma] \in \XX \right\}$ y comprobar que genera una topología en $\XX$. En efecto, tenemos que ver que se verifica que
-\begin{enumerate}
-  \item $\bigcup_{[\gamma], U}U_{[\gamma]}=\XX$ y 
-  \item si $[\gamma'']\in U_{[\gamma]}\cap V_{[\gamma']}$ existe $W\in \mathcal{U}$ tal que $W_{[\gamma'']}\subset U_{[\gamma]}\cap V_{[\gamma']}$.
-\end{enumerate}
-
-    Que se cumple la primera propiedad es inmediato. Para la segunda, dado $[\gamma'']\in U_{[\gamma]}$, basta probar que $U_{[\gamma'']}=U_{[\gamma]}$, ya que en tal caso basta tomar $W_{[\gamma'']}$ para algún $W\in \mathcal{U}$ tal que $W\subset U\cap V$. En efecto, si $\gamma''$ es homotópico a $\gamma*\tau$ con $\tau$ camino contenido en $U$, entonces, como $X$ es localmente semisimplemente conexo, $\gamma''*\cev{\tau}$ es homotópico a $\gamma$. Ahora, dado $\beta\in U_{[\gamma]}$, $\beta\sim \gamma*\tau'$ con $\tau'$ camino contenido en $U$. Pero entonces $\beta \sim \gamma''*\cev{\tau}*\tau'$, luego $\beta \in U_{[\gamma'']}$.
-    
-    Adicionalmente, hemos probado que, si $[\alpha]\neq[\alpha']$, entonces $U_{[\alpha]}\cap U_{[\alpha']}=\varnothing$. En efecto, en caso contrario, si $[\gamma]\in U_{[\alpha]}\cap U_{[\alpha']}$, $U_{[\alpha]}=U_{[\alpha']}=U_{[\gamma]}$.
-
-    \textbf{Continuidad}. Ahora tenemos que ver que $p$ es continua en un punto $[\gamma]\in\XX$ cualquiera. Sea $U\in \mathcal{U}$ tal que $\gamma(1)\in U$. Entonces
-    \begin{equation*}
-      p^{-1}(U)=\bigcup_{\alpha, V:\alpha(1)\in V} V_{[\alpha]}.
-    \end{equation*}
-    Por tanto, $p$ es continua.
-
-    \textbf{Homeomorfismo en las hojas}. Probemos ahora que $p|_{U_{[\alpha]}}:U_{[\alpha}x\rightarrow U$ es un homeomorfismo. Inmediatamente es sobreyectiva y es inyectiva porque si $p[\gamma]=p[\beta]$ entonces $\gamma(1)=\beta(1)$ y, como $X$ es localmente semisimplemente conexo $\gamma\sim \beta$. Ahora, si $V_{[\alpha]}\subset U_{[\alpha]}$ es abierto de $U_{[\alpha]}$, entonces $p|_{U_{[\alpha]}}(V_{[\alpha]})=V$ es abierto de $U$, luego $p$ es abierta.
-    
-    Con todo esto, hemos probado que $p$ es un homeomorfismo en las hojas y, junto con lo anterior, que $(\XX,p)$ es cubierta de $X$. Falta ver que es cubierta universal.
-    
-    \textbf{Conexo por caminos}. Dado $[\gamma]\in \XX$ basta considerar la función
-    \begin{align*}
-      I&\longrightarrow \XX\\ 
-      t &\longmapsto [\gamma_t], 
-      \end{align*}
-    con $\gamma_t(s)=\gamma(st)$ para $s\in I$. Claramente, $[\gamma_0]=[\cc_x]$ y $[\gamma_1]=[\gamma]$. De esta forma podemos conectar por un camino cualquier punto de $\XX$ con la clase del camino constante $[\cc_x]$.
-
-    \textbf{Simplemente conexo}. Sea un lazo $\gamma$ en $X$. La aplicación $[\gamma_t]$ es una elevación de $\gamma$ con $[\gamma_1]=[\gamma]$, ya que $p([\gamma_t])=\gamma_t(1)=\gamma(t)$. Ahora, si $f$ es un lazo en $\XX$ con punto base $[\cc_x]$, $f=[\gamma_t]$ con $\gamma=p\circ f$, por la unicidad de elevación del lazo con punto base. Entonces $[\gamma_1]=f(1)=[\cc_x]$, de modo que $\gamma$ es nulhomótopo. Por tanto, $\gf(\XX,\xx)\cong p_*\gf(\XX,\xx)=\left\{ e \right\}$, luego $\XX$ es simplemente conexo.  
-\end{proof}
+Si considero ahora las inclusiones $\omega_i:p_i^{-1}(U\cap V) \hookrightarrow Y_i$ y llamo $q_i=j_i\circ p_i$ y $\psi=\omega_2\circ \theta$, obtengo el diagrama conmutativo
+ \begin{center}
+   \begin{tikzcd}
+     & Y_1 \arrow{dr}{q_1} &     \\ 
+     p_1^{-1}(U\cap V) \arrow[hook]{ur}{\omega_1} \arrow{dr}{\psi} & & X. \\
+     & Y_2 \arrow{ur}{q_2}& 
+   \end{tikzcd}
+ \end{center}
+   Si tomamos el espacio adjunción $Y=Y_1\cup_{\psi}Y_2$, que se obtiene a partir del pushout de $\omega_1$ y $\psi$, entonces existe una única aplicación continua $f:Y\rightarrow X$ para la que el siguiente diagrama conmuta
+ \begin{center}
+   \begin{tikzcd}
+     & Y_1 \arrow[bend left]{drr}{q_1}\arrow{dr}{\nu_1} &     \\ 
+     p_1^{-1}(U\cap V) \arrow[hook]{ur}{\omega_1} \arrow{dr}{\psi} & & Y \arrow{r}{\exists ! f} & X. \\
+     & Y_2 \arrow[bend right]{urr}{q_2}\arrow{ur}{\nu_2}& 
+   \end{tikzcd}
+ \end{center}
+ Como las $(Y_i,q_i)$ son $G$-cubiertas y las $\nu_i$ son identificaciones, $(Y,f)$ es una $G$-cubierta de $X$ (\textit{esto es confuso}). Por tanto, $f$ induce un único homomorfismo $h:\gf(X,x)\rightarrow G$. Que las cubiertas restringidas $p_i|$ sean isomorfas nos da la conmutatividad del diagrama
+ \begin{center}
+   \begin{tikzcd}
+     & \gf(U,x) \arrow{dr}{j_{1,*}}\arrow[bend left]{drr}{h_1} &     \\ 
+     \gf(U\cap V,x) \arrow{ur}{i_{1,*}} \arrow{dr}{i_{2,*}} & & \gf(X,x)\arrow{r}{h} & G. \\
+     & \gf(V,x) \arrow{ur}{j_{2,*}}\arrow[bend right]{urr}{h_2}& 
+   \end{tikzcd}
+ \end{center}
+ La unicidad de $h$ viene garantizada por la unicidad en todas las construcciones consideradas.
+ \end{proof}
 \end{document}
