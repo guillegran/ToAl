@@ -42,6 +42,7 @@
 \def\ZZ{\mathbb{Z}}
 \def\RR{\mathbb{R}}
 \def\TT{\mathcal{T}}
+\def\NN{\mathbb{N}}
 \def\id{\mathbf{1}}
 \def\cc{\mathbf{c}}
 \def\gf{\pi_1}
@@ -55,9 +56,12 @@
   \def\im{\mathrm{im}}
   \def\aut{\mathrm{Aut}}
   \def\DD{\mathrm{Deck}}
-  \def\NN{\mathrm{N}}
+  \def\NR{\mathrm{N}}
+  \def\ab{\mathrm{Ab}}
 
 \newcommand\cev[1]{\overset{\leftarrow}{#1}}
+\newcommand\gen[1]{\left\langle #1 \right\rangle}
+\newcommand\ngen[1]{\left\langle\left\langle #1 \right\rangle \right\rangle}
 
 \title{Apuntes de Topología Algebraica}
 \author{Guillermo Gallego Sánchez}
@@ -218,7 +222,7 @@ Es un ejercicio sencillo comprobar que la homotopía relativa induce también un
     es una retracción de deformación de $D^n$ a $S^{n-1}$ ya que $r_0=\id_{D^n}$, $r_1|_{S^{n-1}}=\id_{S^{n-1}}$ y $r_1(x)\in S^{n-1}$ para todo $x \in D^n$.
 \end{ejemplo}
 
-\section{Homotopía de caminos}
+\subsection{Homotopía de caminos}
 \begin{defn}
   Sea $X$ un espacio topológico. Dos caminos $\sigma$ y $\tau$ en $X$ se dicen \emph{homotópicos} si las funciones $\sigma, \tau: I \rightarrow X$ son homótopas relativamente al conjunto $\left\{ 0,1 \right\}$. Esto es, si existe una función continua $F:I\times I \rightarrow X$ tal que $F_0=\sigma$, $F_1=\tau$ y $F_t(0)=\sigma(0)=\tau(0)$, $F_t(1)=\sigma(1)=\tau(1)$, para todo $t \in I$.
 \end{defn}
@@ -408,9 +412,10 @@ Claramente $G_t$ «pega bien» ya que $F_t(0)=x_0=\gamma(0)=\cev{\gamma}(1)$ y $
 
 Por tanto, cuando nuestro espacio topológico $X$ sea conexo por caminos, podremos hablar con propiedad del \emph{grupo fundamental de $X$}, puesto que será «el mismo» en todos los puntos. En el caso en que este grupo sea el trivial, se dice que $X$ es \emph{simplemente conexo}.
 
-\section{Categorías y funtores}
+\section{Algunos conceptos de Teoría de Categorías}
 En esta sección introducimos el formalismo de la Teoría de Categorías, que ofrece un marco muy general en el que estudiar ciertas propiedades de los objetos matemáticos. En Topología Algebraica, muchas de las ideas categóricas aparecen de forma natural y su estudio puede ayudar a entender mejor qué es lo que está pasando detrás a parte de que, una vez se coge cierta habilidad, permiten hacer ciertas demostraciones de forma más cómoda y elegante.
 
+\subsection{Definición de categoría}
 \begin{defn}
   Una \emph{categoría} $\cat$ consta de
   \begin{enumerate}
@@ -454,6 +459,8 @@ X    \arrow{rr}{f}\arrow{rrdd}[anchor=north,rotate=-30]{g\circ f} && Y\arrow{dd}
   \end{enumerate}
 \end{defn}
 En general, para una categoría arbitraria $\cat$, $\obj(\cat)$ puede ser cualquier colección de objetos. En el caso especial en que $\obj(\cat)$ sea un conjunto, se dice que $\cat$ es una categoría \emph{pequeña}. De la misma manera, dados dos objetos $X,Y$, $\cat(X,Y)$ puede ser una colección arbitraria de flechas. En el caso en que $\cat(X,Y)$ sea un conjunto para cualesquiera dos objetos $X,Y$, decimos que $\cat$ es una categoría \emph{localmente pequeña}. La noción de categoría localmente pequeña nos permite hablar de categorías en un contexto más general en el que $\obj(\cat)$ no es un conjunto pero es una \emph{clase propia}, esto es, una colección de conjuntos que a su vez no es un conjunto, por ejemplo la clase universal, $\mathbf{V}$, que contiene a todos los conjuntos o la clase $\mathbf{Cn}$ formada por los números cardinales. Todas las categorías con las que vamos a trabajar durante el curso serán pequeñas o localmente pequeñas. 
+
+\subsection{Tipos de morfismos}
 \begin{defn}
   Sean $\cat$ una categoría, $X,Y$ objetos de $\cat$ y un morfismo $f:X\rightarrow Y$. Decimos que 
   \begin{itemize}
@@ -515,6 +522,8 @@ Podría uno ahora detenerse a estudiar las relaciones entre epimorfismos, monomo
 \begin{defn}
   Sea $\cat$ una categoría. Dos objetos $X, Y$ de $\cat$ se dicen \emph{isomorfos}, y se denota $X\cong Y$, si existe un isomorfismo $f:X\rightarrow Y$.
 \end{defn}
+
+\subsection{Ejemplos de categorías}
 
 Podemos considerar ahora algunos ejemplos de categorías:
 
@@ -583,6 +592,8 @@ Podemos considerar ahora algunos ejemplos de categorías:
   De forma más general, podemos considerar una categoría en la que todos los morfismos son isomorfismos. Estas construcciones se denominan \emph{grupoides}.
 \end{ejemplo}
 
+\subsection{Problemas de clasificación}
+
 La teoría de categorías nos permite hablar de un modo general de lo que significa un \emph{problema de clasificación}.
 
 \begin{defn}
@@ -601,6 +612,8 @@ Veamos como algunos de los ejemplos anteriores admiten clasificaciones:
     \mathcal{L}_{\mathbf{Vect}_k}=\left\lbrace k^{\kappa} | \kappa \in \mathbf{Cn} \right\rbrace.
   \end{equation*}
 \end{proof}
+
+\subsection{Funtores}
 
 Siguiendo un poco con el formalismo categórico, podemos definir la noción de funtor, que también nos será de gran utilidad durante el curso.
 
@@ -648,8 +661,6 @@ Una propiedad interesante de los funtores es que preservan los isomorfismos. Est
 \end{proof}
 
 Las limitaciones de tamaño que introdujimos sobre las categorías nos permiten considerar categorías de categorías, por ejemplo, la categoría $\mathbf{Cat}$, cuyos objetos son todas las categorías pequeñas y sus morfismos los funtores entre ellas o, análogamente $\mathbf{Cat}_*$ para las categorías localmente pequeñas. Estas consideraciones evitan las paradojas de tipo Russell, ya que, por ejemplo $\mathbf{Cat}$ y $\mathbf{Cat}_*$ no son a su vez una categoría pequeña o localmente pequeña, respectivamente.
-
-Otra forma de evitar estas paradojas es considerando una construcción inductiva, de forma que llamaríamos 0-categoría a un conjunto (entendido como una colección de objetos sin ninguna estructura), 1-categoría a una categoría formada por conjuntos cuyos morfismos sean aplicaciones entre ellos, 2-categoría a una categoría de 1-categorías con funtores entre ellas, etc. De esta manera, uno puede considerar $n$-categorías, con $n\in \mathbb{N}$. Generalizando el procedimiento inductivo podríamos definir la noción de $\omega$-categoría o incluso entes de mayor rango. Estas construcciones dan lugar a lo que se conoce como teoría de categorías \emph{superior}, más conocida por su nombre en inglés «\emph{higher category theory}».
 
 \section{Funtorialidad del grupo fundamental}
 
@@ -1028,41 +1039,41 @@ Veamos que además de ser condición necesaria es suficiente, es decir, que si u
 \begin{prop}
   Sea $(\XX,p)$ una cubierta conexa y localmente conexa por caminos de un espacio topológico $X$. Dado un punto $\xx\in \XX$, entonces
   \begin{equation*}
-    \DD(p)\cong \frac{\NN(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)},
+    \DD(p)\cong \frac{\NR(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)},
   \end{equation*}
-  donde $\NN(p_*\gf(\XX,\xx))$ es el normalizador de $p_*\gf(\XX,\xx)$.
+  donde $\NR(p_*\gf(\XX,\xx))$ es el normalizador de $p_*\gf(\XX,\xx)$.
 \end{prop}
 \begin{obs}
   Recordemos que, dado un grupo $G$, el normalizador de un subgrupo $H<G$ es 
   \begin{equation*}
-    \NN(H)=\left\{ g\in G| g^{-1}Hg=H \right\},
+    \NR(H)=\left\{ g\in G| g^{-1}Hg=H \right\},
   \end{equation*}
   o, equivalentemente el mayor subgrupo $K<G$ tal que $H\lhd K$.
 \end{obs}
 \begin{proof}
   Fijado $\xx\in \XX$, $p_*\gf(\XX,\xx)<\gf(X,x)$, con $x=p(\xx)$. Vamos a construir ahora un homomorfismo
   \begin{equation*}
-    \theta:\NN(p_{*}\gf(\XX,\xx))\rightarrow \DD(p).
+    \theta:\NR(p_{*}\gf(\XX,\xx))\rightarrow \DD(p).
   \end{equation*}
-  Sea $[\alpha]\in \NN(p_*\gf(\XX,\xx))<\gf(X,x)$. Levantamos $\alpha$ con origen en $\xx$ a un camino $\tilde{\alpha}_{\xx}$ y llamamos $\xx'=\tilde{\alpha}_{\xx}(1)$. Sabemos que $\xx',\xx \in F_x$, luego podemos considerar el automorfismo $\theta([\alpha])=\theta_{[\alpha]}$ que transforma $\xx$ en $\xx'$.
+  Sea $[\alpha]\in \NR(p_*\gf(\XX,\xx))<\gf(X,x)$. Levantamos $\alpha$ con origen en $\xx$ a un camino $\tilde{\alpha}_{\xx}$ y llamamos $\xx'=\tilde{\alpha}_{\xx}(1)$. Sabemos que $\xx',\xx \in F_x$, luego podemos considerar el automorfismo $\theta([\alpha])=\theta_{[\alpha]}$ que transforma $\xx$ en $\xx'$.
 
   Esta aplicación $\theta_{[\alpha]}$ existe por la proposición \ref{morfcub}, puesto que $(\tilde{\alpha}_{\xx})_{\#}(\gf(\XX,\xx))=\gf(\XX,\xx')$ y 
   \begin{equation*}
     p_*\gf(\XX,\xx')=[\alpha]^{-1}(p_*\gf(\XX,\xx))[\alpha]=p_*\gf(\XX,\xx)
   \end{equation*}
-  ya que $[\alpha]\in \NN(p_*\gf(\XX,\xx))$. Recordemos que, si $\gamma$ es un camino, $\gamma_\#$ es el isomorfismo visto en el teorema \ref{isocamino}.
+  ya que $[\alpha]\in \NR(p_*\gf(\XX,\xx))$. Recordemos que, si $\gamma$ es un camino, $\gamma_\#$ es el isomorfismo visto en el teorema \ref{isocamino}.
 
-  Claramente, como $\theta$ se comporta adecuadamente con la concatenación de caminos, es un homomorfismo de grupos. Además, $\theta$ es sobreyectiva ya que, dado $f\in \DD(p)$ con $\xx'=f(\xx)\in F_x$, podemos tomar el camino $\beta$ que une $\xx$ y $\xx'$. Basta ver que el lazo $\alpha=p\circ \beta$ cumple que $[\alpha]\in \NN(p_*\gf(\XX,\xx))$. En efecto,
+  Claramente, como $\theta$ se comporta adecuadamente con la concatenación de caminos, es un homomorfismo de grupos. Además, $\theta$ es sobreyectiva ya que, dado $f\in \DD(p)$ con $\xx'=f(\xx)\in F_x$, podemos tomar el camino $\beta$ que une $\xx$ y $\xx'$. Basta ver que el lazo $\alpha=p\circ \beta$ cumple que $[\alpha]\in \NR(p_*\gf(\XX,\xx))$. En efecto,
   \begin{equation*}
     [\alpha]^{-1}(p_*\gf(\XX,\xx))[\alpha]=p_*[\beta_{\#}(\gf(\XX,\xx))]=p_*\gf(\XX,\xx')=p_*\gf(\XX,\xx)
   \end{equation*}
   por ser $f\in \DD(p)$ con $\xx'=f(\xx)$.
 
-  Por último, si $[\alpha]\in \NN(p_*\gf(\XX,\xx))$ entonces $\theta_{[\alpha]}=\id_{\XX}$, es decir, $\tilde{\alpha}_{\xx}(1)=\xx$, o, lo que es lo mismo, $\tilde{\alpha}_{\xx}$ es un lazo en $\XX$ (con punto base $\xx$). Por tanto, $[\tilde{\alpha}_{\xx}]\in \gf(\XX,\xx)$, luego $[\alpha]\in p_*\gf(\XX,\xx)$. En resumen $\ker\theta=p_*\gf(\XX,\xx)$. 
+  Por último, si $[\alpha]\in \NR(p_*\gf(\XX,\xx))$ entonces $\theta_{[\alpha]}=\id_{\XX}$, es decir, $\tilde{\alpha}_{\xx}(1)=\xx$, o, lo que es lo mismo, $\tilde{\alpha}_{\xx}$ es un lazo en $\XX$ (con punto base $\xx$). Por tanto, $[\tilde{\alpha}_{\xx}]\in \gf(\XX,\xx)$, luego $[\alpha]\in p_*\gf(\XX,\xx)$. En resumen $\ker\theta=p_*\gf(\XX,\xx)$. 
 
   Por el teorema de isomorfía,
   \begin{equation*}
-    \DD(p)=\im(\theta)\cong \frac{\NN(p_*\gf(\XX,\xx))}{\ker\theta}=\frac{\NN(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)}.
+    \DD(p)=\im(\theta)\cong \frac{\NR(p_*\gf(\XX,\xx))}{\ker\theta}=\frac{\NR(p_*\gf(\XX,\xx))}{p_*\gf(\XX,\xx)}.
   \end{equation*}
 \end{proof}
 
@@ -1218,6 +1229,359 @@ Veamos que además de ser condición necesaria es suficiente, es decir, que si u
 \end{proof}
 
 \chapter{Teorema de Seifert-Van Kampen}
+\section{Algunos conceptos de Teoría de Grupos}
+\subsection{Grupo libre generado por un conjunto}
+Dado un conjunto $A$, podemos considerar el conjunto $\mathcal{P}_A$ de \emph{palabras finitas sobre $A$}, esto es
+\begin{equation*}
+  \bigcup_{n\in \NN} \left\{ f:n\rightarrow A \right\}.
+\end{equation*}
+Nótese que aquí estamos pensando en los números naturales como conjuntos, de forma que $0=\varnothing$, $1=\left\{ 0 \right\}$, $2=\left\{ 0,1 \right\}$ y, en general, $n+1=n\cup \left\{ n \right\}$.
+Así, cualquier palabra sobre $A$ tiene la forma $a_1\dots a_n$, con $a_1,\dots,a_n \in A$, $n\in N$. Observemos que los $a_1,\dots,a_n$ pueden estar repetidos. Llamamos palabra vacía a la aplicación vacía $\varnothing:0\rightarrow A$. 
+
+Dadas dos palabras $p_1,p_2 \in \mathcal{P}_A$, con $p_1:n\rightarrow A$, $p_2:m\rightarrow A$, definimos la \emph{concatenación} de $p_1$ y $p_2$ como la palabra 
+\begin{align*}
+  p_1p_2 :n+m &\longrightarrow A\\ 
+    i<n &\longmapsto p_1(i) \\
+    i\geq n & \longmapsto p_2(i).
+  \end{align*}
+  Si, fijado $a\in A$, consideramos la aplicación constante 
+  \begin{align*}
+    n&\longrightarrow A\\ 
+      i &\longmapsto a, 
+    \end{align*}
+    resulta que es igual a la concatenación $n$ veces de la aplicación
+    \begin{align*}
+      a :1&\longrightarrow A\\ 
+        0 &\longmapsto a ,
+      \end{align*}
+      de modo que denotamos esta aplicación constante como $a^n$. Nótese que $a^{n+m}=a^na^m$. En general, podemos agrupar así los términos y ver cualquier palabra $p\in \mathcal{P}_A$ en la forma $p=a_1^{n_1}\dots a_k^{n_k}$, donde $n_1,\dots n_k\in \NN$ y, de nuevo, los $a_1,\dots,a_k$ podrían estar repetidos, pero esta vez $a_i\neq a_{i+1}$, ya que podríamos agruparlos en un solo término de acuerdo con la regla anterior.
+
+      Ahora nos interesa extender la idea de «palabra» para poder considerar también combinaciones con exponentes negativos. Para ello consideramos otra copia $\bar{\mathcal{P}}_A$ de $\mathcal{P}_A$ y cada una de sus palabras las denotamos por $p^{-1}$. Igualmente definimos la misma concatenación $p_1^{-1}p_2^{-1}=(p_1p_2)^{-1}$. Nos ocupamos ahora del conjunto $\mathcal{P}_A \cup \bar{\mathcal{P}}_A$. Dadas dos palabras $p_1:n\rightarrow A$ y $p_2^{-1}:m\rightarrow A$, pudeo análogamente definir la concatenación $p_1p_2^{-1}$. De esta forma, una «palabra generalizada» en $\mathcal{P}_A\cup \bar{\mathcal{P}}_A$ tendrá el aspecto $p=a_{1}^{n_1}\dots a_k^{n_k}$, de nuevo, con $a_1,\dots,a_k$ tal vez repetidos (además, en este caso $a_i$ puede ser igual a $a_{i+1}$) y esta vez los exponentes pueden ser negativos, $n_1,\dots,n_k \in \ZZ$.
+      
+      Finalmente, queremos que sea posible la «cancelación de términos», de forma que $a^na^{-m}=a^{n-m}$ y $a^na^{-n}=\varnothing$. Para ello, definimos la relación de equivalencia $\sim$ tal que sea la mínima relación de equivalencia que cumpla lo siguiente:
+      \begin{enumerate}
+	\item Para $n,m\in \ZZ$, $a^na^m\sim a^{n+m}$,
+	\item $a^0\sim \varnothing \sim \bar{\varnothing}$ y,
+	\item si $p\sim p'$ y $p_1,p_2\in \mathcal{P}_A\cup\bar{\mathcal{P}}_A$, entonces $p_1pp_2\sim p_1p'p_2$.
+      \end{enumerate}
+      Sea $F_A=(\mathcal{P}_A\cup\bar{\mathcal{P}}_A)/\sim$ el conjunto cociente. Podemos dotar a $F_A$ de una estructura de grupo mediante la operación
+      \begin{align*}
+	 \cdot:F_A\times F_A&\longrightarrow F_A\\ 
+	 ([p_1],[p_2]) &\longmapsto [p_1p_2]. 
+	\end{align*}
+	El elemento neutro será la palabra vacía $\varnothing$ y el elemento inverso de un elemento $[p_1]$ será simplemente $[p_1]^{-1}=[p_1^{-1}]$. A partir de aquí, relajamos la notación y hacemos $p=[p]$. Ahora los elementos de $F_A$ si tienen un aspecto más adecuado, una palabra $p\in F_A$ será de la forma $p=a_{1}^{n_1}\dots a_k^{n_k}$, con $n_1,\dots,n_k\in \ZZ$ y $a_i\neq a_{i+1}$.
+
+	\begin{defn}
+	  Dado un conjunto $A$, el grupo $F_A$ se llama \emph{grupo libre generado por $A$}.
+	\end{defn}
+
+	\begin{prop}[Propiedad universal del grupo libre]\label{unilibre}
+  Sean $A$ un conjunto y $G$ un grupo. Para cada función $f:A\rightarrow G$ existe un único homomorfismo $\varphi:F_A\rightarrow G$ tal que el siguiente diagrama conmuta
+  \begin{center}
+    \begin{tikzcd}
+      A      \arrow[hook]{rr}{i}\arrow{rrdd}[anchor=north,rotate=-30]{f} && F_A\arrow[dashed]{dd}[anchor=west]{\exists ! \varphi} \\ 
+       && \\
+       &&G,
+     \end{tikzcd}
+   \end{center}
+     donde $i:A\hookrightarrow F_A$ denota la inclusión natural. \end{prop}
+\begin{proof}
+  Sea una palabra $p=a_1^{n_1}\dots a_k^{n_k}\in F_A$. De la conmutatividad del diagrama tenemos que, para cualquier $a\in A$, $\varphi(a)=f(a)$. Esta propiedad nos define unívocamente un homomorfismo $\varphi$: aquel que cumple $\varphi(p)=f(a_1)^{n_1}\dots f(a_k)^{n_k}$.
+\end{proof}
+\begin{corol}
+La propiedad universal caracteriza a $F_A$, es decir, si existe otro grupo $F'$ y una función inyectiva $i':A\rightarrowtail F'$ tal que para cada función $f:A\rightarrow G$ hay un único homomorfismo $\varphi:F'\rightarrow G$ tal que el diagrama 
+  \begin{center}
+    \begin{tikzcd}
+      A      \arrow[tail]{rr}{i'}\arrow{rrdd}[anchor=north,rotate=-30]{f} && F'\arrow[dashed]{dd}[anchor=west]{\exists ! \varphi} \\ 
+       && \\
+       &&G,
+     \end{tikzcd}
+   \end{center}
+   conmuta, entonces $F'$ es isomorfo a $F_A$.
+ \end{corol}
+ \begin{proof}
+   Basta usar la propiedad universal de $F_A$ y $F'$ para construir el diagrama conmutativo
+  \begin{center}
+    \begin{tikzcd}
+      A      \arrow[tail]{rr}{i'}\arrow[hook]{rrdd}[anchor=north,rotate=-30]{i} && F'\arrow[bend right]{dd}[anchor=west]{\exists ! \varphi} \\ 
+       && \\
+       &&F_A.\arrow[bend right]{uu}[anchor=west]{\exists ! \psi}
+     \end{tikzcd}
+   \end{center}
+   Aplicando la propiedad universal de un grupo al mismo grupo obtenemos los homomorfismos identidad, de forma que el diagrama
+   \begin{center}
+     \begin{tikzcd}
+       F' \arrow{r}{\varphi} \arrow{dr}{\id_{F'}} & F_A \arrow{d}{\psi} \arrow{dr}{\id_{F_A}} &      \\ 
+       & F' \arrow{r}{\varphi} & F_A
+     \end{tikzcd}
+   \end{center}
+   conmuta. Esto nos dice que $\varphi$ es un isomorfismo de grupos.
+ \end{proof}
+
+ \begin{ejemplo} \leavevmode
+   \begin{enumerate}
+     \item El ejemplo más simple es en el que $A=\left\{ a \right\}$ consta de un solo elemento. En tal caso $F_{A}=\left\{ a^n|n\in \ZZ \right\}\cong \ZZ$. 
+
+     \item Si tomamos un conjunto con dos elementos $A=\left\{ a,b \right\}$, el grupo libre $F_{A}$ está compuesto por las palabras de la forma $a^{n_1}b^{m_1}\dots a^{n_k}b^{m_k}$ con $n_1,\dots,n_k,m_1,\dots,m_k\in \ZZ$ no nulos salvo tal vez $n_1$ y $m_k$. Obsérvese que este grupo no es abeliano, $ab\neq ba$, ya que no son la misma palabra.
+   \end{enumerate}
+ \end{ejemplo}
+
+ \subsection{Presentación de un grupo}
+ \begin{defn}
+   Sean $G$ un grupo y $A\subset G$ un subconjunto suyo. Se llama \emph{subgrupo generado por $A$} al menor subgrupo de $G$ que contiene a $A$, esto es
+   \begin{equation*}
+     \gen{A}=\bigcap_{H<G, A\subset H}H.     
+   \end{equation*}
+   Si $G=\gen{A}$, se dice que $A$ es un \emph{conjunto de generadores de $G$}.
+ Se llama \emph{subgrupo normal generado por $A$} al menor subgrupo normal de $G$ que contiene a $A$, esto es
+   \begin{equation*}
+     \ngen{A}=\bigcap_{H\lhd G, A\subset H}H.     
+   \end{equation*}
+ \end{defn}
+ \begin{prop}
+   Sean $G$ un grupo y $A\subset G$ un conjunto de generadores de $G$. Sea $F_A$ el grupo libre generado por $A$. Existe un subconjunto $R\subset F_A$, llamado \emph{conjunto de relaciones de $A$ en $G$} tal que 
+   \begin{equation*}
+     G\cong \gen{A}/\ngen{R}.
+   \end{equation*}
+   El par $(A,R)$ se dice que es una \emph{presentación de $G$} y denotamos $G=\gen{A|R}$.
+ \end{prop}
+ \begin{proof}
+   Sea $\varphi:F_A\rightarrow G$ el homomorfismo dado por la propiedad universal del grupo libre (proposición \ref{unilibre}), de forma que el diagrama
+  \begin{center}
+    \begin{tikzcd}
+      A      \arrow[hook]{rr} \arrow[hook]{rrdd} && F_A\arrow{dd}[anchor=west]{\exists ! \varphi} \\ 
+       && \\
+       &&G
+     \end{tikzcd}
+   \end{center}
+   conmute. Este $\varphi$ es además un epimorfismo, ya que, como $G=\gen{A}$, cada elemento de $G$ puede verse como una palabra («generalizada») con elementos de $A$. Tomamos entonces $R=\ker \varphi$ y, por el teorema de isomorfía, tenemos lo que queríamos probar.
+ \end{proof}
+ \begin{ejemplo} \leavevmode
+   \begin{enumerate}
+     \item Claramente, todo grupo libre $F_A$ tiene como presentación el conjunto que lo genera, $F_A=\gen{A}$.
+
+     \item Podemos escribir los grupos cíclicos finitos en la forma $\ZZ_k=\gen{a|a^k}$. Esto es, consideramos el grupo libre generado por un elemento $F_{\left\{ a \right\}}$ pero imponemos que $a^k=\varnothing$, de forma que cualquier palabra $a^m$ quedará en la forma 
+   \begin{equation*}
+     a^m=a^{rk}a^{m (\mathrm{mod} k)}=a^{m (\mathrm{mod} k)}.
+   \end{equation*}
+
+ \item También podemos construir el grupo $\ZZ\times \ZZ$ tomando el grupo libre generado por dos elementos $F_{ \left\{ a,b \right\}}$ e imponiendo que conmuten, esto es $ab=ba$, de forma que cualquier palabra con $a$ y $b$ se reducirá a una palabra $a^nb^m$. Así, tenemos una presentación $\ZZ \times \ZZ =\gen{a,b|aba^{-1}b^{-1}}$.
+   \end{enumerate}
+ \end{ejemplo}
+
+ \subsection{Abelianizado de un grupo}
+
+ Generalizando la idea del último ejemplo podemos «abelianizar» un grupo, esto es, construir un grupo abeliano a partir de uno que no lo es. 
+ \begin{defn}
+   Sea $G$ un grupo. Dados dos elementos $g,h\in G$, se llama \emph{conmutador de $g$ y $h$} al elemento $[g,h]=ghg^{-1}h^{-1}\in G$. Llamamos \emph{subgrupo conmutador de $G$} al subgrupo $$[G,G]=\gen{\left\{ [g,h]| g,h \in G \right\}}.$$ Llamamos \emph{grupo abelianizado de $G$} al grupo
+   \begin{equation*}
+     \ab(G)=G/[G,G].
+   \end{equation*}
+   (Evidentemente, $\ab(G)$ es abeliano.)
+   
+   Por último, si $A$ es un conjunto, se llama \emph{grupo libre abeliano generado por $A$} al grupo
+   \begin{equation*}
+     \ZZ(A)=\ab(F_A).
+   \end{equation*}
+ \end{defn}
+ 
+ \begin{obs}
+   Si un grupo $G$ tiene una presentación $G=\gen{A|R}$, entonces su abelianizado tiene por presentación $\ab(G)=\gen{A|R'}$, con 
+   \begin{equation*}
+     R'=R\cup \left\{ [a,a'] |a,a' \in A \right\}.
+   \end{equation*}
+   Ahora, $$\ab(G)=F_A/\ngen{R'}=\frac{F_A/\ngen{\left\{ [a,a']|a,a'\in A \right\}}}{\ngen{R}}=\ZZ(A)/\ngen{R}.$$
+
+   Nótese también que, si $A=\left\{ a_1,\dots a_k \right\}$ es finito entonces $\ZZ(A)$ es isomorfo a $\ZZ^k$: a cada palabra $a_1^{n_1}\dots a_k^{n_k}$ le podemos asignar la $n$-tupla $(n_1,\dots,n_k)$.
+ \end{obs}
+
+ \subsection{Producto libre de grupos}
+ A la hora de estudiar los grupos a través de sus presentaciones, comenzamos a ver estos grupos como «conjuntos de palabras» con unas ciertas relaciones entre ellas. Conviene preguntarse qué es lo que pasa si, considerando dos grupos distintos, construimos el conjunto de palabras yuxtapuestas las unas con las otras. 
+
+ La forma más natural de construir este conjunto es si las palabras de los distintos grupos no tienen ninguna relación en común. Sean dos grupos $G_1,G_2$ con presentaciones $G_1=\gen{A_1|R_1}$ y $G_2=\gen{A_2|R_2}$.
+ \begin{defn}
+    Se define el \emph{producto libre de $G_1$ y $G_2$} como el grupo
+   \begin{equation*}
+     G_1*G_2=\gen{A_1\cup A_2|R_1\cup R_2}.
+   \end{equation*}
+ \end{defn}
+
+ \begin{ejemplo}
+   El ejemplo más simple es cuando $F_{A_1}$ y $F_{A_2}$ son grupos libres. En tal caso $F_{A_1}*F_{A_2}$ es simplemente $F_{A_1\cup A_2}$.
+ \end{ejemplo}
+
+ Podemos hacer ahora una construcción un poco más complicada, supongamos que existe un grupo $H$ y dos homomorfismos $\varphi_i:H\rightarrow G_i$, $i=1,2$. Consideramos ahora los elementos $\varphi_i(h)$, con $h\in H$, que se escribirán en los $G_i$ como palabras $p_i^h$, e imponemos la relación $p_1^h=p_2^h$. Así, llamando $R=\left\{ p_1^h(p_2^h)^{-1}|h\in H \right\}$, podemos dar la siguiente definición:
+
+ \begin{defn}
+  Se define el \emph{producto libre de $G_1$ y $G_2$ amalgamado con $H$} como el grupo
+  \begin{equation*}
+    G_1*_H G_2 = \gen{A_1\cup A_2 | R_1\cup R_2\cup R}= \frac{G_1*G_2}{\ngen{\varphi_1(h)(\varphi_2(h))^{-1}|h\in h}}.
+  \end{equation*}
+ \end{defn}
+
+ \section{Pushouts}
+ \begin{defn}
+ Sean $\cat$ una categoría, $X_1,X_2,Y \in \obj(\cat)$, y unos morfismos $\varphi_1:Y\rightarrow X_1$, $\varphi_2:Y \rightarrow X_1$. Definimos el \emph{pushout} de los morfismos $\varphi_1$ y $\varphi_2$ como un objeto $Z\in \obj(\cat)$ y dos morfismos $\psi_1:X_1\rightarrow Z$, $\psi_2:X_2\rightarrow Z$ tales que:
+\begin{enumerate}[label=(\alph*)]
+  \item\label{conmuta} El siguiente diagrama conmuta
+    \begin{center}
+    \begin{tikzcd}
+      & X_1\arrow{dr}{\psi_1} & \\
+      Y \arrow{ur}{\varphi_1} \arrow{dr}{\varphi_2} & & Z \\
+      & X_2 \arrow{ur}{\psi_2} & \\
+    \end{tikzcd}
+  \end{center}
+
+\item\label{inicial}  Si $Z'\in \obj(\cat)$ es otro objeto y $f_i:X_i \rightarrow Z'$ son dos morfismos tales que el diagrama
+    \begin{center}
+    \begin{tikzcd}
+      & X_1\arrow{dr}{f_1} & \\
+      Y \arrow{ur}{\varphi_1} \arrow{dr}{\varphi_2} & & Z' \\
+      & X_2 \arrow{ur}{f_2} & \\
+    \end{tikzcd}
+  \end{center}
+    conmuta, entonces existe un único $f:Z\rightarrow Z'$ tal que el diagrama
+    \begin{center}
+    \begin{tikzcd}
+      & X_1\arrow{dr}{\psi_1} \arrow[bend left]{drr}{f_1} & & \\
+      Y \arrow{ur}{\varphi_1} \arrow{dr}{\varphi_2} & & Z \arrow[dashed]{r}{\exists !f} & Z' \\
+      & X_2\arrow{ur}{\psi_2} \arrow[bend right]{urr}{f_2} & \\
+    \end{tikzcd}
+  \end{center}
+    conmuta.
+\end{enumerate}
+\end{defn}
+
+\begin{obs}
+Podemos ver ahora que el pushout es único salvo isomorfismo: si $(Z, \psi_1, \psi_2)$ y $(Z,\psi_1',\psi_2')$ cumplen \ref{conmuta} y \ref{inicial} podemos considerar el siguiente diagrama conmutativo
+    \begin{center}
+    \begin{tikzcd}
+      & X_1\arrow{dr}{\psi_1} \arrow[bend left]{drr}{\psi_1'} \arrow[bend left, dotted]{drrr}{\psi_1}\arrow[bend left]{drrrr}{\psi_1'}& & & & \\
+      Y \arrow{ur}{\varphi_1} \arrow{dr}{\varphi_2} & & Z \arrow{r}{\exists !f}\arrow[bend left, dotted]{rr}{\mathbf{1}_Z} & Z' \arrow{r}{\exists !g}\arrow[bend right, dotted]{rr}{\mathbf{1}_{Z'}} & Z \arrow{r}{\exists !f} & Z', \\
+      & X_2\arrow{ur}{\psi_2} \arrow[bend right]{urr}{\psi_2'}\arrow[bend right, dotted]{urrr}{\psi_2}\arrow[bend right]{urrrr}{\psi_2'} & & & \\
+    \end{tikzcd}
+  \end{center}
+de forma que tenemos dos morfismos $f:Z\rightarrow Z'$ y $g:Z'\rightarrow Z$ tales que $f\circ g= \mathbf{1}_{Z'}$ y $g\circ f=\mathbf{1}_{Z}$, luego $Z\cong Z'$.
+\end{obs}
+
+Podemos trabajar ahora en la categoría de los grupos $\mathbf{Grp}$. 
+\begin{prop}
+Sean $H, G_1, G_2$ tres grupos y dos homomorfismos de grupos $\varphi_i:H \rightarrow G_i$, $i=1,2$. El pushout de $\varphi_1$ y $\varphi_2$ existe y es isomorfo a 
+$
+  G_1*_H G_2.
+  $
+\end{prop}
+
+\begin{proof}
+  Puesto que el pushout es único salvo isomorfismo, basta ver que $G_1*_H G_2$ cumple \ref{conmuta} y \ref{inicial}. En efecto, si tomamos las «proyecciones canónicas»
+\begin{align*}
+  \psi_i :G_i&\longrightarrow G_1*_H G_2\\ 
+  g &\longmapsto [g] 
+  \end{align*}
+  podemos ver que el diagrama
+    \begin{center}
+    \begin{tikzcd}
+      & G_1\arrow{dr}{\psi_1} & \\
+      H \arrow{ur}{\varphi_1} \arrow{dr}{\varphi_2} & & G_1*_H G_2 \\
+      & G_2 \arrow{ur}{\psi_2} & \\
+    \end{tikzcd}
+  \end{center}
+  conmuta, ya que
+  \begin{equation*}
+    \psi_1 \circ \varphi_1 (h) = [\varphi_1(h)]=[\varphi_2(h)]=\psi_2 \circ \varphi_2 (h),
+  \end{equation*}
+  puesto que, por construcción $\varphi_1(h)(\varphi_2(h))^{-1}\sim \mathbf{1}_{G_1*G_2}$. Ahora, si existen $G$ grupo y  $f_i:G_i \rightarrow G$ dos homomorfismos de grupos tales que el diagrama 
+    \begin{center}
+    \begin{tikzcd}
+      & G_1\arrow{dr}{f_1} & \\
+      H \arrow{ur}{\varphi_1} \arrow{dr}{\varphi_2} & & G \\
+      & G_2 \arrow{ur}{f_2} & \\
+    \end{tikzcd}
+  \end{center}
+  conmuta, hay que hallar un homomorfismo de grupos $f$, y ver que es único, para el que el siguiente diagrama conmute
+    \begin{center}
+    \begin{tikzcd}
+      & G_1\arrow{dr}{\psi_1} \arrow[bend left]{drr}{f_1} & & \\
+      H \arrow{ur}{\varphi_1} \arrow{dr}{\varphi_2} & & G_1*_HG_2 \arrow[dashed]{r}{\exists ?f} & G. \\
+      & G_2\arrow{ur}{\psi_2} \arrow[bend right]{urr}{f_2} & \\
+    \end{tikzcd}
+  \end{center}
+  Lo que esto quiere decir es que tenemos que buscar un homomorfismo de grupos $f:G_1*_HG_2\rightarrow G$ que cumpla que $f(\psi_i(g_i))=f([g_i])=f_i(g_i)$, pero esto se da si y sólo si
+  \begin{align*}
+    f :G_1*_H G_2&\longrightarrow G\\ 
+    [g_1g_2] &\longmapsto f_1(g_1)f_2(g_2), 
+    \end{align*}
+    ya que $f([g_1g_2])=f([g_1][g_2])=f([g_1])f([g_2])=f_1(g_1)f_2(g_2)$. 
+
+    Quedaría por ver que esta $f$ está bien definida. Ahora, si $g_1g_2 \sim g_1'g_2'$ entonces $g_1g_2(g_1'g_2')^{-1}\sim \mathbf{1}_{G_1*G_2}$, luego existe un $h\in H$ tal que $g_1g_2(g_1'g_2')^{-1}=\varphi_1(h)(\varphi_2(h))^{-1}$, por tanto
+    \begin{equation*}
+      f(g_1g_2(g_1'g_2')^{-1})=f(\varphi_1(h)(\varphi_2(h))^{-1})=f_1\circ\varphi_1(h)(f_2\circ\varphi_2(h))^{-1}=\mathbf{1}_{G}.
+    \end{equation*}
+\end{proof}
+
+  Veamos como también podemos encontrar un pushout en la categoría de los espacios topológicos $\mathbf{Top}$.
+\begin{prop}  
+   Sean $X,Y_1,Y_2$ tres espacios topológicos y sean dos funciones continuas $f_i:X\rightarrow Y_i$, $i=1,2$. El pushout de $f_1$ y $f_2$ existe y es homeomorfo a $
+    (Y_1+Y_2)/R,
+  $
+  donde $X+Y$ denota la unión disjunta de $X$ e $Y$ y $R$ es la relación de equivalencia dada por
+  \begin{equation*}
+    y_1 \sim y_2 \Leftrightarrow f_1(y_1) = f_2(y_2).
+  \end{equation*}
+  \end{prop}
+  \begin{obs}
+    Nótese que, si $X\subset Y_1$ y $f_1:X\hookrightarrow Y_1$ es la inclusión de $X$ en $Y_1$, entonces el pushout es simplemente
+$
+Y_2\cup_{f_2} Y_1.
+  $
+\end{obs}
+
+\begin{proof}
+  La demostración es completamente análoga al caso de grupos. De nuevo, como el pushout es único salvo isomorfismo, basta ver que, si llamamos $Y=(Y_1+Y_2)/R$, $Y$ cumple \ref{conmuta} y \ref{inicial}. En efecto, si tomamos las «proyecciones canónicas»
+\begin{align*}
+  p_1 :Y_1&\longrightarrow Y\\ 
+  y_1 &\longmapsto [y_1] 
+  \end{align*}
+  y
+\begin{align*}
+  p_2 :Y_2&\longrightarrow Y\\ 
+  y_2 &\longmapsto [y_2], 
+  \end{align*}
+  podemos ver que el diagrama
+    \begin{center}
+    \begin{tikzcd}
+      & Y_1\arrow{dr}{p_1} & \\
+      Y \arrow[hook]{ur}{f_1} \arrow{dr}{f_2} & & Y \\
+      & Y_2 \arrow{ur}{p_2} & \\
+    \end{tikzcd}
+  \end{center}
+  conmuta, ya que 
+  \begin{equation*}
+    p_2\circ f_2(a) = [f_2(a)]=[f_1(a)] = p_1\circ f_1 (a),
+  \end{equation*}
+  por construcción de la relación de equivalencia. Ahora, si existen un espacio topológico $Z$ y dos aplicaciones continuas $\psi_1:X\rightarrow Z$, $\psi_2:Y\rightarrow Z$ tales que el diagrama 
+    \begin{center}
+    \begin{tikzcd}
+      & Y_1\arrow{dr}{\psi_1} & \\
+      X \arrow[hook]{ur}{f_1} \arrow{dr}{f_2} & & Z \\
+      & Y_2 \arrow{ur}{\psi_2} & \\
+    \end{tikzcd}
+  \end{center}
+  conmuta, hay que hallar una aplicación continua $\psi$, y ver que es única, para la que el siguiente diagrama conmute
+    \begin{center}
+    \begin{tikzcd}
+      & Y_1\arrow{dr}{p_1} \arrow[bend left]{drr}{\psi_1} & & \\
+      X \arrow{ur}{f_1} \arrow{dr}{f_2} & & Y \arrow[dashed]{r}{\exists ?\psi} & Z. \\
+      & Y_2\arrow{ur}{p_2} \arrow[bend right]{urr}{\psi_2} & \\
+    \end{tikzcd}
+  \end{center}
+  Ahora, para que el diagrama conmute, si $y_1 \in Y_1$, $\psi[y_1]=\psi_1(y_1)$, mientras que si $y_2 \in Y_2$, $\psi[y_2]=\psi_2(y_2)$. Esta $\psi$ está unívocamente determinada y bien definida, ya que si $y_1=f(x)\in Y_1$ para cierto $x \in X$, $y_2 \in Y_2$ y $[y_1]=[y_2]$, entonces 
+  \begin{equation*}
+    \psi_1(y_1)=\psi_1(f_1(x))=\psi_2(f_2(x))=\psi_2(y_2).	
+  \end{equation*}
+  Además, $\psi$ es continua ya que $\psi_1$ y $\psi_2$ son continuas y $p_1$ y $p_2$ son cocientes topológicos.
+\end{proof}
+
 \section{Teorema de Seifert-Van Kampen}
 \begin{thm}[Teorema de Seifert-Van Kampen]
  Sea $X$ un espacio topológico conexo por caminos, localmente conexo por caminos y localmente semisimplemente conexo. Sean $U,V\subset X$ abiertos con $X=U\cup V$ tales que $U$, $V$ y $U\cup V$ son conexos por caminos, localmente conexos por caminos y localmente semisimplemente conexos. Sea $x\in U\cap V$. Consideremos entonces el siguiente diagrama de inclusiones
