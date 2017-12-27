@@ -12,7 +12,8 @@
 \usepackage{amsthm, mathtools}
 \usepackage{tikz,tikz-cd}
 \usetikzlibrary{arrows, babel}
-\usepackage{url, hyperref}
+\usepackage{url}
+\usepackage[colorlinks=true,linktocpage=true,pagebackref=true,linkcolor=blue]{hyperref}
 \usepackage{titlesec}
 \usepackage{remreset}
 \usepackage{enumitem}
@@ -1176,7 +1177,7 @@ Veamos que además de ser condición necesaria es suficiente, es decir, que si u
 \begin{proof}
   Sea $\sigma$ un lazo en $X/G$ con punto base $q(x)$. Entonces, $\tilde{\sigma}_{x}(1)=e.x=x$ si y sólo si $\tilde{\sigma}_{x}$ es un lazo en $X$, luego $[\sigma]=[q\circ\tilde\sigma_x]=q_*[\tilde{\sigma}_x]\in q_*(\gf(X,x))$. Por tanto, $q_*(\gf(X,x))=\ker \psi$. Una vez visto esto, inmediatamente tenemos el primer resultado y también el segundo, a partir del primer teorema de isomorfía. El tercer resultado es consecuencia inmediata del segundo.
 \end{proof}
-\begin{ejemplo}
+\begin{ejemplo}\label{gfcirc}
   Volviendo al caso 1 del ejemplo \ref{circulo}. La acción 
   \begin{align*}
      \ZZ \times \RR &\longrightarrow \RR\\ 
@@ -1317,6 +1318,21 @@ La propiedad universal caracteriza a $F_A$, es decir, si existe otro grupo $F'$ 
    \end{center}
    conmuta. Esto nos dice que $\varphi$ es un isomorfismo de grupos.
  \end{proof}
+ La clasificación de los conjuntos mediante cardinales ofrece también una clasificación de los grupos libres.
+ \begin{prop}
+   Si dos conjuntos $A$ y $A'$ son equipotentes, entonces los grupos libres $F_A$ y $F_{A'}$ son isomorfos. En particular, para todo conjunto $A$, $F_A\cong F_{|A|}$, donde $|A|$ denota el cardinal de $|A|$.
+ \end{prop}
+ \begin{proof}
+   Sea $\psi:A\rightarrow A'$ una función biyectiva. Si $i:A'\hookrightarrow F_{A'}$ es la inclusión natural, $i\circ \psi: A\rightarrowtail F_{A'}$ es una función inyectiva. Ahora, dado un grupo $G$ y una función $f:A\rightarrow G$, si tomo $f'=f\circ \psi^{-1}$, entonces existe un único $\varphi:F_{A'}\rightarrow G$ tal que el diagrama
+   \begin{center}
+     \begin{tikzcd}
+       A \arrow[tail, two heads]{r}{\psi} \arrow{rrdd}{f} & A' \arrow[hook]{r}{i} \arrow{rdd}{f'} & F_{A'} \arrow{dd}{\exists ! \varphi}       \\ 
+       \\
+       & & G
+     \end{tikzcd}
+   \end{center}
+   conmuta. Por tanto, $F_{A'}$ cumple la propiedad universal de $F_A$, luego es isomorfo a $F_A$.
+ \end{proof}
 
  \begin{ejemplo} \leavevmode
    \begin{enumerate}
@@ -1418,10 +1434,15 @@ La propiedad universal caracteriza a $F_A$, es decir, si existe otro grupo $F'$ 
     G_1*_H G_2 = \gen{A_1\cup A_2 | R_1\cup R_2\cup R}= \frac{G_1*G_2}{\ngen{\varphi_1(h)(\varphi_2(h))^{-1}|h\in h}}.
   \end{equation*}
  \end{defn}
+ \begin{obs}
+   En el caso en que $H$ es el grupo trivial, obtenemos simplemente el producto libre $G_1*G_2$.
+ \end{obs}
 
  \section{Pushouts}
+ De forma similar a cómo la propiedad universal del grupo libre ha resultado ser una herramienta útil en la sección anterior, podemos ver cómo algunos de los objetos considerados en este texto también tienen otro tipo de «propiedad universal». Esta es la propiedad categórica de ser un \emph{pushout}. Veremos que ciertos objetos son pushouts y que los pushouts son iguales salvo isomorfismo, de forma que, cuando queramos probar que cierto objeto es isomorfo a otro, bastará comprobar que cierto diagrama es un pushout, en vez de hacer el cómputo «a mano». Estas ideas nos serán de especial utilidad en la demostración del teorema de Seifert-Van Kampen.
+
  \begin{defn}
- Sean $\cat$ una categoría, $X_1,X_2,Y \in \obj(\cat)$, y unos morfismos $\varphi_1:Y\rightarrow X_1$, $\varphi_2:Y \rightarrow X_1$. Definimos el \emph{pushout} de los morfismos $\varphi_1$ y $\varphi_2$ como un objeto $Z\in \obj(\cat)$ y dos morfismos $\psi_1:X_1\rightarrow Z$, $\psi_2:X_2\rightarrow Z$ tales que:
+ Sean $\cat$ una categoría, $X_1,X_2,Y$ objetos de $\cat$, y unos morfismos $\varphi_1:Y\rightarrow X_1$, $\varphi_2:Y \rightarrow X_1$. Definimos el \emph{pushout} de los morfismos $\varphi_1$ y $\varphi_2$ como un objeto $Z$ de $\cat$ y dos morfismos $\psi_1:X_1\rightarrow Z$, $\psi_2:X_2\rightarrow Z$ tales que:
 \begin{enumerate}[label=(\alph*)]
   \item\label{conmuta} El siguiente diagrama conmuta
     \begin{center}
@@ -1464,7 +1485,7 @@ Podemos ver ahora que el pushout es único salvo isomorfismo: si $(Z, \psi_1, \p
 de forma que tenemos dos morfismos $f:Z\rightarrow Z'$ y $g:Z'\rightarrow Z$ tales que $f\circ g= \mathbf{1}_{Z'}$ y $g\circ f=\mathbf{1}_{Z}$, luego $Z\cong Z'$.
 \end{obs}
 
-Podemos trabajar ahora en la categoría de los grupos $\mathbf{Grp}$. 
+Podemos trabajar ahora en la categoría de los grupos. 
 \begin{prop}
 Sean $H, G_1, G_2$ tres grupos y dos homomorfismos de grupos $\varphi_i:H \rightarrow G_i$, $i=1,2$. El pushout de $\varphi_1$ y $\varphi_2$ existe y es isomorfo a 
 $
@@ -1519,18 +1540,18 @@ $
     \end{equation*}
 \end{proof}
 
-  Veamos como también podemos encontrar un pushout en la categoría de los espacios topológicos $\mathbf{Top}$.
+  Veamos como también podemos encontrar un pushout en la categoría de los espacios topológicos.
 \begin{prop}  
    Sean $X,Y_1,Y_2$ tres espacios topológicos y sean dos funciones continuas $f_i:X\rightarrow Y_i$, $i=1,2$. El pushout de $f_1$ y $f_2$ existe y es homeomorfo a $
     (Y_1+Y_2)/R,
   $
-  donde $X+Y$ denota la unión disjunta de $X$ e $Y$ y $R$ es la relación de equivalencia dada por
+  donde $Y_1+Y_2$ denota la unión disjunta de $Y_1$ e $Y_2$ y $R$ es la relación de equivalencia dada por
   \begin{equation*}
-    y_1 \sim y_2 \Leftrightarrow f_1(y_1) = f_2(y_2).
+    y_1 \sim y_2 \Leftrightarrow \text{Existe } x\in X \text{ tal que } y_1=f_1(x) \text{ e } y_2=f_2(x).
   \end{equation*}
   \end{prop}
   \begin{obs}
-    Nótese que, si $X\subset Y_1$ y $f_1:X\hookrightarrow Y_1$ es la inclusión de $X$ en $Y_1$, entonces el pushout es simplemente
+    Nótese que, si $X\subset Y_1$ y $f_1:X\hookrightarrow Y_1$ es la inclusión de $X$ en $Y_1$, entonces el pushout es simplemente el espacio adjunción
 $
 Y_2\cup_{f_2} Y_1.
   $
@@ -1551,15 +1572,15 @@ Y_2\cup_{f_2} Y_1.
     \begin{center}
     \begin{tikzcd}
       & Y_1\arrow{dr}{p_1} & \\
-      Y \arrow[hook]{ur}{f_1} \arrow{dr}{f_2} & & Y \\
+      Y \arrow{ur}{f_1} \arrow{dr}{f_2} & & Y \\
       & Y_2 \arrow{ur}{p_2} & \\
     \end{tikzcd}
   \end{center}
   conmuta, ya que 
   \begin{equation*}
-    p_2\circ f_2(a) = [f_2(a)]=[f_1(a)] = p_1\circ f_1 (a),
+    p_2\circ f_2(x) = [f_2(x)]=[f_1(x)] = p_1\circ f_1 (x),
   \end{equation*}
-  por construcción de la relación de equivalencia. Ahora, si existen un espacio topológico $Z$ y dos aplicaciones continuas $\psi_1:X\rightarrow Z$, $\psi_2:Y\rightarrow Z$ tales que el diagrama 
+  por construcción de la relación de equivalencia. Ahora, si existen un espacio topológico $Z$ y dos aplicaciones continuas $\psi_1:Y_1\rightarrow Z$, $\psi_2:Y_2\rightarrow Z$ tales que el diagrama 
     \begin{center}
     \begin{tikzcd}
       & Y_1\arrow{dr}{\psi_1} & \\
@@ -1575,10 +1596,11 @@ Y_2\cup_{f_2} Y_1.
       & Y_2\arrow{ur}{p_2} \arrow[bend right]{urr}{\psi_2} & \\
     \end{tikzcd}
   \end{center}
-  Ahora, para que el diagrama conmute, si $y_1 \in Y_1$, $\psi[y_1]=\psi_1(y_1)$, mientras que si $y_2 \in Y_2$, $\psi[y_2]=\psi_2(y_2)$. Esta $\psi$ está unívocamente determinada y bien definida, ya que si $y_1=f(x)\in Y_1$ para cierto $x \in X$, $y_2 \in Y_2$ y $[y_1]=[y_2]$, entonces 
+  Ahora, para que el diagrama conmute, si $y_1 \in Y_1$, $\psi[y_1]=\psi_1(y_1)$, mientras que si $y_2 \in Y_2$, $\psi[y_2]=\psi_2(y_2)$. Esta $\psi$ está unívocamente determinada y bien definida, ya que si $[y_1]=[y_2]$, entonces existe un $x\in X$ tal que $y_1=f_1(x)$, $y_2=f_2(x)$. Por tanto,
   \begin{equation*}
-    \psi_1(y_1)=\psi_1(f_1(x))=\psi_2(f_2(x))=\psi_2(y_2).	
+    \psi_1(y_1)=\psi_1(f_1(x))=\psi_2(f_2(x))=\psi_2(y_2),	
   \end{equation*}
+  por la conmutatividad del diagrama.
   Además, $\psi$ es continua ya que $\psi_1$ y $\psi_2$ son continuas y $p_1$ y $p_2$ son cocientes topológicos.
 \end{proof}
 
@@ -1600,7 +1622,7 @@ Y_2\cup_{f_2} Y_1.
      & \gf(V,x) \arrow{ur}{j_{2,*}}& 
    \end{tikzcd}
  \end{center}
- es un pushout. En particular, $$\gf(X,x)\cong \gf(U,x)*_{\gf(U\cap V,x)}\gf(V,x)=\frac{\gf(U,x)*\gf(V,x)}{\langle \langle i_1(a)(i_2(a))^{-1}|a\in \gf(U\cap V,x)\rangle \rangle}.$$
+ es un pushout. En particular, $$\gf(X,x)\cong \gf(U,x)*_{\gf(U\cap V,x)}\gf(V,x)=\frac{\gf(U,x)*\gf(V,x)}{\langle \langle i_{1,*}(a)(i_{2,*}(a))^{-1}|a\in \gf(U\cap V,x)\rangle \rangle}.$$
 \end{thm}
 \begin{proof}
   Por la funtorialidad del grupo fundamental el diagrama conmuta. Para ver que es un pushout entonces tenemos que probar que, si existe otro grupo $G$ y dos homomorfismos $h_1:\gf(U,x)\rightarrow G$, $h_2:\gf(V,x)\rightarrow G$ tales que el diagrama
@@ -1638,7 +1660,7 @@ Si considero ahora las inclusiones $\omega_i:p_i^{-1}(U\cap V) \hookrightarrow Y
      & Y_2 \arrow{ur}{q_2}& 
    \end{tikzcd}
  \end{center}
-   Si tomamos el espacio adjunción $Y=Y_1\cup_{\psi}Y_2$, que se obtiene a partir del pushout de $\omega_1$ y $\psi$, entonces existe una única aplicación continua $f:Y\rightarrow X$ para la que el siguiente diagrama conmuta
+   Si tomamos el espacio $Y$ que se obtiene a partir del pushout de $\omega_1$ y $\psi$, entonces existe una única aplicación continua $f:Y\rightarrow X$ para la que el siguiente diagrama conmuta
  \begin{center}
    \begin{tikzcd}
      & Y_1 \arrow[bend left]{drr}{q_1}\arrow{dr}{\nu_1} &     \\ 
@@ -1656,4 +1678,36 @@ Si considero ahora las inclusiones $\omega_i:p_i^{-1}(U\cap V) \hookrightarrow Y
  \end{center}
  La unicidad de $h$ viene garantizada por la unicidad en todas las construcciones consideradas.
  \end{proof}
+
+ \begin{obs}
+   Las hipótesis se pueden relajar aún más, ya que el teorema también es cierto en casos en los que no haya cubiertas universales de por medio, es decir, no hace falta pedirle a los espacios involucrados que sean localmente semisimplemente conexos. Sin embargo, todos los espacios que consideremos lo van a cumplir. Además, la demostración del teorema general no admite argumentos tan elegantes como los dados aquí, sino que, aunque involucra procedimientos más elementales, es una prueba demasiado técnica y tediosa, por lo que en este texto he decidido omitirla.
+ \end{obs}
+
+ Veamos algunos ejemplos bastante esclarecedores:
+ \begin{ejemplo} \leavevmode
+   \begin{enumerate}
+     \item Veamos que las esferas $S^n$ con $n>1$ son simplemente conexas. Sean $a_N, a_S$ los polos norte y sur de $S^n$, respectivamente. Podemos tomar $U=S^n-\left\{ a_N \right\}$ y $V=S^n-\left\{ a_S \right\}$. Los abiertos $U$ y $V$ son homeomorfos a $\RR^{n}$ mediante la proyección estereográfica. Por tanto, $\gf(U)=\left\{ e \right\}$, $\gf(V)=\left\{ e \right\}$. Aplicando el teorema de Seifert-Van Kampen, $\gf(X)=(\gf(U)*\gf(V))/G\cong\left\{ e \right\}$. Aquí $G$ tiene una expresión concreta dada por el teorema, pero no es necesario ocuparnos de ella porque los elementos del numerador ya dan el grupo trivial y cualquier cociente suyo seguirá siendo el grupo trivial.
+
+     \item Consideremos la unión de dos circunferencias por un punto $X=S^1\vee S^1$. Sea $x\in X$ el punto común de las circunferencias. Puedo tomar como abiertos $U$ y $V$ cada una de las circunferencias, de forma que $U\cap V=\left\{ x \right\}$. Ahora $\gf(U)\cong \gf(V) \cong \gf(S^1)$ y $\gf(U\cap V)=\gf(\left\{ x \right\})=\left\{ e \right\}$. Por tanto, en este caso el producto amalgamado será simplemente el producto libre $\gf(X)=\gf(S^1)*\gf(S^1)$. Como ya vimos en el ejemplo \ref{gfcirc}, $\gf(S^1)\cong \ZZ$, de forma que $\gf(X)\cong \ZZ*\ZZ \cong F_2$, con $F_2$ el grupo libre de dos generadores.
+
+     \item Para ver el potencial completo de Seifert-Van Kampen, vamos a calcular el grupo fundamental del plano proyectivo real $\RR P^2$. Tomemos el modelo planar de $\RR P^2$ dado por el disco $D^2$, identificando el borde antipodalmente, es decir, pegando a lo largo del camino 
+       \begin{equation*}
+	 \alpha(t)=e^{i\pi t}\sim -e^{i\pi t}
+       \end{equation*}
+       con $t\in [0,1)$. Sea $U=B^2$ el interior del disco y $V=\RR P^2-{0}$. Tenemos que $U$ es simplemente conexo ya que retrae por deformación a un punto, mientras que $V$ retrae por deformación al borde de $\RR P^2$, que es de $D^2$ identificado de la forma anterior. Por tanto, $\gf(U)=\left\{ e \right\}$ y $\gf(V)=\left\{ [\alpha] \right\}$. Ahora, $U\cap V=B^2-{0}$, que retrae por deformación a una circunferencia de radio intermedio, digamos $1/2$, de modo que $\gf(U\cap V)=\left\{ [\beta] \right\}$, con 
+       \begin{equation*}
+	 \beta(t)=\tfrac{1}{2}e^{i2\pi t}.
+       \end{equation*}
+       Aplicando el teorema de Seifert-Van Kampen, 
+       \begin{equation*}
+	 \gf(\RR P^2)=\frac{\left\{ e \right\}*\left\{ [\alpha] \right\}}{\ngen{i_{1,*}(a)(i_{2,*}(a))^{-1}|a\in \gf(U\cap V)}}.
+       \end{equation*}
+       Ahora, $i_{1,*}([\beta])=e$, mientras que $i_{2,*}([\beta])=[i_2(\beta)]=[\alpha*\alpha]=[\alpha]^2$. Por tanto, 
+       \begin{equation*}
+	 \gf(\RR P^2)=\gen{[\alpha]\left|[\alpha]^2\right.}\cong \ZZ_2.
+       \end{equation*}
+   \end{enumerate}
+ \end{ejemplo}
+
+ En el siguiente capítulo emplearemos Seifert-Van Kampen para calcular más grupos fundamentales, usando técnicas similares a las vistas en estos ejemplos.
 \end{document}
