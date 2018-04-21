@@ -5,15 +5,15 @@
 \documentclass[12pt,a4paper]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish, es-noquoting]{babel}
-\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm, mathtools}
 \usepackage{tikz,tikz-cd}
 \usetikzlibrary{arrows, babel}
-\usepackage{url}
-\usepackage[colorlinks=true,linktocpage=true,pagebackref=true,linkcolor=blue]{hyperref}
+%\usepackage{url}
+\usepackage[colorlinks=true,urlcolor=red,linktocpage=true,pagebackref=true,linkcolor=blue]{hyperref}
 \usepackage{titlesec}
 \usepackage{remreset}
 \usepackage{enumitem}
@@ -85,6 +85,76 @@
 
 \begin{document}
 \maketitle
+\chapter*{Prefacio}
+Tiene usted ante sí unos apuntes de Topología Algebraica escritos en español que pueden encontrarse gratuitamente, junto con su código fuente, en el siguiente enlace:
+
+\begin{center}
+\href{https://github.com/guillegran/ToAl}{https://github.com/guillegran/ToAl}
+\end{center}
+
+  Estas notas empezaron a elaborarse cuando estaba cursando la asignatura «Topología Algebraica» en la Universidad Complutense 
+de Madrid, a cargo de Elena Martín Peinador y de Juan Ángel Rojo Carulli. La bibliografía que he seguido principalmente han sido 
+el libro de Hatcher, el de Fulton y el de Vicente Muñoz. Cabe destacar que estas notas no son ni pretenden ser unas «notas de
+clase» ni mucho menos un «libro de la asignatura», simplemente muestran la forma en la que yo he ido entendiendo la asignatura y,
+de hecho, he intentado darle un enfoque distinto al que se dio a la asignatura cuando la cursé, ya que he preferido hablar de 
+cubiertas antes de entrar con el teorema de Seifert-Van Kampen, al estilo de Fulton. Esto permite dar una prueba más sencilla del 
+teorema (aunque sólo vale para el caso en el que los espacios involucrados admitan cubierta universal). 
+
+  Las notas probablemente tengan muchas erratas e inconsistencias, e incluso algunos errores de base, que pretendo corregir en una
+futura aproximación a la asignatura, o que sean corregidas por algún hipotético lector o lectora que se copie el proyecto. De cara
+a esa posible situación, dejo también mi proyecto de ampliación de las notas.
+
+\begin{itemize}
+  \item  En primer lugar, me gustaría añadir un Capítulo 1 (previo al Capítulo 1 actual, el de homotopía), con un nombre parecido a
+«Algunos conceptos de topología general», donde se traten los siguientes temas:
+\begin{itemize}
+    \item  Topología cociente. Ejemplos: Toros, bandas de Moebius, botellas de Klein y espacios proyectivos reales y complejos.
+    \item Celdas y pares.
+     \item  Variedades topológicas con y sin borde.
+    \item  Adjunción, wedge y suma conexa.
+    \item  Complejos de celdas: complejos simpliciales, $\Delta$-complejos y CW-complejos.
+    \item  Orientación (de superficies).
+    \item  Clasificación de superficies (¿incluso tal vez las no compactas?).
+  \end{itemize}
+
+\item  En continuación con el texto tal y como está ahora, añadiría un Capítulo 5 titulado «Cálculo del grupo fundamental y 
+aplicaciones», con los siguientes temas:
+\begin{itemize}
+  \item  Grupo fundamental de las esferas y de los espacios proyectivos.
+  \item  Grupo fundamental de los toros en dimensión arbitraria. Grupo fundamental del producto cartesiano y usando recubridores.
+  \item  Grupo fundamental de las superficies cerradas.
+  \item  Grupo fundamental de un wedge arbitrario de circunferencias.
+  \item  Grafos y el teorema de Nielsen-Schreirer.
+  \item  Realización de un grupo como el grupo fundamental de un CW-complejo.
+  \item  Teorema fundamental del álgebra y teorema del punto fijo de Brower. 
+  \item  Teorema de la bola peluda.
+  \item  Álgebras de división sobre $\RR$.
+  \item  Teoremas de Borsuk-Ulam.
+\end{itemize}
+    
+  \item  Un Capítulo 6 de homología: álgebra homológica, homología simplicial y homología singular. ¿Tal vez algo de cohomología? 
+Con aplicaciones: Borsuk-Ulam general, bola peluda general y curva de Jordan.
+
+  \item  Un capítulo o un apartado sobre homotopía superior (similar al Hatcher):
+    \begin{itemize}
+  \item  Definición de los grupos de homotopía superior.
+  \item  Isomorfismo de los grupos de homotopía superior en espacios conexos por caminos.
+  \item  Isomorfismo con las cubiertas.
+  \item  Productos.
+  \item  Equivalencia de homotopía relativa.
+  \item  Teorema de Whitehead.
+  \item  Aproximación celular.
+  \item  ¿Algo de $\infty$-grupoides, tipos de homotopía y la tesis de homotopía (la relación entre los $\infty$-grupoides 
+    y los CW-complejos? 
+\end{itemize}
+\end{itemize}
+    
+    
+ Guillermo Gallego
+ 
+ En Carabanchel a 21 de abril de 2018
+  
+
 \tableofcontents
 \chapter{Homotopía}
 \section{Homotopía: El concepto}
